@@ -1,0 +1,29 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varCustomerId" : {
+      "title" : "Customer Id",
+      "description" : "The Account Id of the authenticated customer. Auto-mapped from verified customer.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varTransactionLimit" : {
+      "title" : "Transaction Limit",
+      "description" : "Number of transactions to retrieve. Defaults to 10.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varLanguage" : {
+      "title" : "Language",
+      "description" : "Language code for formatting: hi for Hindi, en for English. Defaults to en.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

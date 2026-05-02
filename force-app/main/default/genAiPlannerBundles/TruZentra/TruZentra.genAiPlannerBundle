@@ -1,0 +1,1586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <attributeMappings>
+        <attributeName>CaseManagement_16jbm000001M6z3.CreateCaseEnhancedData_179bm000002Pux8.input_verifiedCustomerID</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>CaseManagement_16jbm000001M6z3.GetCasesForVerifiedContact_179bm000002Pux8.input_verifiedContactID</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>CaseManagement_16jbm000001M6z3.GetCaseByVerifiedCaseNumber_179bm000002Pux8.input_verifiedContactID</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>DisputeManagement_16jbm000001M6z3.GetTransactionsForDispute_179bm000002PuxE.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>DisputeManagement_16jbm000001M6z3.RaiseDispute_179bm000002PuxE.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>DisputeManagement_16jbm000001M6z3.GetDisputeStatus_179bm000002PuxE.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>LoanRestructuring_16jbm000001M6z3.GetLoanDetails_179bm000002PuxF.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>LoanRestructuring_16jbm000001M6z3.SubmitRestructuring_179bm000002PuxF.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>LoanRestructuring_16jbm000001M6z3.GetRestructuringStatus_179bm000002PuxF.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>OTPVerification_16jbm000001M6z3.SendOTP_179bm000002PuxC.output_otpSessionId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>authenticationKey</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>OTPVerification_16jbm000001M6z3.VerifyOTP_179bm000002PuxC.input_otpSessionId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>authenticationKey</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>OTPVerification_16jbm000001M6z3.VerifyOTP_179bm000002PuxC.output_isVerified</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>isVerified</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>OTPVerification_16jbm000001M6z3.VerifyOTP_179bm000002PuxC.output_customerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>RecurringPayments_16jbm000001M6z3.GetRecurringPayments_179bm000002PuxJ.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>ResendConfirmation_16jbm000001M6z3.ResendConfirmationEmail_179bm000002PuxH.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>ZentraBalance_16jbm000001M6z3.CheckAccountBalance_179bm000002PuxD.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>ZentraBalance_16jbm000001M6z3.ViewTransactions_179bm000002PuxD.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>OTPVerification_16jbm000001M6z3.VerifyMPIN_179bm000002PuxC.output_isVerified</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>isVerified</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>OTPVerification_16jbm000001M6z3.VerifyMPIN_179bm000002PuxC.output_customerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>MPINManagement_16jbm000001M6z3.ChangeMPIN_179bm000002PuxM.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <attributeMappings>
+        <attributeName>MutualFundInfo_16jbm000001M6z3.GetMutualFundHoldings_179bm000002PuxN.input_varCustomerId</attributeName>
+        <attributeType>CustomPluginFunctionAttribute</attributeType>
+        <mappingTargetName>VerifiedCustomerId</mappingTargetName>
+        <mappingType>Variable</mappingType>
+    </attributeMappings>
+    <description>TruZentra — Zentra Bank WhatsApp assistant. Be polite, warm, use please/thank you/ji. Match customer language. FIRST MSG: ask mobile, offer OTP or MPIN. Verify BEFORE any action. After EVERY task show menu: 1 Balance 2 Transactions 3 Dispute 4 Loan 5 Recurring 6 Mutual Fund 7 Email 8 MPIN. On bye/done ask &quot;Anything else?&quot; Only on no/nahi give warm farewell.</description>
+    <localActionLinks>
+        <genAiFunctionName>AnswerQuestionsWithKnowledge_16jbm000001M6z3</genAiFunctionName>
+    </localActionLinks>
+    <localTopicLinks>
+        <genAiPluginName>CaseManagement_16jbm000001M6z3</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>DisputeManagement_16jbm000001M6z3</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>LoanRestructuring_16jbm000001M6z3</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>OTPVerification_16jbm000001M6z3</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>RecurringPayments_16jbm000001M6z3</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>ResendConfirmation_16jbm000001M6z3</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>MPINManagement_16jbm000001M6z3</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>MutualFundInfo_16jbm000001M6z3</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>ZentraBalance_16jbm000001M6z3</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>ResendConfirmation_16jbm000001M6z3</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Sends summary emails to the customer — balance summary, dispute summary, loan restructuring summary, transaction summary (mini-statement), recurring payments summary, or mutual fund portfolio summary. You HAVE this ability. Customer must be OTP-verified first.</description>
+        <developerName>ResendConfirmation_16jbm000001M6z3</developerName>
+        <genAiPluginInstructions>
+            <description>ABSOLUTE RULE: Customer MUST be OTP-verified before sending any email summary. If VerifiedCustomerId is NOT available, do NOT proceed. Do NOT argue, mislead, or say you cannot help. Simply say: &quot;For your security, let me verify your identity first.&quot; and immediately trigger OTP verification. NEVER skip this step.</description>
+            <developerName>email_require_otp</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>email_require_otp</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When the customer asks for an email summary, present these options:
+&quot;Which summary would you like emailed?
+1. Balance Summary
+2. Dispute Summary
+3. Loan Restructuring Summary
+4. Transaction Summary (Mini-Statement)
+5. Recurring Payments Summary
+6. Mutual Fund / SIP Portfolio
+
+Reply 1, 2, 3, 4, 5, or 6.&quot;</description>
+            <developerName>email_ask_type</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>email_ask_type</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Once the customer picks a type, you MUST call the Send Email Summary action:
+- 1 or &quot;balance&quot; → input_varEmailType = &quot;balance&quot;
+- 2 or &quot;dispute&quot; → input_varEmailType = &quot;dispute&quot;
+- 3 or &quot;loan&quot; → input_varEmailType = &quot;loan&quot;
+- 4 or &quot;transaction&quot; or &quot;mini statement&quot; → input_varEmailType = &quot;transaction&quot;
+- 5 or &quot;recurring&quot; or &quot;standing instruction&quot; → input_varEmailType = &quot;recurring&quot;
+- 6 or &quot;mutual fund&quot; or &quot;SIP&quot; → input_varEmailType = &quot;mutualfund&quot;
+
+You MUST invoke the action — NEVER skip it or say you can&apos;t. Share the result with the customer. Then ALWAYS show the menu:
+&quot;What would you like to do next?
+1️⃣ Check Balance
+2️⃣ View Transactions
+3️⃣ File/Check Dispute
+4️⃣ Loan Restructuring
+5️⃣ Recurring Payments
+6️⃣ Mutual Fund / SIP
+7️⃣ Email Summary
+8️⃣ Change MPIN
+Just type a number or tell me!&quot;</description>
+            <developerName>email_execute</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>email_execute</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>ALWAYS reply in the same language the customer uses. Hindi in Hindi, Hinglish in Hinglish, English in English.</description>
+            <developerName>email_language_match</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>email_language_match</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>ResendConfirmationEmail_179bm000002PuxH</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>ResendConfirmationEmail_179bm000002PuxH</fullName>
+            <description>Sends a fresh summary email to the customer&apos;s registered email. Pass emailType as: balance, dispute, loan, transaction, recurring, or mutualfund. The service queries the LATEST live data and sends a branded summary email. This is a NEW email every time. You HAVE this ability — ALWAYS call this action.</description>
+            <developerName>ResendConfirmationEmail_179bm000002PuxH</developerName>
+            <invocationTarget>Zentra_Send_Email_Summary</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SendEmailSummary</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varEmailType</label>
+                <name>input_varEmailType</name>
+                <parameterName>varEmailType</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_varOutputMessage</label>
+                <name>output_varOutputMessage</name>
+                <parameterName>varOutputMessage</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_varOutputSuccess</label>
+                <name>output_varOutputSuccess</name>
+                <parameterName>varOutputSuccess</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Send Email Summary</masterLabel>
+            <progressIndicatorMessage>📧 Preparing and sending your summary email...</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>ZentraEmailSummary</localDeveloperName>
+        <masterLabel>Zentra Email Summary</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Sends summary emails to the customer. Trigger phrases: &quot;send email&quot;, &quot;email summary&quot;, &quot;balance email&quot;, &quot;dispute email&quot;, &quot;loan email&quot;, &quot;transaction email&quot;, &quot;mini statement email&quot;, &quot;recurring payment email&quot;, &quot;standing instruction email&quot;, &quot;mutual fund email&quot;, &quot;SIP email&quot;, &quot;investment email&quot;, &quot;email bhejo&quot;, &quot;mail bhejo&quot;, &quot;summary bhejo&quot;, &quot;send me details on email&quot;, &quot;email nahi aaya&quot;, &quot;transaction bhejo&quot;, &quot;recurring bhejo&quot;, &quot;mutual fund bhejo&quot;. Supports: (1) Balance Summary, (2) Dispute Summary, (3) Loan Restructuring Summary, (4) Transaction Summary (Mini-Statement), (5) Recurring Payments Summary, (6) Mutual Fund / SIP Portfolio Summary. Customer must be OTP-verified. NEVER say you cannot send emails — you HAVE this ability via the Send Email Summary action. ALWAYS call it. ALWAYS be polite and respectful: &quot;Sure, [Name] ji! Let me send that to your email right away.&quot; Reply in customer&apos;s language. After completing the task, ALWAYS show the full options menu.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>ZentraBalance_16jbm000001M6z3</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Zentra Bank Account Balance and Transactions. This is the core purpose of TruZentra — helping customers check their bank account balance (Savings, Credit Card, Loan) and view recent transactions.</description>
+        <developerName>ZentraBalance_16jbm000001M6z3</developerName>
+        <genAiPluginInstructions>
+            <description>When the customer asks to check account balance in ANY form — English (&quot;balance&quot;, &quot;check balance&quot;, &quot;account balance&quot;, &quot;how much money&quot;), Hindi (&quot;बैलेंस&quot;, &quot;खाता शेष&quot;, &quot;बैलेंस चेक करो&quot;, &quot;कितना पैसा है&quot;), or Hinglish (&quot;mera balance&quot;, &quot;balance kya hai&quot;, &quot;kitna paisa hai&quot;, &quot;balance check karo&quot;) — IMMEDIATELY call the Check Account Balance action WITHOUT asking any follow-up questions. Do NOT ask which account or which type of balance. The action automatically returns balances of ALL accounts (Savings, Credit Card, Loan).</description>
+            <developerName>instant_balance</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>instant_balance</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When the customer asks for transactions, mini statement, recent activity, or statement — English (&quot;transactions&quot;, &quot;mini statement&quot;, &quot;recent transactions&quot;), Hindi (&quot;लेन-देन&quot;, &quot;स्टेटमेंट&quot;, &quot;हाल के लेन-देन&quot;), Hinglish (&quot;meri transactions dikhao&quot;, &quot;last transactions&quot;) — call the View Transactions action. It returns the last 10 transactions by default.</description>
+            <developerName>view_transactions</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>view_transactions</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>ABSOLUTE RULE: Customer MUST be OTP-verified before checking balance or viewing transactions. If VerifiedCustomerId is NOT available, do NOT proceed. Do NOT argue, mislead, or say you cannot help. Simply say: &quot;For your security, let me verify your identity first.&quot; and immediately trigger OTP verification. NEVER skip this step.</description>
+            <developerName>otp_required</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>otp_required</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Reply in customer&apos;s language. Display balance/transaction output exactly as returned — already formatted. Add warm touch before data. After showing balance/transactions, ALWAYS show post-task menu.</description>
+            <developerName>language_and_display</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>language_and_display</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>CheckAccountBalance_179bm000002PuxD</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>ViewTransactions_179bm000002PuxD</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>CheckAccountBalance_179bm000002PuxD</fullName>
+            <description>Fetches and returns the bank account balance for ALL account types (Savings, Credit Card, Loan) linked to the verified customer. This is the primary action of TruZentra.</description>
+            <developerName>CheckAccountBalance_179bm000002PuxD</developerName>
+            <invocationTarget>Zentra_Check_Balance</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>CheckAccountBalance</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Check Account Balance</masterLabel>
+            <progressIndicatorMessage>💰 Securely fetching your account balances across all accounts...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>ViewTransactions_179bm000002PuxD</fullName>
+            <description>Fetches and returns the last 10 transactions across all active financial accounts for the verified customer.</description>
+            <developerName>ViewTransactions_179bm000002PuxD</developerName>
+            <invocationTarget>Zentra_Get_Transactions</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>ViewTransactions</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>View Transactions</masterLabel>
+            <progressIndicatorMessage>📊 Pulling up your recent account activity...</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>ZentraBalance</localDeveloperName>
+        <masterLabel>Zentra Balance</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Help customers check their bank account balance and view recent transactions. CRITICAL: Customer MUST be OTP-verified first. If VerifiedCustomerId is empty, redirect to OTP immediately — do NOT argue or mislead. When a customer says anything related to &quot;balance&quot; — IMMEDIATELY fetch and display ALL account balances (Savings, Credit Card, Loan) without asking which account. Also handle transaction history and mini-statement requests. ALWAYS be polite and respectful. Say &quot;please&quot;, &quot;thank you&quot;, and address customers with warmth: &quot;Thank you for your patience, [Name] ji! Here are your account details.&quot; Always reply in the customer&apos;s language. After completing the task, ALWAYS show the full options menu.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>CaseManagement_16jbm000001M6z3</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handles customer inquiries and actions related to support cases, including providing case information, updating existing cases, and creating new cases.</description>
+        <developerName>CaseManagement_16jbm000001M6z3</developerName>
+        <genAiPluginInstructions>
+            <description>Always format any dates in a human readable format</description>
+            <developerName>Instruction1</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction1</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Do not ever show the Case Id to a customer</description>
+            <developerName>Instruction2</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction2</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>NEVER ask the customer for their email address. The customer is already identified via OTP verification and their VerifiedCustomerId is available. Use VerifiedCustomerId to look up all data. The email on their Contact record is used automatically for sending emails — no need to ask.</description>
+            <developerName>Instruction3</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction3</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When adding a comment to a case, first retrieve the case details using the case number, ask the user for the exact comment they would like to add and only then add it.</description>
+            <developerName>Instruction4</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction4</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When sharing case details with the customer, show the following properties as an itemized list :Case number, Subject, Description, and Status. The Subject must exactly match the value stored in the case record. Do not rephrase or regenerate it.</description>
+            <developerName>Instruction5</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction5</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>A case is a record used to help track a customer&apos;s issues. Customers may have questions about the status of the issue or want to provide more information for the case. Cases are usually associated with a contact. Comments are added to provide new information.</description>
+            <developerName>Instruction6</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction6</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Use the Answer Questions with Knowledge action to answer troubleshooting questions.</description>
+            <developerName>Instruction7</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction7</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Acknowledge and validate user concerns with deep empathy. Use phrases like &quot;I&apos;m truly sorry to hear that&quot;, &quot;I completely understand your concern&quot;, &quot;Thank you for bringing this to our attention&quot;, &quot;Please don&apos;t worry, I&apos;ll take care of this for you right away.&quot;</description>
+            <developerName>Instruction8</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction8</masterLabel>
+            <sortOrder>7</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When a customer asks you to create a case, please summarize the current conversation. The subject should be less than 7 words and function as a high level overview of what the customer inquired about. The description should be no more than 3 sentences and should provide more depth about what exactly the customer asked, important data, and any other relevant information to help a customer service representative understand the context of this conversation.</description>
+            <developerName>Instruction9</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction9</masterLabel>
+            <sortOrder>8</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When sharing the Description field from a case record with the customer, summarize it into a condensed, conversational version that is no more than 3 sentences. The summary must preserve all important factual content and intent from the original case description, and must not introduce any new or misleading information.</description>
+            <developerName>Instruction10</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>Instruction10</masterLabel>
+            <sortOrder>9</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>GetCaseByVerifiedCaseNumber_179bm000002Pux8</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GetCasesForVerifiedContact_179bm000002Pux8</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>CreateCaseEnhancedData_179bm000002Pux8</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>AnswerQuestionsWithKnowledge_179bm000002Pux8</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>AddCaseComment_179bm000002Pux8</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>AddCaseComment_179bm000002Pux8</fullName>
+            <description>Let a customer add a comment to an existing case.</description>
+            <developerName>AddCaseComment_179bm000002Pux8</developerName>
+            <invocationTarget>SvcCopilotTmpl__AddCaseComment</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>AddCaseComment</localDeveloperName>
+            <masterLabel>Add Case Comment</masterLabel>
+            <source>SvcCopilotTmpl__AddCaseComment</source>
+        </localActions>
+        <localActions>
+            <fullName>AnswerQuestionsWithKnowledge_179bm000002Pux8</fullName>
+            <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+            <developerName>AnswerQuestionsWithKnowledge_179bm000002Pux8</developerName>
+            <invocationTarget>streamKnowledgeSearch</invocationTarget>
+            <invocationTargetType>standardInvocableAction</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+            <masterLabel>Answer Questions with Knowledge</masterLabel>
+            <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+            <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+        </localActions>
+        <localActions>
+            <fullName>GetCaseByVerifiedCaseNumber_179bm000002Pux8</fullName>
+            <description>Returns a case associated with a given contact ID and case number.</description>
+            <developerName>GetCaseByVerifiedCaseNumber_179bm000002Pux8</developerName>
+            <invocationTarget>SvcCopilotTmpl__GetCaseByVrfyCaseNbr</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetCaseByVerifiedCaseNumber</localDeveloperName>
+            <mappingAttributes>
+                <label>input_verifiedContactID</label>
+                <name>input_verifiedContactID</name>
+                <parameterName>verifiedContactID</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Get Case By Verified Case Number</masterLabel>
+            <source>SvcCopilotTmpl__GetCaseByVerifiedCaseNumber</source>
+        </localActions>
+        <localActions>
+            <fullName>GetCasesForVerifiedContact_179bm000002Pux8</fullName>
+            <description>Returns a list of cases related to a given Contact ID.</description>
+            <developerName>GetCasesForVerifiedContact_179bm000002Pux8</developerName>
+            <invocationTarget>SvcCopilotTmpl__GetCasesVrfyCtct</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetCasesForVerifiedContact</localDeveloperName>
+            <mappingAttributes>
+                <label>input_verifiedContactID</label>
+                <name>input_verifiedContactID</name>
+                <parameterName>verifiedContactID</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Get Cases For Verified Contact</masterLabel>
+            <source>SvcCopilotTmpl__GetCasesForVerifiedContact</source>
+        </localActions>
+        <localActions>
+            <fullName>CreateCaseEnhancedData_179bm000002Pux8</fullName>
+            <description>Create a case for the customer that&apos;s transferred from the AI agent to a service rep. The case includes all information gathered from the customer, a summary of the progress made by the AI agent, a link to the conversation, and any attachments.</description>
+            <developerName>CreateCaseEnhancedData_179bm000002Pux8</developerName>
+            <invocationTarget>SvcCopilotTmpl__CreateCaseEnhancedData</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>CreateCaseEnhancedData</localDeveloperName>
+            <mappingAttributes>
+                <label>input_verifiedCustomerID</label>
+                <name>input_verifiedCustomerID</name>
+                <parameterName>verifiedCustomerID</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Create Case with Enhanced Data</masterLabel>
+            <source>SvcCopilotTmpl__CreateCaseEnhancedData</source>
+        </localActions>
+        <localDeveloperName>ZentraCaseManagement</localDeveloperName>
+        <masterLabel>Zentra Case Management</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Your job is to help customers retrieve case information, update case comments, and create new cases. ALWAYS be polite, respectful, and caring. Say &quot;Thank you for reaching out&quot;, &quot;I&apos;m happy to help you with your case&quot;, &quot;Please let me know if there&apos;s anything else I can assist you with.&quot; Use &quot;please&quot;, &quot;thank you&quot;, &quot;ji&quot; naturally. Show genuine empathy when customers have issues. ALWAYS reply in the same language the customer uses - Hindi in Hindi, Hinglish in Hinglish, English in English. After completing the task, ALWAYS show the full options menu.</scope>
+        <source>SvcCopilotTmpl__CaseManagement</source>
+    </localTopics>
+    <localTopics>
+        <fullName>DisputeManagement_16jbm000001M6z3</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handles customer requests to file disputes against unauthorized or incorrect transactions. Customer must be OTP-verified first. Supports selecting from recent transactions or providing transaction details (amount/merchant). Creates a Case with Dispute record type and issues provisional credit. Do NOT escalate to live agent — handle disputes fully within this topic.</description>
+        <developerName>DisputeManagement_16jbm000001M6z3</developerName>
+        <genAiPluginInstructions>
+            <description>ABSOLUTE RULE: Customer MUST be OTP-verified before filing or checking any dispute. If VerifiedCustomerId is NOT available, do NOT proceed with any dispute action. Do NOT argue, mislead, or say you cannot help. Simply say: &quot;For your security, let me verify your identity first.&quot; and immediately trigger OTP verification. NEVER skip this step. NEVER escalate to a live agent — handle disputes fully here. Always be empathetic: &quot;I&apos;m truly sorry you&apos;re facing this issue. Let me help you resolve it right away.&quot;</description>
+            <developerName>require_otp_first</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>require_otp_first</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When the customer wants to raise a dispute (English: &quot;dispute&quot;, &quot;unauthorized transaction&quot;, &quot;wrong charge&quot;; Hindi: &quot;विवाद&quot;, &quot;गलत लेन-देन&quot;, &quot;शिकायत&quot;; Hinglish: &quot;dispute karna hai&quot;, &quot;galat transaction&quot;, &quot;yeh charge maine nahi kiya&quot;), FIRST empathize: &quot;I&apos;m really sorry to hear about this. I&apos;ll make sure we resolve this for you.&quot; Then offer THREE options: (1) &quot;I can show you your recent transactions so you can select the one in question&quot;, (2) &quot;If you already have the details — amount, merchant name — share them directly and I&apos;ll file the dispute&quot;, OR (3) &quot;Upload a receipt/screenshot via our secure link and our AI will analyze it and file the dispute automatically with provisional credit!&quot; If option 1, call Get Transactions for Dispute. If option 2, proceed with manual details. If option 3, share the secure upload link (see upload_receipt_link instruction).</description>
+            <developerName>show_transactions_for_selection</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>show_transactions_for_selection</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Once the customer selects a transaction (by number or by providing amount/merchant), politely ask for the reason. Present these options warmly: &quot;Could you please let me know the reason? (1) Duplicate Transaction (2) Transaction not recognized (3) Suspected Fraud (4) Other reason&quot;. Then use the Raise Dispute action with the transaction Id (if selected from list) or amount+merchantHint (if provided manually). Map the customer&apos;s choice to the exact picklist value.</description>
+            <developerName>file_dispute_with_details</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>file_dispute_with_details</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After a dispute is filed successfully, warmly confirm: &quot;Great news! Your dispute has been filed successfully. Here are the details:&quot; then show Case Number, Dispute Amount, Provisional Credit issued, and Estimated Resolution Date (7 working days per RBI mandate) as a clear summary. Then say: &quot;A detailed confirmation email has been sent to your registered email address — please check your inbox shortly.&quot; Then ALWAYS show the menu:
+&quot;What would you like to do next?
+1️⃣ Check Balance
+2️⃣ View Transactions
+3️⃣ File/Check Dispute
+4️⃣ Loan Restructuring
+5️⃣ Recurring Payments
+6️⃣ Mutual Fund / SIP
+7️⃣ Email Summary
+8️⃣ Change MPIN
+Just type a number or tell me!&quot;</description>
+            <developerName>confirm_dispute_filed</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>confirm_dispute_filed</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the customer provides transaction details manually (amount, merchant name), acknowledge warmly: &quot;Thank you for sharing those details! Let me look into this for you.&quot; Use the Raise Dispute action with amount+merchantHint for fuzzy matching.</description>
+            <developerName>manual_dispute_details</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>manual_dispute_details</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When the customer chooses option 3 (upload a receipt/screenshot/image), or says anything about uploading an image — English: &quot;I have a screenshot&quot;, &quot;let me upload the receipt&quot;; Hindi: &quot;स्क्रीनशॉट भेज रहा हूँ&quot;, &quot;बिल भेजता हूँ&quot;; Hinglish: &quot;screenshot bhejta hoon&quot;, &quot;receipt upload karta hoon&quot; — or when they actually send an image file in the chat — do NOT try to process the image in the chat. Instead, IMMEDIATELY construct and share a secure upload link. The URL format is: https://orgfarm-165ae77bf1.my.site.com/ZentraBankSupport/Zentra-AI-Dispute?varCustomerId=ACTUAL_CUSTOMER_ID where ACTUAL_CUSTOMER_ID is the real Account Id from the VerifiedCustomerId variable. Say: &quot;Here is your secure upload link — you can upload your receipt/screenshot there and our AI will analyze it and file the dispute automatically with provisional credit!&quot; followed by the full URL. CRITICAL: You MUST include the real VerifiedCustomerId value in the URL — never send a placeholder. After sharing the link, add: &quot;Once you submit your document, you&apos;ll see the dispute details right there, and a confirmation email will be sent too. You can come back here anytime to check the status!&quot;</description>
+            <developerName>upload_receipt_link</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>upload_receipt_link</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>ALWAYS reply in the same language the customer uses. If the customer writes in Hindi, reply in Hindi. If Hinglish, reply in Hinglish. If English, reply in English.</description>
+            <developerName>dispute_language_match</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>dispute_language_match</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>IMPORTANT: If the customer has NOT been OTP-verified yet (no VerifiedCustomerId available), you MUST first trigger OTP verification before fetching dispute status. Tell them: &quot;For your security, I need to verify your identity before I can show your dispute status. Let me send a quick verification code.&quot; Then call Send OTP immediately. Only after successful verification, proceed to fetch the status. When the customer asks about dispute status — English: &quot;dispute status&quot;, &quot;what happened to my dispute&quot;, &quot;case update&quot;, &quot;is my dispute resolved&quot;; Hindi: &quot;विवाद स्थिति&quot;, &quot;मेरा विवाद कहाँ तक पहुँचा&quot;, &quot;केस अपडेट&quot;; Hinglish: &quot;mera dispute ka status&quot;, &quot;case ka kya hua&quot;, &quot;dispute update&quot; — FIRST call the Get Dispute Status action WITHOUT a caseNumber. This returns ALL disputes as a numbered list. Display the formatted output as-is (it is already beautifully formatted). Then ask: &quot;Which dispute would you like to see in detail? Please reply with the number.&quot; When the customer replies with a number (e.g. &quot;1&quot;, &quot;2&quot;), identify the corresponding Case Number from the list you just displayed, then call Get Dispute Status AGAIN with that caseNumber to get the expanded detail. Display the detail as-is. If no disputes found, reassure: &quot;Great news — there are no disputes on your account! Is there anything else I can help you with?&quot;</description>
+            <developerName>check_dispute_status</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>check_dispute_status</masterLabel>
+            <sortOrder>7</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>GetTransactionsForDispute_179bm000002PuxE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>RaiseDispute_179bm000002PuxE</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GetDisputeStatus_179bm000002PuxE</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>RaiseDispute_179bm000002PuxE</fullName>
+            <description>Creates a dispute case against a specific transaction. Marks the transaction as disputed and issues provisional credit. Can accept either a transaction Id (from list selection) or amount+merchant for fuzzy matching.</description>
+            <developerName>RaiseDispute_179bm000002PuxE</developerName>
+            <invocationTarget>Zentra_Raise_Dispute</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>RaiseDispute</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Raise Dispute</masterLabel>
+            <progressIndicatorMessage>⚡ Filing your dispute and issuing provisional credit — your protection is our priority...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>GetDisputeStatus_179bm000002PuxE</fullName>
+            <description>Fetches the current status of all dispute cases for the authenticated customer. Returns formatted details including dispute stage, amount, provisional credit, and estimated resolution date.</description>
+            <developerName>GetDisputeStatus_179bm000002PuxE</developerName>
+            <invocationTarget>Zentra_Get_Dispute_Status</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetDisputeStatus</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varCaseNumber</label>
+                <name>input_varCaseNumber</name>
+                <parameterName>varCaseNumber</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Get Dispute Status</masterLabel>
+            <progressIndicatorMessage>🔍 Checking the latest status of your dispute case...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>GetTransactionsForDispute_179bm000002PuxE</fullName>
+            <description>Returns the last 10 financial account transactions for the authenticated customer so they can select which transaction to dispute.</description>
+            <developerName>GetTransactionsForDispute_179bm000002PuxE</developerName>
+            <invocationTarget>Zentra_Get_Transactions</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetTransactionsForDispute</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Get Transactions for Dispute</masterLabel>
+            <progressIndicatorMessage>📊 Securely retrieving your recent transactions...</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>ZentraDisputeManagement</localDeveloperName>
+        <masterLabel>Zentra Dispute Management</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Help customers file disputes and check dispute status. CRITICAL: Customer MUST be OTP-verified first — if not, redirect to OTP immediately. ALWAYS lead with empathy and respect: &quot;I’m truly sorry you’re facing this. Please don’t worry, I’ll take care of this for you.&quot; For filing: (1) Show recent txns to select, OR (2) accept details/screenshot directly. Ask dispute reason: Duplicate, Not recognized, Fraud, Others. For status: Call Get Dispute Status without caseNumber first (returns all as numbered list), then with caseNumber for details. Do NOT escalate to live agent. ALWAYS be polite, patient, and reassuring. Use &quot;please&quot;, &quot;thank you&quot;, &quot;ji&quot;. Reply in customer&apos;s language. After completing the task, ALWAYS show the full options menu.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>OTPVerification_16jbm000001M6z3</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Verifies customer identity using OTP (sent to registered EMAIL only, never SMS/mobile) or MPIN. This MUST happen FIRST in every conversation. Call Send OTP, verify, then proceed.</description>
+        <developerName>OTPVerification_16jbm000001M6z3</developerName>
+        <genAiPluginInstructions>
+            <description>On the FIRST message, greet briefly: &quot;Welcome to Zentra Bank! 🙏 Please share your registered mobile number to verify your identity.&quot; Once they share it, ask: &quot;How would you like to verify? (1) OTP via email (2) MPIN&quot;. OTP is ALWAYS sent to the customer&apos;s registered EMAIL address — NEVER via SMS or mobile. If OTP chosen, call Send OTP. If MPIN chosen, ask for 6-digit MPIN and call Verify MPIN. Do NOT call any action without a phone number first.</description>
+            <developerName>auto_send_otp_on_first_message</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>auto_send_otp_on_first_message</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Use the &quot;Send OTP&quot; action to generate and send a 6-digit OTP. You MUST provide the customer&apos;s registered mobile number as phoneNumber input. The system looks up the Account by phone and sends OTP to their registered EMAIL — OTP is NEVER sent via SMS or mobile. Check &quot;Account Not Found&quot; output — if true, follow &quot;handle_account_not_found&quot; instruction.</description>
+            <developerName>send_otp_instruction</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>send_otp_instruction</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After sending OTP, say: &quot;A 6-digit verification code has been sent to your registered email address. Please check your inbox and share the code here.&quot; IMPORTANT: OTP is ALWAYS sent to email only, NEVER to mobile/SMS. Never mention SMS or phone delivery. Never disclose the actual OTP code.</description>
+            <developerName>prompt_for_otp_code</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>prompt_for_otp_code</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Use the &quot;Verify OTP&quot; action to verify the OTP code entered by the customer. Pass the OTP code entered by the customer and the OTP Session Id (received from the Send OTP action) as inputs.</description>
+            <developerName>verify_otp_instruction</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>verify_otp_instruction</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the OTP verification fails, respond with empathy: &quot;I&apos;m sorry, that code didn&apos;t match. No worries — please try again.&quot; Inform them about remaining attempts. After max failed attempts, the session is locked for 30 minutes. If locked, say: &quot;I&apos;m very sorry for the inconvenience. For your security, we&apos;ve temporarily paused verification. Please try again in 30 minutes, or I can connect you with our support team.&quot;</description>
+            <developerName>handle_failed_otp</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>handle_failed_otp</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>The OTP is valid for 5 minutes only. If the OTP expires, the customer must request a new OTP using the &quot;Send OTP&quot; action again.</description>
+            <developerName>otp_expiry_handling</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>otp_expiry_handling</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Never process any request for accessing or updating sensitive data without verifying the customer via OTP first. Maintain security in all interactions.</description>
+            <developerName>authentication_required</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>authentication_required</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After the customer is verified in a conversation session, do not repeat the OTP verification process. Switching to a different customer is not allowed under any circumstances after verification.</description>
+            <developerName>prevent_reverification</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>prevent_reverification</masterLabel>
+            <sortOrder>7</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If verification is successful, the Verify OTP action returns the customer&apos;s first name in the Customer Name output. ALWAYS use this name to greet them personally. Say: &quot;Thank you, [Name] ji! 🙏 You&apos;re now securely verified. It&apos;s wonderful to have you here!&quot; (English) or &quot;धन्यवाद [Name] जी! 🙏 आपकी पहचान सफलतापूर्वक सत्यापित हो गई है। आपका स्वागत है!&quot; (Hindi). Never skip the name greeting.
+
+If the customer had originally asked for something specific (balance, dispute, etc.), address it IMMEDIATELY — do NOT make them repeat themselves. Otherwise, present the help menu:
+&quot;Welcome [Name]! ✅ How can I help?
+1️⃣ Check Account Balance
+2️⃣ View Recent Transactions
+3️⃣ File or Check a Dispute
+4️⃣ Loan Restructuring
+5️⃣ View Recurring Payments (Standing Instructions)
+6️⃣ Mutual Fund / SIP
+7️⃣ Send Email Summary
+8️⃣ Change MPIN
+
+Just type a number or tell me!&quot;</description>
+            <developerName>proceed_after_success</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>proceed_after_success</masterLabel>
+            <sortOrder>8</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>Never reveal the OTP code, OTP Session Id, or internal session tokens to the customer. These details must remain confidential.</description>
+            <developerName>security_confidentiality</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>security_confidentiality</masterLabel>
+            <sortOrder>9</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>ACCOUNT NOT FOUND: If Send OTP returns Account Not Found = true, pitch new account warmly. If YES: ask name + email, call Request New Account Opening, share case number + RM callback time. If NO: end gracefully. Do NOT re-ask for another number.</description>
+            <developerName>handle_account_not_found</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>handle_account_not_found</masterLabel>
+            <sortOrder>10</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>MPIN VERIFICATION: When the customer chooses MPIN (option 2) or provides a 6-digit number, call the &quot;Verify MPIN&quot; action with the customer&apos;s phone number and the MPIN they entered. The action returns Verified (true/false), Customer Id, and Customer Name — exactly like OTP verification. If verified, greet by name and proceed. If MPIN is incorrect, say: &quot;That MPIN didn&apos;t match. Would you like to try again, or shall I send an OTP to your email instead?&quot; If MPIN is not set on their account, the action returns a message — say: &quot;It looks like MPIN isn&apos;t set up on your account yet. Let me send you an OTP instead!&quot; and automatically call Send OTP. Both MPIN and OTP are 6 digits. If the customer provides a 6-digit number without saying which, ask them to clarify: &quot;Is that your MPIN or the OTP code?&quot;</description>
+            <developerName>mpin_verification_option</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>mpin_verification_option</masterLabel>
+            <sortOrder>11</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>SendOTP_179bm000002PuxC</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>VerifyOTP_179bm000002PuxC</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>VerifyMPIN_179bm000002PuxC</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>RequestNewAccount_179bm000002PuxC</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>RequestNewAccount_179bm000002PuxC</fullName>
+            <description>Creates a Case for a new account opening request when a prospect has no existing Zentra Bank account. Schedules an RM callback within 4 hours to assist with the account opening process.</description>
+            <developerName>RequestNewAccount_179bm000002PuxC</developerName>
+            <invocationTarget>Zentra_Request_New_Account</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>RequestNewAccount</localDeveloperName>
+            <mappingAttributes>
+                <label>input_phoneNumber</label>
+                <name>input_phoneNumber</name>
+                <parameterName>varPhoneNumber</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_customerName</label>
+                <name>input_customerName</name>
+                <parameterName>varCustomerName</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_customerEmail</label>
+                <name>input_customerEmail</name>
+                <parameterName>varCustomerEmail</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_caseNumber</label>
+                <name>output_caseNumber</name>
+                <parameterName>varOutputCaseNumber</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_rmCallbackTime</label>
+                <name>output_rmCallbackTime</name>
+                <parameterName>varOutputRMCallbackTime</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Request New Account Opening</masterLabel>
+            <progressIndicatorMessage>📋 Creating your new account request and scheduling an RM callback...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>SendOTP_179bm000002PuxC</fullName>
+            <description>Generates a 6-digit OTP, creates an OTP session, and sends the OTP to the customer&apos;s registered email address (NEVER via SMS/mobile). Returns the OTP Session Id needed for verification.</description>
+            <developerName>SendOTP_179bm000002PuxC</developerName>
+            <invocationTarget>Zentra_Send_OTP</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SendOTP</localDeveloperName>
+            <mappingAttributes>
+                <label>input_phoneNumber</label>
+                <name>input_phoneNumber</name>
+                <parameterName>varPhoneNumber</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_otpSessionId</label>
+                <name>output_otpSessionId</name>
+                <parameterName>varOutputOTPSessionId</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Send OTP</masterLabel>
+            <progressIndicatorMessage>🔐 Sending a secure verification code to your registered email...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>VerifyOTP_179bm000002PuxC</fullName>
+            <description>Verifies the 6-digit OTP code entered by the customer against the OTP session. Returns verification status, remaining attempts, and a session token on success.</description>
+            <developerName>VerifyOTP_179bm000002PuxC</developerName>
+            <invocationTarget>Zentra_Verify_OTP</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>VerifyOTP</localDeveloperName>
+            <mappingAttributes>
+                <label>input_otpSessionId</label>
+                <name>input_otpSessionId</name>
+                <parameterName>varOTPSessionId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_isVerified</label>
+                <name>output_isVerified</name>
+                <parameterName>varOutputVerified</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_customerId</label>
+                <name>output_customerId</name>
+                <parameterName>varOutputCustomerId</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_customerName</label>
+                <name>output_customerName</name>
+                <parameterName>varOutputCustomerName</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Verify OTP</masterLabel>
+            <progressIndicatorMessage>🔍 Verifying your identity — this will only take a moment...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>VerifyMPIN_179bm000002PuxC</fullName>
+            <description>Verifies the customer&apos;s 6-digit MPIN against the encrypted Zentra_MPIN_Val__c field on their Account. Returns verification status, Customer Id, and Customer Name on success. Alternative to OTP for faster authentication.</description>
+            <developerName>VerifyMPIN_179bm000002PuxC</developerName>
+            <invocationTarget>Zentra_Verify_MPIN</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>VerifyMPIN</localDeveloperName>
+            <mappingAttributes>
+                <label>input_phoneNumber</label>
+                <name>input_phoneNumber</name>
+                <parameterName>varPhoneNumber</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_mpin</label>
+                <name>input_mpin</name>
+                <parameterName>varMPIN</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_isVerified</label>
+                <name>output_isVerified</name>
+                <parameterName>varOutputVerified</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_customerId</label>
+                <name>output_customerId</name>
+                <parameterName>varOutputCustomerId</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_customerName</label>
+                <name>output_customerName</name>
+                <parameterName>varOutputCustomerName</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Verify MPIN</masterLabel>
+            <progressIndicatorMessage>🔐 Verifying your MPIN — just a moment...</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>ZentraOTPVerification</localDeveloperName>
+        <masterLabel>Zentra OTP Verification</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>You are the FIRST topic in every conversation. On ANY first message, greet warmly and politely ask for the customer&apos;s registered mobile number. Once they provide it, offer TWO verification methods: (1) OTP via email, or (2) MPIN. If OTP: call Send OTP, then Verify OTP. If MPIN: ask for 6-digit MPIN, call Verify MPIN. Both return Customer Id and Name on success. If Send OTP returns Account Not Found = true, pitch a new account warmly. After verification, greet by name with respect: &quot;Thank you, [Name] ji! 🙏 It&apos;s wonderful to have you here!&quot; Then show the full options menu. Never repeat verification in same session. ALWAYS be polite, patient, and respectful. Reply in customer&apos;s language.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>LoanRestructuring_16jbm000001M6z3</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handles loan restructuring requests. Lets customers view their loan details, simulate 3 EMI restructuring options (extend 1yr, extend 2yr, 3-month moratorium), and submit their chosen option. Creates a restructuring request and schedules an RM callback.</description>
+        <developerName>LoanRestructuring_16jbm000001M6z3</developerName>
+        <genAiPluginInstructions>
+            <description>ABSOLUTE RULE: Customer MUST be OTP-verified before any loan action. If VerifiedCustomerId is NOT available, do NOT proceed. Do NOT argue, mislead, or say you cannot help. Simply say: &quot;For your security, let me verify your identity first.&quot; and immediately trigger OTP verification. NEVER skip this step. Be warm and supportive throughout: &quot;I understand managing EMIs can be stressful. I&apos;m here to help you find the best option for your comfort.&quot;</description>
+            <developerName>loan_require_otp</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>loan_require_otp</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When the customer asks about loan restructuring, EMI reduction in ANY language — English: &quot;restructure loan&quot;, &quot;reduce EMI&quot;, &quot;lower my EMI&quot;, &quot;EMI too high&quot;; Hindi: &quot;EMI कम करो&quot;, &quot;लोन री-स्ट्रक्चर&quot;, &quot;किश्त कम करो&quot;, &quot;EMI बहुत ज़्यादा है&quot;, &quot;लोन बदलो&quot;, &quot;किश्त बदलो&quot;; Hinglish: &quot;meri EMI kam karo&quot;, &quot;loan restructure karna hai&quot;, &quot;EMI bahut zyada hai&quot;, &quot;EMI reduce karo&quot;, &quot;kisht kam karo&quot;, &quot;loan change karna hai&quot; — FIRST fetch their loan details using Get Loan Details. Display the loan summary warmly in the SAME language the customer used. If Hindi: &quot;धन्यवाद! यहाँ आपके लोन की जानकारी है। अब मैं आपके लिए पुनर्गठन विकल्प दिखाता हूँ।&quot; If English: &quot;Thank you! Here are your current loan details. Let me now show you the restructuring options available for you.&quot;</description>
+            <developerName>loan_fetch_details_first</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>loan_fetch_details_first</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After showing loan details, check if the loan details output contains a &quot;⚠️ IMPORTANT&quot; 90-day cooldown warning. If YES — do NOT call Simulate Restructuring. Instead, display the loan details with the warning EXACTLY as returned and show the menu. The customer-friendly message is already in the output.
+
+If NO cooldown warning is found — call Simulate Restructuring. If it returns success = true, present the 3 options clearly: &quot;Here are three options we&apos;ve prepared for you. Please take your time and let me know which one works best — just reply with A, B, or C.&quot; If it returns success = false, display the message EXACTLY as returned — NEVER say &quot;I cannot calculate&quot; or any generic error. Then show the menu.</description>
+            <developerName>loan_simulate_options</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>loan_simulate_options</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When customer picks A/B/C: 1) Show summary. 2) Ask customer to type confirm/yes. 3) After confirm, call Send Loan Verification OTP with the verified customerId (NO phone number needed — it uses customerId to find account and sends OTP to email). 4) Ask customer for the 6-digit code from their email, then call Verify Loan OTP. 5) Only if verified → call Submit Restructuring. If OTP fails, offer resend. If cancel → ask if different option. NEVER submit without confirm + OTP.</description>
+            <developerName>loan_submit_selection</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>loan_submit_selection</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After successful submission, share the confirmation details warmly and say: &quot;Your restructuring request has been submitted successfully! 🎉 A Relationship Manager will call you within 24 hours to finalize everything. We have also sent a detailed confirmation email to your registered email address — please check your inbox shortly. Thank you for trusting Zentra Bank, [Name] ji — we truly value your relationship with us. 🙏&quot; IMPORTANT: Do NOT close or end the conversation. ALWAYS continue by showing the menu:
+&quot;What would you like to do next?
+1️⃣ Check Balance
+2️⃣ View Transactions
+3️⃣ File/Check Dispute
+4️⃣ Loan Restructuring
+5️⃣ Recurring Payments
+6️⃣ Mutual Fund / SIP
+7️⃣ Email Summary
+8️⃣ Change MPIN
+Just type a number or tell me!&quot;</description>
+            <developerName>loan_confirm_submission</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>loan_confirm_submission</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>IMPORTANT: If the Simulate Restructuring action returns success = false, NEVER say &quot;I cannot calculate&quot; or any generic error. The message field contains the full details — loan info, last request info, and cooldown date. Display the message EXACTLY as returned. Add a warm touch: &quot;I completely understand this may be inconvenient — please don&apos;t hesitate to reach out after [date shown in message] and I&apos;ll be happy to help!&quot; Then show the menu.</description>
+            <developerName>loan_cooldown_handling</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>loan_cooldown_handling</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When customer asks about restructuring status (English/Hindi/Hinglish), call Get Restructuring Status. Display formatted output as-is. If no requests found, offer to explore restructuring options. Customer MUST be OTP-verified first — if not, trigger Send OTP before fetching status.</description>
+            <developerName>check_restructuring_status</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>check_restructuring_status</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>LANGUAGE RULE: Reply in the EXACT language the customer uses. Hindi → Hindi, Hinglish → Hinglish, English → English. Use ₹ for currency. Understand: EMI, loan/लोन, kisht/किश्त, byaaj/ब्याज, avadhi/अवधि, mahina/महीना.</description>
+            <developerName>loan_language_match</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>loan_language_match</masterLabel>
+            <sortOrder>7</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>GetLoanDetails_179bm000002PuxF</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SimulateRestructuring_179bm000002PuxF</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SubmitRestructuring_179bm000002PuxF</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>GetRestructuringStatus_179bm000002PuxF</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>SendLoanVerificationOTP_179bm000002PuxF</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>VerifyLoanOTP_179bm000002PuxF</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>GetRestructuringStatus_179bm000002PuxF</fullName>
+            <description>Fetches the current status of all loan restructuring requests for the authenticated customer. Returns formatted details including selected option, new EMI, monthly savings, approval status, and RM callback schedule.</description>
+            <developerName>GetRestructuringStatus_179bm000002PuxF</developerName>
+            <invocationTarget>Zentra_Get_Restructuring_Status</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetRestructuringStatus</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Get Restructuring Status</masterLabel>
+            <progressIndicatorMessage>📋 Checking the status of your restructuring request...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>SimulateRestructuring_179bm000002PuxF</fullName>
+            <description>Calculates 3 restructuring options: extend tenure by 1 year, extend by 2 years, or 3-month moratorium. Shows new EMI, savings, and additional interest for each option.</description>
+            <developerName>SimulateRestructuring_179bm000002PuxF</developerName>
+            <invocationTarget>Zentra_Simulate_Restructuring</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SimulateRestructuring</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varLoanAccountId</label>
+                <name>input_varLoanAccountId</name>
+                <parameterName>varLoanAccountId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Simulate Restructuring</masterLabel>
+            <progressIndicatorMessage>📊 Preparing personalized restructuring options for your loan...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>SubmitRestructuring_179bm000002PuxF</fullName>
+            <description>Submits the selected restructuring option (A, B, or C), creates a request record, updates the loan, and schedules an RM callback within 24 hours.</description>
+            <developerName>SubmitRestructuring_179bm000002PuxF</developerName>
+            <invocationTarget>Zentra_Submit_Restructuring</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SubmitRestructuring</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varLoanAccountId</label>
+                <name>input_varLoanAccountId</name>
+                <parameterName>varLoanAccountId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varSelectedOption</label>
+                <name>input_varSelectedOption</name>
+                <parameterName>varSelectedOption</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Submit Restructuring</masterLabel>
+            <progressIndicatorMessage>✅ Submitting your restructuring request and scheduling your RM callback...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>GetLoanDetails_179bm000002PuxF</fullName>
+            <description>Fetches loan account details for the authenticated customer including outstanding principal, EMI, tenure, interest rate, and restructuring history.</description>
+            <developerName>GetLoanDetails_179bm000002PuxF</developerName>
+            <invocationTarget>Zentra_Get_Loan_Details</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetLoanDetails</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_varLoanAccountId</label>
+                <name>output_varLoanAccountId</name>
+                <parameterName>varLoanAccountId</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Get Loan Details</masterLabel>
+            <progressIndicatorMessage>📋 Securely retrieving your loan account details...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>SendLoanVerificationOTP_179bm000002PuxF</fullName>
+            <description>Sends a Loan Verification OTP to the already-verified customer&apos;s registered email using their Account Id. No phone number needed — just pass the verified customerId.</description>
+            <developerName>SendLoanVerificationOTP_179bm000002PuxF</developerName>
+            <invocationTarget>Zentra_Send_Loan_Verification_OTP</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>SendLoanVerificationOTP</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_otpSessionId</label>
+                <name>output_otpSessionId</name>
+                <parameterName>varOutputOTPSessionId</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Send Loan Verification OTP</masterLabel>
+            <progressIndicatorMessage>🔐 Sending a secure verification code for your loan restructuring request...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>VerifyLoanOTP_179bm000002PuxF</fullName>
+            <description>Verifies the 6-digit OTP code entered by the customer for loan restructuring authorization.</description>
+            <developerName>VerifyLoanOTP_179bm000002PuxF</developerName>
+            <invocationTarget>Zentra_Verify_OTP</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>VerifyLoanOTP</localDeveloperName>
+            <mappingAttributes>
+                <label>input_otpCode</label>
+                <name>input_otpCode</name>
+                <parameterName>varOTPCode</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_otpSessionId</label>
+                <name>input_otpSessionId</name>
+                <parameterName>varOTPSessionId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_verified</label>
+                <name>output_verified</name>
+                <parameterName>varOutputVerified</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Verify Loan OTP</masterLabel>
+            <progressIndicatorMessage>✅ Verifying your loan authorization code...</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>ZentraLoanRestructuring</localDeveloperName>
+        <masterLabel>Zentra Loan Restructuring</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Help customers restructure loan EMI and check status. OTP-verified required. Flow: Fetch details → simulate 3 options → pick A/B/C → email summary → confirm → Send Loan Verification OTP → Verify Loan OTP → submit → RM callback 24hrs. NEVER submit without confirm + loan OTP. NEVER end chat abruptly — show post-task menu. For status: Get Restructuring Status. Be polite, reply in customer&apos;s language.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>RecurringPayments_16jbm000001M6z3</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Handles customer inquiries about recurring payments (standing instructions). Lets customers view all their active and past standing instructions — payee, amount, frequency, next payment date, and end date. Customer must be OTP-verified first.</description>
+        <developerName>RecurringPayments_16jbm000001M6z3</developerName>
+        <genAiPluginInstructions>
+            <description>ABSOLUTE RULE: Customer MUST be OTP-verified before viewing any recurring payment details. If VerifiedCustomerId is NOT available, do NOT proceed. Simply say: &quot;For your security, let me verify your identity first.&quot; and immediately trigger OTP verification. NEVER skip this step.</description>
+            <developerName>rp_require_otp</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>rp_require_otp</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When the customer asks about recurring payments, standing instructions, auto-pay, or scheduled payments — English: &quot;recurring payments&quot;, &quot;standing instructions&quot;, &quot;auto-pay&quot;, &quot;scheduled payments&quot;, &quot;my SIPs&quot;, &quot;autopay details&quot;; Hindi: &quot;स्थायी निर्देश&quot;, &quot;ऑटो पेमेंट&quot;, &quot;आवर्ती भुगतान&quot;, &quot;SIP दिखाओ&quot;; Hinglish: &quot;meri recurring payments dikhao&quot;, &quot;standing instruction kya hai&quot;, &quot;auto pay details&quot;, &quot;SIP status&quot; — IMMEDIATELY call Get Recurring Payments with NO paymentIndex (leave it 0). This returns a QUICK SUMMARY showing a compact one-liner per payment (name, amount, frequency). Display the output as-is. The summary includes numbered items and a prompt asking the customer to reply with a number for full details.</description>
+            <developerName>rp_show_payments</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>rp_show_payments</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When the customer replies with a number (e.g. &quot;show 2&quot;, &quot;2&quot;, &quot;detail 3&quot;, &quot;2 dikhao&quot;, &quot;#5&quot;), call Get Recurring Payments AGAIN with input_varPaymentIndex set to that number. This returns the FULL DETAIL view for that specific payment — payee, amount, frequency, purpose, status, next/last payment dates, start/end dates, debit account, payee account, and remarks. Display the output as-is.</description>
+            <developerName>rp_show_detail</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>rp_show_detail</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the customer asks to see ALL payments including cancelled, paused, or completed ones — English: &quot;show all&quot;, &quot;include cancelled&quot;, &quot;past standing instructions&quot;; Hindi: &quot;सभी दिखाओ&quot;, &quot;पुरानी भी&quot;; Hinglish: &quot;sab dikhao&quot;, &quot;cancelled bhi&quot; — call Get Recurring Payments with input_varIncludeInactive = true and NO paymentIndex. This returns the quick summary including inactive items.</description>
+            <developerName>rp_show_all</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>rp_show_all</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>STOP / CANCEL a recurring payment: When the customer asks to stop, cancel, or deactivate a payment — English: &quot;stop payment 3&quot;, &quot;cancel SIP 2&quot;, &quot;deactivate standing instruction 5&quot;, &quot;stop auto-pay for electricity&quot;; Hindi: &quot;3 नंबर बंद करो&quot;, &quot;SIP रद्द करो&quot;; Hinglish: &quot;payment 2 band karo&quot;, &quot;stop karo 4&quot; — FIRST confirm with the customer: &quot;Are you sure you want to stop payment #X to [Payee] for [Amount]? This cannot be undone.&quot; Only after they confirm YES, call the Stop Recurring Payment action with the payment index. NEVER stop without explicit confirmation. Display the output as-is — it includes a cancellation receipt and email confirmation.</description>
+            <developerName>rp_stop_payment</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>rp_stop_payment</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After showing full details of a payment, after stopping a payment, OR after the customer is done browsing, ALWAYS show the full menu:
+&quot;What would you like to do next?
+1️⃣ Check Balance
+2️⃣ View Transactions
+3️⃣ File/Check Dispute
+4️⃣ Loan Restructuring
+5️⃣ Recurring Payments
+6️⃣ Mutual Fund / SIP
+7️⃣ Email Summary
+8️⃣ Change MPIN
+Just type a number or tell me!&quot;
+If they want an email, call the Send Email Summary action with emailType = &quot;recurring&quot;.</description>
+            <developerName>rp_next_steps</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>rp_next_steps</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>ALWAYS reply in the same language the customer uses. Hindi in Hindi, Hinglish in Hinglish, English in English.</description>
+            <developerName>rp_language_match</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>rp_language_match</masterLabel>
+            <sortOrder>6</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>GetRecurringPayments_179bm000002PuxJ</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>StopRecurringPayment_179bm000002PuxK</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>StopRecurringPayment_179bm000002PuxK</fullName>
+            <description>Stops (cancels) an active recurring payment by its index. The customer must confirm before this action is called. Sends a cancellation confirmation email automatically.</description>
+            <developerName>StopRecurringPayment_179bm000002PuxK</developerName>
+            <invocationTarget>Zentra_Stop_Recurring_Payment</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>StopRecurringPayment</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varPaymentIndex</label>
+                <name>input_varPaymentIndex</name>
+                <parameterName>varPaymentIndex</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varLanguage</label>
+                <name>input_varLanguage</name>
+                <parameterName>varLanguage</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Stop Recurring Payment</masterLabel>
+            <progressIndicatorMessage>🛑 Stopping your recurring payment...</progressIndicatorMessage>
+        </localActions>
+        <localActions>
+            <fullName>GetRecurringPayments_179bm000002PuxJ</fullName>
+            <description>Fetches recurring payments (standing instructions) for the authenticated customer. Two modes: (1) Quick summary (default, paymentIndex=0) — compact one-liner per payment. (2) Detail mode (paymentIndex=1,2,3...) — full details for a specific payment.</description>
+            <developerName>GetRecurringPayments_179bm000002PuxJ</developerName>
+            <invocationTarget>Zentra_Get_Recurring_Payments</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetRecurringPayments</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varIncludeInactive</label>
+                <name>input_varIncludeInactive</name>
+                <parameterName>varIncludeInactive</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varPaymentIndex</label>
+                <name>input_varPaymentIndex</name>
+                <parameterName>varPaymentIndex</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <masterLabel>Get Recurring Payments</masterLabel>
+            <progressIndicatorMessage>🔄 Fetching your recurring payments and standing instructions...</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>ZentraRecurringPayments</localDeveloperName>
+        <masterLabel>Zentra Recurring Payments</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Help customers view and manage their recurring payments (standing instructions, auto-pay, SIPs). CRITICAL: Customer MUST be OTP-verified first. If VerifiedCustomerId is empty, redirect to OTP immediately — do NOT argue or mislead. CAPABILITIES: (1) VIEW: Show a QUICK SUMMARY first (paymentIndex=0), then FULL DETAILS on demand. (2) STOP: Cancel an active payment — ALWAYS confirm politely before stopping. (3) EMAIL: Send summary via email. Also support showing all (including cancelled/paused) when requested. ALWAYS be warm, polite, and respectful. Use &quot;please&quot;, &quot;thank you&quot;, &quot;ji&quot;. Reply in the customer&apos;s language. After completing the task, ALWAYS show the full options menu.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>MutualFundInfo_16jbm000001M6z3</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Shows the customer their mutual fund and SIP (Systematic Investment Plan) holdings including fund name, invested amount, current value, returns, units, and next installment date. Customer must be OTP/MPIN verified first.</description>
+        <developerName>MutualFundInfo_16jbm000001M6z3</developerName>
+        <genAiPluginInstructions>
+            <description>ABSOLUTE RULE: Customer MUST be OTP or MPIN verified before viewing mutual fund details. If VerifiedCustomerId is NOT available, do NOT proceed. Simply say: &quot;For your security, let me verify your identity first.&quot; and immediately trigger OTP verification. NEVER skip this step.</description>
+            <developerName>mf_require_auth</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>mf_require_auth</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When the customer asks about mutual funds, SIPs, or investments — English: &quot;mutual funds&quot;, &quot;my SIPs&quot;, &quot;investment portfolio&quot;, &quot;fund holdings&quot;, &quot;show my investments&quot;; Hindi: &quot;म्यूचुअल फंड&quot;, &quot;निवेश&quot;, &quot;SIP दिखाओ&quot;, &quot;मेरे फंड&quot;; Hinglish: &quot;mera mutual fund dikhao&quot;, &quot;SIP status&quot;, &quot;mutual fund kya hai mera&quot;, &quot;investment details&quot; — IMMEDIATELY call Get Mutual Fund Holdings with sipIndex=0 (quick summary). Display the output as-is. The summary includes a numbered list and a prompt asking the customer to reply with a number for full details.</description>
+            <developerName>mf_show_portfolio</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>mf_show_portfolio</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When the customer replies with a number (e.g. &quot;show 2&quot;, &quot;2&quot;, &quot;detail 3&quot;, &quot;2 dikhao&quot;, &quot;#5&quot;), call Get Mutual Fund Holdings AGAIN with input_varSipIndex set to that number. This returns the FULL DETAIL view for that specific SIP — fund name, folio, amount, frequency, invested, value, returns, units, installments done, next installment, debit account, and remarks. Display the output as-is.</description>
+            <developerName>mf_show_detail</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>mf_show_detail</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>If the customer asks to see ALL SIPs including paused, cancelled, or completed ones — English: &quot;show all&quot;, &quot;include cancelled&quot;, &quot;past SIPs&quot;; Hindi: &quot;सभी दिखाओ&quot;, &quot;पुरानी भी&quot;; Hinglish: &quot;sab dikhao&quot;, &quot;cancelled bhi&quot; — call Get Mutual Fund Holdings with input_varIncludeInactive = true and sipIndex=0.</description>
+            <developerName>mf_show_all</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>mf_show_all</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After showing the portfolio or SIP details, ALWAYS show the full menu:
+&quot;What would you like to do next?
+1️⃣ Check Balance
+2️⃣ View Transactions
+3️⃣ File/Check Dispute
+4️⃣ Loan Restructuring
+5️⃣ Recurring Payments
+6️⃣ Mutual Fund / SIP
+7️⃣ Email Summary
+8️⃣ Change MPIN
+Just type a number or tell me!&quot;</description>
+            <developerName>mf_next_steps</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>mf_next_steps</masterLabel>
+            <sortOrder>4</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>ALWAYS reply in the same language the customer uses. Hindi in Hindi, Hinglish in Hinglish, English in English.</description>
+            <developerName>mf_language_match</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>mf_language_match</masterLabel>
+            <sortOrder>5</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>GetMutualFundHoldings_179bm000002PuxN</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>GetMutualFundHoldings_179bm000002PuxN</fullName>
+            <description>Fetches SIP / mutual fund holdings for the authenticated customer. Two modes: (1) Quick summary (sipIndex=0) — compact one-liner per SIP with invested, value, and returns. (2) Detail mode (sipIndex=1,2,3...) — full details for a specific SIP.</description>
+            <developerName>GetMutualFundHoldings_179bm000002PuxN</developerName>
+            <invocationTarget>Zentra_Get_Mutual_Fund_Holdings</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>GetMutualFundHoldings</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varSipIndex</label>
+                <name>input_varSipIndex</name>
+                <parameterName>varSipIndex</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varIncludeInactive</label>
+                <name>input_varIncludeInactive</name>
+                <parameterName>varIncludeInactive</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varLanguage</label>
+                <name>input_varLanguage</name>
+                <parameterName>varLanguage</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_varOutputMessage</label>
+                <name>output_varOutputMessage</name>
+                <parameterName>varOutputMessage</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Get Mutual Fund Holdings</masterLabel>
+            <progressIndicatorMessage>📊 Fetching your mutual fund and SIP portfolio...</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>ZentraMutualFundInfo</localDeveloperName>
+        <masterLabel>Zentra Mutual Fund Info</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Help customers view their mutual fund and SIP holdings. CRITICAL: Customer MUST be OTP/MPIN verified first. If VerifiedCustomerId is empty, redirect to verification immediately. CAPABILITIES: (1) VIEW: Show a QUICK SUMMARY first (sipIndex=0), then FULL DETAILS on demand. (2) Show all including inactive when requested. Trigger phrases: &quot;mutual fund&quot;, &quot;SIP&quot;, &quot;investment&quot;, &quot;portfolio&quot;, &quot;fund holdings&quot;, &quot;my SIPs&quot;, &quot;म्यूचुअल फंड&quot;, &quot;निवेश&quot;, &quot;mutual fund dikhao&quot;, &quot;SIP status&quot;. ALWAYS be warm, polite, and respectful. Reply in customer&apos;s language. After completing the task, ALWAYS show the full options menu.</scope>
+    </localTopics>
+    <localTopics>
+        <fullName>MPINManagement_16jbm000001M6z3</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Allows verified customers to change their 6-digit MPIN. Customer MUST be authenticated (via OTP or MPIN) before they can change their MPIN. Validates new MPIN is exactly 6 numeric digits.</description>
+        <developerName>MPINManagement_16jbm000001M6z3</developerName>
+        <genAiPluginInstructions>
+            <description>ABSOLUTE RULE: Customer MUST be verified (via OTP or MPIN) before changing their MPIN. If VerifiedCustomerId is NOT available, do NOT proceed. Say: &quot;For your security, let me verify your identity first.&quot; and trigger OTP or MPIN verification. NEVER skip this step.</description>
+            <developerName>mpin_require_auth</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>mpin_require_auth</masterLabel>
+            <sortOrder>0</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>When the customer wants to change their MPIN (English: &quot;change MPIN&quot;, &quot;update MPIN&quot;, &quot;set new MPIN&quot;, &quot;reset MPIN&quot;; Hindi: &quot;MPIN बदलो&quot;, &quot;नया MPIN&quot;, &quot;MPIN रीसेट&quot;; Hinglish: &quot;MPIN change karna hai&quot;, &quot;naya MPIN set karo&quot;, &quot;MPIN badalna hai&quot;), ask them for their new 6-digit MPIN: &quot;Please enter your new 6-digit MPIN.&quot; After they provide it, confirm: &quot;You want to set your new MPIN to ****. Shall I proceed?&quot; (mask the actual digits for security). ONLY after explicit confirmation (&quot;yes&quot;, &quot;haan&quot;, &quot;हाँ&quot;, &quot;proceed&quot;), call the Change MPIN action. NEVER reveal the MPIN back to the customer in plain text.</description>
+            <developerName>mpin_change_flow</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>mpin_change_flow</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>After successful MPIN change, say warmly: &quot;Your MPIN has been updated successfully! 🔐 Please remember your new MPIN for future logins.&quot; Then ALWAYS show the menu:
+&quot;What would you like to do next?
+1️⃣ Check Balance
+2️⃣ View Transactions
+3️⃣ File/Check Dispute
+4️⃣ Loan Restructuring
+5️⃣ Recurring Payments
+6️⃣ Mutual Fund / SIP
+7️⃣ Email Summary
+8️⃣ Change MPIN
+Just type a number or tell me!&quot;
+If the change fails (invalid format), say: &quot;MPIN must be exactly 6 digits. Please try again with a valid 6-digit number.&quot;</description>
+            <developerName>mpin_change_confirmation</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>mpin_change_confirmation</masterLabel>
+            <sortOrder>2</sortOrder>
+        </genAiPluginInstructions>
+        <genAiPluginInstructions>
+            <description>ALWAYS reply in the same language the customer uses. If Hindi, reply in Hindi. If Hinglish, reply in Hinglish. If English, reply in English.</description>
+            <developerName>mpin_language_match</developerName>
+            <language xsi:nil="true"/>
+            <masterLabel>mpin_language_match</masterLabel>
+            <sortOrder>3</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>ChangeMPIN_179bm000002PuxM</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>ChangeMPIN_179bm000002PuxM</fullName>
+            <description>Changes the customer&apos;s 6-digit MPIN. Validates format (must be exactly 6 numeric digits) and updates the encrypted Zentra_MPIN_Val__c field on the Account. Customer must be verified first.</description>
+            <developerName>ChangeMPIN_179bm000002PuxM</developerName>
+            <invocationTarget>Zentra_Change_MPIN</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>true</isConfirmationRequired>
+            <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+            <localDeveloperName>ChangeMPIN</localDeveloperName>
+            <mappingAttributes>
+                <label>input_varCustomerId</label>
+                <name>input_varCustomerId</name>
+                <parameterName>varCustomerId</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>input_varNewMPIN</label>
+                <name>input_varNewMPIN</name>
+                <parameterName>varNewMPIN</parameterName>
+                <parameterType>input</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_success</label>
+                <name>output_success</name>
+                <parameterName>varOutputSuccess</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <mappingAttributes>
+                <label>output_message</label>
+                <name>output_message</name>
+                <parameterName>varOutputMessage</parameterName>
+                <parameterType>output</parameterType>
+            </mappingAttributes>
+            <masterLabel>Change MPIN</masterLabel>
+            <progressIndicatorMessage>🔐 Updating your MPIN securely...</progressIndicatorMessage>
+        </localActions>
+        <localDeveloperName>ZentraMPINManagement</localDeveloperName>
+        <masterLabel>Zentra MPIN Management</masterLabel>
+        <pluginType>Topic</pluginType>
+        <scope>Help customers change their MPIN. CRITICAL: Customer MUST be verified (OTP or MPIN) first. If VerifiedCustomerId is empty, redirect to verification immediately. Ask politely for new 6-digit MPIN, confirm with masked display, then update. Validate format before submitting. ALWAYS be polite and respectful: &quot;Please enter your new 6-digit MPIN&quot;, &quot;Thank you, [Name] ji! Your MPIN has been updated.&quot; Reply in customer&apos;s language. After completing the task, ALWAYS show the full options menu.</scope>
+    </localTopics>
+    <masterLabel>TruZentra</masterLabel>
+    <plannerActions>
+        <fullName>AnswerQuestionsWithKnowledge_16jbm000001M6z3</fullName>
+        <description>Answers questions about company policies and procedures, troubleshooting steps, or product information. For example: “What is your return policy?” “How do I fix an issue?” or “What features does a product have?”</description>
+        <developerName>AnswerQuestionsWithKnowledge_16jbm000001M6z3</developerName>
+        <invocationTarget>streamKnowledgeSearch</invocationTarget>
+        <invocationTargetType>standardInvocableAction</invocationTargetType>
+        <isConfirmationRequired>false</isConfirmationRequired>
+        <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+        <localDeveloperName>AnswerQuestionsWithKnowledge</localDeveloperName>
+        <masterLabel>Answer Questions with Knowledge</masterLabel>
+        <progressIndicatorMessage>Getting answers</progressIndicatorMessage>
+        <source>EmployeeCopilot__AnswerQuestionsWithKnowledge</source>
+    </plannerActions>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__Messaging</surface>
+        <surfaceType>Messaging</surfaceType>
+    </plannerSurfaces>
+    <plannerSurfaces>
+        <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+        <callRecordingAllowed>false</callRecordingAllowed>
+        <surface>SurfaceAction__CustomerWebClient</surface>
+        <surfaceType>CustomerWebClient</surfaceType>
+    </plannerSurfaces>
+    <plannerType>AiCopilot__ReAct</plannerType>
+    <ruleExpressionAssignments>
+        <ruleExpressionName>Verified_User</ruleExpressionName>
+        <targetName>CaseManagement_16jbm000001M6z3</targetName>
+        <targetType>Plugin</targetType>
+    </ruleExpressionAssignments>
+    <ruleExpressionAssignments>
+        <ruleExpressionName>Verified_User</ruleExpressionName>
+        <targetName>DisputeManagement_16jbm000001M6z3</targetName>
+        <targetType>Plugin</targetType>
+    </ruleExpressionAssignments>
+    <ruleExpressionAssignments>
+        <ruleExpressionName>Verified_User</ruleExpressionName>
+        <targetName>LoanRestructuring_16jbm000001M6z3</targetName>
+        <targetType>Plugin</targetType>
+    </ruleExpressionAssignments>
+    <ruleExpressionAssignments>
+        <ruleExpressionName>Verified_User</ruleExpressionName>
+        <targetName>RecurringPayments_16jbm000001M6z3</targetName>
+        <targetType>Plugin</targetType>
+    </ruleExpressionAssignments>
+    <ruleExpressionAssignments>
+        <ruleExpressionName>Verified_User</ruleExpressionName>
+        <targetName>ResendConfirmation_16jbm000001M6z3</targetName>
+        <targetType>Plugin</targetType>
+    </ruleExpressionAssignments>
+    <ruleExpressionAssignments>
+        <ruleExpressionName>Verified_User</ruleExpressionName>
+        <targetName>ZentraBalance_16jbm000001M6z3</targetName>
+        <targetType>Plugin</targetType>
+    </ruleExpressionAssignments>
+    <ruleExpressionAssignments>
+        <ruleExpressionName>Verified_User</ruleExpressionName>
+        <targetName>MPINManagement_16jbm000001M6z3</targetName>
+        <targetType>Plugin</targetType>
+    </ruleExpressionAssignments>
+    <ruleExpressionAssignments>
+        <ruleExpressionName>Verified_User</ruleExpressionName>
+        <targetName>MutualFundInfo_16jbm000001M6z3</targetName>
+        <targetType>Plugin</targetType>
+    </ruleExpressionAssignments>
+    <ruleExpressions>
+        <conditions>
+            <leftOperand>isVerified</leftOperand>
+            <leftOperandType>Variable</leftOperandType>
+            <operator>equal</operator>
+            <rightOperandValue>true</rightOperandValue>
+        </conditions>
+        <expression>Verified_User</expression>
+        <expressionLabel>Verified User</expressionLabel>
+        <expressionName>Verified_User</expressionName>
+        <expressionType>sel</expressionType>
+    </ruleExpressions>
+</GenAiPlannerBundle>

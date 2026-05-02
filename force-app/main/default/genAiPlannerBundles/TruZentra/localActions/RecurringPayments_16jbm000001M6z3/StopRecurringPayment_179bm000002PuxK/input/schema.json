@@ -1,0 +1,27 @@
+{
+  "properties" : {
+    "varCustomerId" : {
+      "title" : "Customer Id",
+      "description" : "Verified Account Id of the customer whose recurring payment should be stopped.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varPaymentIndex" : {
+      "title" : "Payment Index",
+      "description" : "1-based index of the active payment to stop (from the quick summary list).",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varLanguage" : {
+      "title" : "Language",
+      "description" : "Language code for formatting: hi for Hindi, en for English. Defaults to en.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

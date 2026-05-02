@@ -1,0 +1,29 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varLoanAccountId" : {
+      "title" : "Loan Account Id",
+      "description" : "The FinServ__FinancialAccount__c loan record Id. Obtained from Get Loan Details action.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varSelectedOption" : {
+      "title" : "Selected Option",
+      "description" : "The customer's chosen option: A (extend 1yr), B (extend 2yr), or C (3-month moratorium).",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "varCustomerId" : {
+      "title" : "Customer Id",
+      "description" : "The Account Id of the authenticated customer. Auto-mapped from verified customer.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

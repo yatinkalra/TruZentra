@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TruZentra &mdash; Developer Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  :root{--primary:#0B1D3A;--accent:#00B4D8;--accent-light:#90E0EF;--text:#1E293B;--muted:#64748B;--light:#F7F9FC;--white:#FFFFFF;--code-bg:#1E293B;--code-fg:#E2E8F0;--success:#10B981;--warn:#F59E0B;--danger:#EF4444;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,.06)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,system-ui,sans-serif;color:var(--text);background:var(--white);line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased}
+  .page{max-width:960px;margin:0 auto;padding:0 32px}
+  .cover{background:linear-gradient(135deg,#0B1D3A 0%,#1A3A5C 50%,#0D4A6B 100%);color:#fff;padding:80px 0 60px;text-align:center;margin-bottom:36px;position:relative;overflow:hidden}
+  .cover::before{content:'';position:absolute;top:-40%;right:-15%;width:500px;height:500px;background:radial-gradient(circle,rgba(0,180,216,.12),transparent 70%);border-radius:50%}
+  .cover::after{content:'';position:absolute;bottom:-30%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(144,224,239,.08),transparent 70%);border-radius:50%}
+  .cover *{position:relative;z-index:1}
+  .cover h1{font-size:3.5rem;font-weight:900;letter-spacing:-2px;margin-bottom:6px}
+  .cover h1 span{color:var(--accent)}
+  .cover .doc-type{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);padding:5px 16px;border-radius:8px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+  .cover .tagline{font-size:1.2rem;font-weight:300;opacity:.85;margin-bottom:28px;max-width:600px;margin-left:auto;margin-right:auto}
+  .cover .pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:28px}
+  .cover .pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:7px 18px;border-radius:10px;font-size:13px;font-weight:500}
+  .cover .kpi-row{display:inline-flex;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden}
+  .cover .kpi{padding:20px 30px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+  .cover .kpi:last-child{border-right:none}
+  .cover .kpi-v{font-size:32px;font-weight:900;line-height:1;margin-bottom:3px}
+  .cover .kpi-l{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1px;opacity:.4}
+  .cover .foot{margin-top:28px;font-size:11px;opacity:.2}
+  h2{font-size:1.4rem;font-weight:700;color:var(--primary);border-bottom:3px solid var(--accent);padding-bottom:6px;margin:36px 0 14px}
+  h3{font-size:1.05rem;font-weight:700;color:var(--primary);margin:20px 0 8px}
+  h4{font-size:.92rem;font-weight:700;color:var(--primary);margin:14px 0 4px}
+  p,li{font-size:.9rem}
+  ul,ol{padding-left:24px}li{margin-bottom:4px}
+  code{background:var(--light);padding:2px 6px;border-radius:4px;font-size:.83rem;font-family:'Cascadia Code','Fira Code',monospace}
+  pre{background:var(--code-bg);color:var(--code-fg);padding:16px 20px;border-radius:var(--radius);overflow-x:auto;font-size:.8rem;line-height:1.6;margin:10px 0;font-family:'Cascadia Code','Fira Code',monospace}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.85rem}
+  th{background:var(--primary);color:#fff;padding:8px 12px;text-align:left;font-weight:600}
+  td{padding:6px 12px;border-bottom:1px solid #E5E7EB;vertical-align:top}
+  tr:nth-child(even){background:var(--light)}
+  .callout{border-radius:var(--radius);padding:14px 18px;margin:14px 0;font-size:.88rem}
+  .callout.info{background:#EFF6FF;border-left:4px solid var(--accent)}
+  .callout.warn{background:#FFFBEB;border-left:4px solid var(--orange)}
+  .callout.danger{background:#FEF2F2;border-left:4px solid var(--red)}
+  .callout.success{background:#ECFDF5;border-left:4px solid var(--green)}
+  .callout strong{display:block;margin-bottom:2px}
+  .toc{background:var(--light);border-radius:var(--radius);padding:20px 28px;margin-bottom:28px}
+  .toc h3{margin-top:0}.toc ol{columns:2;column-gap:28px}.toc li{font-size:.85rem;margin-bottom:2px}.toc a{color:var(--accent);text-decoration:none}.toc a:hover{text-decoration:underline}
+  .footer{text-align:center;padding:24px 0;border-top:1px solid #E5E7EB;color:var(--muted);font-size:.75rem;margin-top:36px}
+  @media print{.cover{padding:28px 0}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="doc-type">Developer Guide</div>
+  <h1>Tru<span>Zentra</span></h1>
+  <div class="tagline">The Autonomous AI Banking Concierge That Speaks Your Language</div>
+  <div class="pills">
+    <div class="pill">Salesforce Agentforce</div>
+    <div class="pill">Financial Services Cloud</div>
+    <div class="pill">Data Cloud 360&deg;</div>
+    <div class="pill">Multilingual AI</div>
+    <div class="pill">Omni-Channel</div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi"><div class="kpi-v">8</div><div class="kpi-l">Capabilities</div></div>
+    <div class="kpi"><div class="kpi-v">3</div><div class="kpi-l">Languages</div></div>
+    <div class="kpi"><div class="kpi-v">&lt;3s</div><div class="kpi-l">Response</div></div>
+    <div class="kpi"><div class="kpi-v">24/7</div><div class="kpi-l">Availability</div></div>
+  </div>
+</div>
+
+<div class="page">
+
+<div class="toc">
+  <h3>Contents</h3>
+  <ol>
+    <li><a href="#setup">Environment Setup</a></li>
+    <li><a href="#structure">Project Structure</a></li>
+    <li><a href="#naming">Naming Conventions</a></li>
+    <li><a href="#apex">Adding an Apex Service</a></li>
+    <li><a href="#flow">Adding a Flow</a></li>
+    <li><a href="#topic">Adding an Agent Topic</a></li>
+    <li><a href="#email">Adding an Email Type</a></li>
+    <li><a href="#test-data">Test Data Generation</a></li>
+    <li><a href="#debug">Debug Scripts</a></li>
+    <li><a href="#deploy">Deployment</a></li>
+    <li><a href="#testing">Testing</a></li>
+    <li><a href="#gotchas">Common Gotchas</a></li>
+  </ol>
+</div>
+
+<!-- 1 -->
+<h2 id="setup">1. Environment Setup</h2>
+<h3>Prerequisites</h3>
+<ul>
+  <li>Salesforce CLI (<code>sf</code>) &mdash; latest version</li>
+  <li>VS Code with Salesforce Extension Pack</li>
+  <li>Target org with Financial Services Cloud enabled</li>
+  <li>Data Cloud provisioned (for 360 dashboard)</li>
+</ul>
+
+<h3>Clone &amp; Authenticate</h3>
+<pre>git clone [repo-url]
+cd [repo-name]
+sf org login web --alias TruZentra --instance-url https://[your-instance].salesforce.com</pre>
+
+<h3>Deploy</h3>
+<pre>sf project deploy start --source-dir force-app --target-org TruZentra</pre>
+
+<h3>Create Test Data</h3>
+<pre>sf apex run --file scripts/setup-customer.apex --target-org TruZentra</pre>
+
+<!-- 2 -->
+<h2 id="structure">2. Project Structure</h2>
+<pre>force-app/main/default/
+  classes/              # Apex services + test classes
+  flows/                # 22 Flows
+  lwc/                  # 10 LWCs
+  objects/              # Custom objects + field extensions
+  customMetadata/       # Email config + AI config
+  genAiPlannerBundles/  # TruZentra agent bundle
+    TruZentra/
+      localActions/     # Action schemas (input/output)
+      plannerActions/   # Planner action configs
+      TruZentra.genAiPlannerBundle  # Main bundle file
+  genAiPromptTemplates/ # AI prompt templates
+  flexipages/           # App pages
+  permissionsets/       # Admin permission set
+  pages/                # Visualforce (session helper)
+  mktCalcInsightObjectDefs/  # Churn CI
+scripts/                # Debug &amp; setup scripts
+docs/             # All documentation
+sfdx-project.json       # Project config</pre>
+
+
+<!-- 3 -->
+<h2 id="naming">3. Naming Conventions</h2>
+<table>
+  <tr><th>Type</th><th>Convention</th><th>Example</th></tr>
+  <tr><td>Apex Class</td><td><code>Zentra[Feature]Service</code></td><td><code>ZentraBalanceService</code></td></tr>
+  <tr><td>Apex Test</td><td><code>Zentra[Feature]ServiceTest</code></td><td><code>ZentraBalanceServiceTest</code></td></tr>
+  <tr><td>Flow</td><td><code>Zentra_[Action_Name]</code></td><td><code>Zentra_Check_Balance</code></td></tr>
+  <tr><td>LWC</td><td><code>zentra[ComponentName]</code></td><td><code>zentraRMDashboard</code></td></tr>
+  <tr><td>Custom Object</td><td><code>Zentra_[Name]__c</code></td><td><code>Zentra_OTP_Session__c</code></td></tr>
+  <tr><td>CMDT</td><td><code>Zentra_[Config]__mdt</code></td><td><code>Zentra_Email_Config__mdt</code></td></tr>
+</table>
+
+<!-- 4 -->
+<h2 id="apex">4. Adding an Apex Service</h2>
+
+<h3>Step 1: Create the Service Class</h3>
+<pre>public without sharing class ZentraNewFeatureService {
+
+    public class FeatureRequest {
+        @InvocableVariable(label='Customer Id' required=true)
+        public Id customerId;
+        // Add more inputs
+    }
+
+    public class FeatureResponse {
+        @InvocableVariable(label='Success')
+        public Boolean success;
+        @InvocableVariable(label='Message')
+        public String message;
+        // Add more outputs
+    }
+
+    @InvocableMethod(label='Your Feature Label'
+        description='Description for the agent'
+        category='Your Category')
+    public static List&lt;FeatureResponse&gt; execute(
+            List&lt;FeatureRequest&gt; requests) {
+        List&lt;FeatureResponse&gt; results = new List&lt;FeatureResponse&gt;();
+        for (FeatureRequest req : requests) {
+            FeatureResponse resp = new FeatureResponse();
+            try {
+                // Your logic here
+                resp.success = true;
+                resp.message = 'Done.';
+            } catch (Exception e) {
+                ZentraErrorLogger.log(
+                    'ZentraNewFeatureService', 'execute',
+                    e, req.customerId);
+                resp.success = false;
+                resp.message = 'Error: ' + e.getMessage();
+            }
+            results.add(resp);
+        }
+        return results;
+    }
+}</pre>
+
+<h3>Step 2: Create the Test Class</h3>
+<pre>@IsTest
+private class ZentraNewFeatureServiceTest {
+    @TestSetup
+    static void setup() {
+        Account acct = new Account(Name = 'Test Customer');
+        insert acct;
+        // Create related test data
+    }
+
+    @IsTest
+    static void testHappyPath() {
+        Account acct = [SELECT Id FROM Account LIMIT 1];
+        ZentraNewFeatureService.FeatureRequest req =
+            new ZentraNewFeatureService.FeatureRequest();
+        req.customerId = acct.Id;
+
+        Test.startTest();
+        List&lt;ZentraNewFeatureService.FeatureResponse&gt; results =
+            ZentraNewFeatureService.execute(
+                new List&lt;ZentraNewFeatureService.FeatureRequest&gt;{req});
+        Test.stopTest();
+
+        System.assert(results[0].success, 'Should succeed');
+    }
+}</pre>
+
+<h3>Step 3: Create the meta XML</h3>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ApexClass xmlns="http://soap.sforce.com/2006/04/metadata"&gt;
+    &lt;apiVersion&gt;65.0&lt;/apiVersion&gt;
+    &lt;status&gt;Active&lt;/status&gt;
+&lt;/ApexClass&gt;</pre>
+
+<div class="callout info">
+  <strong>Rule:</strong> Every service MUST wrap logic in try-catch and log errors via <code>ZentraErrorLogger.log()</code>. Every service MUST have a corresponding test class.
+</div>
+
+<!-- 5 -->
+<h2 id="flow">5. Adding a Flow</h2>
+<p>Flows are the bridge between the Agent and Apex. Every agent action maps to a Flow which calls an Apex Invocable.</p>
+
+<h3>Pattern</h3>
+<ol>
+  <li>Create an Autolaunched Flow named <code>Zentra_Your_Action</code></li>
+  <li>Add input variables matching the action schema (<code>varCustomerId</code>, etc.)</li>
+  <li>Add an Apex Action element calling your Invocable</li>
+  <li>Map outputs to Flow output variables</li>
+  <li>Set Flow to <code>SystemModeWithoutSharing</code> if the agent user lacks object access</li>
+</ol>
+
+<div class="callout warn">
+  <strong>FSC DML:</strong> If your service updates <code>FinServ__FinancialAccount__c</code> or other FSC objects, use <code>ZentraSystemDMLHelper</code> to avoid PSL validation errors.
+</div>
+
+<!-- 6 -->
+<h2 id="topic">6. Adding an Agent Topic</h2>
+
+<h3>Step 1: Add Topic to Planner Bundle</h3>
+<p>Add a <code>&lt;localTopics&gt;</code> entry in <code>TruZentra.genAiPlannerBundle</code> with:</p>
+<ul>
+  <li><code>fullName</code> / <code>developerName</code></li>
+  <li><code>description</code> &mdash; what the topic does (this helps the planner route)</li>
+  <li><code>genAiPluginInstructions</code> &mdash; ordered instructions for the agent</li>
+</ul>
+
+<h3>Step 2: Add Action Schemas</h3>
+<p>Create directories under <code>localActions/{topicFullName}/{actionFullName}/</code>:</p>
+<pre>localActions/
+  YourTopic_16jbm000001M6z3/
+    YourAction_179bm000002PuxX/
+      input/
+        schema.json      # Input parameters
+      output/
+        schema.json      # Output parameters</pre>
+
+<h4>Example schema.json (input)</h4>
+<pre>{
+  "properties": {
+    "input_varCustomerId": {
+      "type": "lightning__textType",
+      "title": "Customer Id",
+      "copilotActionProperties": {
+        "isUserInput": false,
+        "isDisplayable": false,
+        "isUsedByPlanner": true
+      }
+    }
+  }
+}</pre>
+
+<h3>Step 3: Add Attribute Mapping</h3>
+<p>Add an <code>&lt;attributeMappings&gt;</code> entry to wire <code>VerifiedCustomerId</code> to the action input:</p>
+<pre>&lt;attributeMappings&gt;
+    &lt;attributeName&gt;YourTopic.YourAction.input_varCustomerId&lt;/attributeName&gt;
+    &lt;attributeType&gt;CustomPluginFunctionAttribute&lt;/attributeType&gt;
+    &lt;mappingTargetName&gt;VerifiedCustomerId&lt;/mappingTargetName&gt;
+    &lt;mappingType&gt;Variable&lt;/mappingType&gt;
+&lt;/attributeMappings&gt;</pre>
+
+<div class="callout danger">
+  <strong>Critical:</strong> Without <code>input/schema.json</code> and <code>output/schema.json</code>, the agent will silently skip the action. No error, no log &mdash; just silent failure.
+</div>
+
+<h3>Step 4: Add Instructions</h3>
+<p>Every topic MUST include these instruction patterns:</p>
+<ul>
+  <li><strong>Auth gate:</strong> "Customer MUST be OTP-verified. If VerifiedCustomerId is not available, redirect to OTP."</li>
+  <li><strong>Language match:</strong> "ALWAYS reply in the same language the customer uses."</li>
+  <li><strong>Post-task menu:</strong> After completing, show the 8-option menu.</li>
+</ul>
+
+<!-- 7 -->
+<h2 id="email">7. Adding an Email Type</h2>
+
+<h3>Step 1: Add Method to ZentraEmailService</h3>
+<pre>public static void sendYourSummaryEmail(Id customerId) {
+    String devName = 'Your_Summary';
+    if (!isEnabled(devName)) return;
+    // Query data, build HTML, send
+    Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+    // ... configure and send
+}</pre>
+
+<h3>Step 2: Create CMDT Record</h3>
+<p>Create <code>Zentra_Email_Config.Your_Summary.md-meta.xml</code>:</p>
+<pre>&lt;CustomMetadata xmlns="..."&gt;
+    &lt;label&gt;Your Summary&lt;/label&gt;
+    &lt;values&gt;&lt;field&gt;Is_Enabled__c&lt;/field&gt;&lt;value&gt;true&lt;/value&gt;&lt;/values&gt;
+    &lt;values&gt;&lt;field&gt;Subject_Template__c&lt;/field&gt;
+           &lt;value&gt;Your Summary - {0}&lt;/value&gt;&lt;/values&gt;
+    &lt;values&gt;&lt;field&gt;Heading__c&lt;/field&gt;&lt;value&gt;Your Summary&lt;/value&gt;&lt;/values&gt;
+    &lt;values&gt;&lt;field&gt;Intro_Text__c&lt;/field&gt;
+           &lt;value&gt;Here is your summary.&lt;/value&gt;&lt;/values&gt;
+&lt;/CustomMetadata&gt;</pre>
+
+<h3>Step 3: Route in ZentraEmailSummaryService</h3>
+<p>Add a case in the routing logic to handle the new type.</p>
+
+<div class="callout info">
+  <strong>Rule:</strong> Every email type MUST have a CMDT record. The Master record provides fallback branding.
+</div>
+
+<!-- 8 -->
+<h2 id="test-data">8. Test Data Generation</h2>
+<pre># Create a full customer with all related data
+sf apex run --file scripts/setup-customer.apex --target-org TruZentra</pre>
+
+<p><code>ZentraSetupCustomer.run(firstName, lastName, email, phone)</code> creates:</p>
+<ul>
+  <li>Account &amp; Contact</li>
+  <li>3 Financial Accounts (Savings, Credit Card, Loan)</li>
+  <li>10+ Transactions per account</li>
+  <li>Credit Card record</li>
+  <li>8 Recurring Payments</li>
+  <li>Investment Account + 7 SIP/MF Holdings with Securities</li>
+</ul>
+
+<!-- 9 -->
+<h2 id="debug">9. Debug Scripts</h2>
+<p>Pre-built Anonymous Apex scripts for testing every major feature. Each script uses a <code>PHONE</code> variable at the top &mdash; change it to your test customer's phone number.</p>
+
+<h3>Running a Script</h3>
+<pre>sf apex run --file /scripts/&lt;script-name&gt;.apex --target-org TruZentra</pre>
+
+<h3>Available Scripts</h3>
+<table>
+  <tr><th>Script</th><th>What It Does</th></tr>
+  <tr><td><code>debug-otp-flow.apex</code></td><td>Account lookup &rarr; Send OTP &rarr; displays OTP code &amp; session Id for manual verify</td></tr>
+  <tr><td><code>debug-otp-verify.apex</code></td><td>Verifies OTP using session Id + code from the above script</td></tr>
+  <tr><td><code>debug-balance-txns.apex</code></td><td>Calls <code>ZentraBalanceService</code> + <code>ZentraTransactionService</code> &mdash; prints balances &amp; last 10 txns</td></tr>
+  <tr><td><code>debug-dispute.apex</code></td><td>Lists undisputed txns, creates a dispute via <code>ZentraDisputeService</code>, checks status</td></tr>
+  <tr><td><code>debug-loan-restructure.apex</code></td><td>Full loan flow: details &rarr; simulate 3 options &rarr; submit &rarr; check status</td></tr>
+  <tr><td><code>debug-recurring-payments.apex</code></td><td>Lists all recurring payments. Set <code>STOP_INDEX</code> &gt; 0 to cancel one.</td></tr>
+  <tr><td><code>debug-mutual-funds.apex</code></td><td>SIP/MF holdings with status breakdown. Set <code>SIP_INDEX</code> for detail view.</td></tr>
+  <tr><td><code>debug-email-all.apex</code></td><td>Fires all 6 summary email types (balance, txn, dispute, loan, recurring, MF) for one customer</td></tr>
+  <tr><td><code>debug-new-account.apex</code></td><td>Creates a new account opening request with Case + RM callback</td></tr>
+  <tr><td><code>debug-error-logs.apex</code></td><td>Last 20 <code>Zentra_Error_Log__c</code> records + 7-day error count by class</td></tr>
+  <tr><td><code>debug-email-logs.apex</code></td><td>Last 20 <code>Zentra_Email_Log__c</code> records + 7-day email count by type</td></tr>
+</table>
+
+<div class="callout warn">
+  <strong>OTP two-step:</strong> Run <code>debug-otp-flow.apex</code> first (it prints the OTP code and session Id). Then paste those values into <code>debug-otp-verify.apex</code> and run it.
+</div>
+
+<!-- 10 -->
+<h2 id="deploy">10. Deployment</h2>
+
+<p>Follow these steps <strong>in order</strong> for a clean first-time deployment to a fresh org. Every step is required.</p>
+
+<h3>10.1 Prerequisites</h3>
+<ul>
+  <li>Salesforce CLI (<code>sf</code>) installed and authenticated to the target org</li>
+  <li>Target org must have <strong>Financial Services Cloud</strong> and <strong>Agentforce</strong> enabled</li>
+  <li>Target org must have <strong>Data Cloud</strong> provisioned (for Calculated Insights &amp; 360 Dashboard)</li>
+</ul>
+<pre># Authenticate
+sf org login web --alias TruZentra --instance-url https://[your-instance].salesforce.com</pre>
+
+<h3>10.2 Step 1 &mdash; Deploy Core Metadata (everything except the Agent Bundle)</h3>
+<p>The agent bundle references planner-level variables that must exist on the org first. Deploy everything else using either <code>package.xml</code> or <code>--source-dir</code>:</p>
+
+<h4>Option A &mdash; Manifest Deploy (recommended)</h4>
+<p>Create <code>deploy/pre-agent-package.xml</code> with:</p>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;Package xmlns="http://soap.sforce.com/2006/04/metadata"&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;ApexClass&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;Flow&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;CustomObject&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;CustomField&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;RecordType&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;BusinessProcess&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;CustomMetadata&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;PermissionSet&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;CustomApplication&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;CustomTab&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;FlexiPage&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;Layout&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;QuickAction&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;RemoteSiteSetting&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;ApexPage&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;LightningComponentBundle&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;StaticResource&lt;/name&gt;&lt;/types&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;GenAiPromptTemplate&lt;/name&gt;&lt;/types&gt;
+  &lt;version&gt;62.0&lt;/version&gt;
+&lt;/Package&gt;</pre>
+<pre>sf project deploy start --manifest deploy/pre-agent-package.xml --target-org TruZentra --wait 10</pre>
+
+<h4>Option B &mdash; Source-dir Deploy</h4>
+<pre>sf project deploy start \
+  --source-dir force-app/main/default/classes \
+  --source-dir force-app/main/default/flows \
+  --source-dir force-app/main/default/objects \
+  --source-dir force-app/main/default/customMetadata \
+  --source-dir force-app/main/default/permissionsets \
+  --source-dir force-app/main/default/applications \
+  --source-dir force-app/main/default/tabs \
+  --source-dir force-app/main/default/flexipages \
+  --source-dir force-app/main/default/layouts \
+  --source-dir force-app/main/default/quickActions \
+  --source-dir force-app/main/default/remoteSiteSettings \
+  --source-dir force-app/main/default/pages \
+  --source-dir force-app/main/default/lwc \
+  --source-dir force-app/main/default/staticresources \
+  --source-dir force-app/main/default/genAiPromptTemplates \
+  --target-org TruZentra --wait 10</pre>
+
+<div class="callout warn">
+  <strong>Picklist mismatches.</strong> If the target org has different standard picklist values for Case (Origin, Priority, Type, Reason), the record type deploy will fail. Remove the mismatched <code>&lt;picklistValues&gt;</code> blocks from <code>Dispute.recordType-meta.xml</code> and <code>New_Account_Opening.recordType-meta.xml</code> before deploying, then add them back via Setup &rarr; Record Types after deploy.
+</div>
+
+<h3>10.3 Step 2 &mdash; Create Test Data</h3>
+<pre>sf apex run --file scripts/setup-customer.apex --target-org TruZentra</pre>
+
+<h3>10.4 Step 3 &mdash; Create the TruZentra Agent</h3>
+<p>The Agent (Bot) definition <strong>cannot be deployed across orgs</strong> via metadata due to org-specific dependencies (<code>botUser</code>, <code>entryDialog</code>). Create it manually:</p>
+<ol>
+  <li>Go to <strong>Setup &rarr; Agents &rarr; New Agent</strong></li>
+  <li>Template: <strong>Agentforce Service Agent</strong></li>
+  <li>Label: <code>TruZentra</code> &nbsp;|&nbsp; API Name: <code>TruZentra</code></li>
+  <li>Save the agent (do <strong>not</strong> activate yet)</li>
+</ol>
+
+<h3>10.5 Step 4 &mdash; Create Agent Variables</h3>
+<p>In <strong>Agent Builder &rarr; TruZentra &rarr; Variables</strong>, create these three variables:</p>
+<table>
+  <tr><th>Variable Name</th><th>Type</th><th>Purpose</th></tr>
+  <tr><td><code>isVerified</code></td><td>Boolean</td><td>Set to <code>true</code> after OTP/MPIN verification</td></tr>
+  <tr><td><code>VerifiedCustomerId</code></td><td>Text</td><td>Stores the Account Id of the verified customer</td></tr>
+  <tr><td><code>authenticationKey</code></td><td>Text</td><td>Holds the OTP session Id between Send OTP &rarr; Verify OTP</td></tr>
+</table>
+
+<h3>10.6 Step 5 &mdash; Deploy the Agent Bundle</h3>
+<p>Now that the agent and variables exist, deploy the bundle:</p>
+<pre>sf project deploy start \
+  --source-dir force-app/main/default/genAiPlannerBundles \
+  --target-org TruZentra --wait 10</pre>
+
+<div class="callout danger">
+  <strong>Agent must be deactivated first!</strong> If redeploying changes to <code>TruZentra.genAiPlannerBundle</code>, you must deactivate the TruZentra agent in Setup &rarr; Agents before deploying. Reactivate after deploy.
+</div>
+
+<p>This deploys <strong>9 topics, 24+ actions, 1 planner action</strong>, all instructions, all variable mappings, and the Verified_User guardrail rule. The full bundle manifest (post-agent deploy):</p>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;Package xmlns="http://soap.sforce.com/2006/04/metadata"&gt;
+  &lt;types&gt;&lt;members&gt;*&lt;/members&gt;&lt;name&gt;GenAiPlannerBundle&lt;/name&gt;&lt;/types&gt;
+  &lt;version&gt;62.0&lt;/version&gt;
+&lt;/Package&gt;</pre>
+
+<!-- ===== TOPIC & ACTION DETAIL ===== -->
+<h3>10.7 Agent Topic &amp; Action Reference</h3>
+<p>Each topic below is deployed automatically with the bundle. The table shows what each topic does, its scope (trigger phrases), key instructions, and linked actions/flows.</p>
+
+<!-- Topic 1: OTP -->
+<h4>Topic 1 &mdash; OTP Verification</h4>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td><strong>Developer Name</strong></td><td><code>ZentraOTPVerification</code></td></tr>
+  <tr><td><strong>Description</strong></td><td>Verifies customer identity using OTP (sent to registered EMAIL only, never SMS) or MPIN. This MUST happen FIRST in every conversation.</td></tr>
+  <tr><td><strong>Scope</strong></td><td>First topic in every conversation. Greet warmly, ask for mobile number, offer OTP (email) or MPIN. If Account Not Found, pitch new account. After verification, greet by name and show menu. Never repeat verification in same session. Reply in customer&rsquo;s language.</td></tr>
+  <tr><td><strong>Guardrail</strong></td><td>None (this is the authentication topic itself)</td></tr>
+</table>
+<p><strong>Instructions:</strong></p>
+<ol>
+  <li><strong>auto_send_otp_on_first_message</strong> &mdash; On first message, greet warmly, ask for mobile. Offer: (1) OTP via email, (2) MPIN. If OTP &rarr; call SendOTP. If Account Not Found &rarr; pitch new account. If MPIN &rarr; ask for 6-digit PIN, call VerifyMPIN.</li>
+  <li><strong>send_otp_instruction</strong> &mdash; Pass phone number. OTP goes to EMAIL only (never SMS). Check &ldquo;Account Not Found&rdquo; output.</li>
+  <li><strong>prompt_for_otp_code</strong> &mdash; Tell customer to check email for 6-digit code. Never mention SMS. Never reveal OTP.</li>
+  <li><strong>verify_otp_instruction</strong> &mdash; Pass OTP code + session Id from SendOTP.</li>
+  <li><strong>handle_failed_otp</strong> &mdash; Empathetic retry message. After max attempts, session locked 30 min.</li>
+  <li><strong>otp_expiry_handling</strong> &mdash; OTP valid 5 min. If expired, re-send with SendOTP.</li>
+  <li><strong>authentication_required</strong> &mdash; Never process sensitive requests without OTP.</li>
+  <li><strong>prevent_reverification</strong> &mdash; Once verified, never re-verify in same session. No switching customers.</li>
+  <li><strong>proceed_after_success</strong> &mdash; Greet by name (&ldquo;Thank you, [Name] ji!&rdquo;), show 8-item menu. If customer already asked for something, handle immediately.</li>
+  <li><strong>security_confidentiality</strong> &mdash; Never reveal OTP code, session Id, or tokens.</li>
+  <li><strong>handle_account_not_found</strong> &mdash; If no account, pitch new account warmly. If YES &rarr; collect name+email, call RequestNewAccount. If NO &rarr; farewell.</li>
+  <li><strong>mpin_verification_option</strong> &mdash; MPIN is 6 digits like OTP. If ambiguous, ask &ldquo;Is that your MPIN or OTP?&rdquo; If MPIN not set, auto-fallback to OTP.</li>
+</ol>
+<p><strong>Actions:</strong></p>
+<table>
+  <tr><th>Action</th><th>Flow</th><th>Inputs</th><th>Outputs</th></tr>
+  <tr><td>SendOTP</td><td><code>Zentra_Send_OTP</code></td><td>phoneNumber</td><td>otpSessionId</td></tr>
+  <tr><td>VerifyOTP</td><td><code>Zentra_Verify_OTP</code></td><td>otpSessionId</td><td>isVerified, customerId, customerName</td></tr>
+  <tr><td>VerifyMPIN</td><td><code>Zentra_Verify_MPIN</code></td><td>phoneNumber, mpin</td><td>isVerified, customerId, customerName</td></tr>
+  <tr><td>RequestNewAccount</td><td><code>Zentra_Request_New_Account</code></td><td>phoneNumber, customerName, customerEmail</td><td>caseNumber, rmCallbackTime</td></tr>
+</table>
+
+<!-- Topic 2: Balance -->
+<h4>Topic 2 &mdash; Zentra Balance</h4>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td><strong>Developer Name</strong></td><td><code>ZentraBalance</code></td></tr>
+  <tr><td><strong>Description</strong></td><td>Check bank account balance (Savings, Credit Card, Loan) and view recent transactions.</td></tr>
+  <tr><td><strong>Scope</strong></td><td>OTP-verified required. When customer says &ldquo;balance&rdquo; in any language &mdash; IMMEDIATELY fetch ALL balances without asking which account. Also handles transactions/mini-statement. Show post-task menu. Reply in customer&rsquo;s language.</td></tr>
+  <tr><td><strong>Guardrail</strong></td><td>Verified_User (isVerified == true)</td></tr>
+</table>
+<p><strong>Instructions:</strong></p>
+<ol>
+  <li><strong>instant_balance</strong> &mdash; On any balance request (English/Hindi/Hinglish), IMMEDIATELY call CheckAccountBalance. No follow-up questions.</li>
+  <li><strong>view_transactions</strong> &mdash; On transaction/mini-statement request, call ViewTransactions. Returns last 10 txns.</li>
+  <li><strong>otp_required</strong> &mdash; Must be verified. If not, say &ldquo;For your security, let me verify your identity first.&rdquo;</li>
+  <li><strong>language_and_display</strong> &mdash; Reply in customer&rsquo;s language. Display output as-is (already formatted). Show post-task menu.</li>
+</ol>
+<p><strong>Actions:</strong></p>
+<table>
+  <tr><th>Action</th><th>Flow</th><th>Inputs</th><th>Outputs</th></tr>
+  <tr><td>CheckAccountBalance</td><td><code>Zentra_Check_Balance</code></td><td>varCustomerId</td><td>varOutputMessage, varOutputSuccess</td></tr>
+  <tr><td>ViewTransactions</td><td><code>Zentra_Get_Transactions</code></td><td>varCustomerId</td><td>&mdash;</td></tr>
+</table>
+
+<!-- Topic 3: Dispute -->
+<h4>Topic 3 &mdash; Dispute Management</h4>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td><strong>Developer Name</strong></td><td><code>ZentraDisputeManagement</code></td></tr>
+  <tr><td><strong>Description</strong></td><td>File disputes against unauthorized/incorrect transactions. Creates Case with Dispute RT, issues provisional credit. Also check dispute status.</td></tr>
+  <tr><td><strong>Scope</strong></td><td>OTP-verified required. Lead with empathy. Three options: (1) show recent txns to select, (2) accept details/screenshot directly, (3) secure upload link. Ask dispute reason: Duplicate, Not recognized, Fraud, Others. For status: call GetDisputeStatus without caseNumber (returns all), then with caseNumber for detail. Do NOT escalate to live agent. Reply in customer&rsquo;s language. Show post-task menu.</td></tr>
+  <tr><td><strong>Guardrail</strong></td><td>Verified_User (isVerified == true)</td></tr>
+</table>
+<p><strong>Instructions:</strong></p>
+<ol>
+  <li><strong>require_otp_first</strong> &mdash; Must be verified. Never escalate to live agent.</li>
+  <li><strong>show_transactions_for_selection</strong> &mdash; Offer 3 options: show txns, provide details manually, or upload receipt/screenshot via secure link.</li>
+  <li><strong>file_dispute_with_details</strong> &mdash; Ask reason (Duplicate/Not recognized/Fraud/Other). Use RaiseDispute with txn Id or amount+merchantHint.</li>
+  <li><strong>confirm_dispute_filed</strong> &mdash; Confirm with Case Number, Amount, Provisional Credit, 7-day resolution estimate. Show menu.</li>
+  <li><strong>manual_dispute_details</strong> &mdash; Accept amount+merchant for fuzzy matching.</li>
+  <li><strong>upload_receipt_link</strong> &mdash; Share secure URL: <code>https://[site]/ZentraBankSupport/Zentra-AI-Dispute?varCustomerId=ACTUAL_ID</code>. AI analyzes image and files dispute automatically.</li>
+  <li><strong>dispute_language_match</strong> &mdash; Reply in customer&rsquo;s language.</li>
+  <li><strong>check_dispute_status</strong> &mdash; First call without caseNumber (numbered list). Customer picks number &rarr; call again with caseNumber for detail.</li>
+</ol>
+<p><strong>Actions:</strong></p>
+<table>
+  <tr><th>Action</th><th>Flow</th><th>Inputs</th><th>Outputs</th></tr>
+  <tr><td>RaiseDispute</td><td><code>Zentra_Raise_Dispute</code></td><td>varCustomerId</td><td>&mdash;</td></tr>
+  <tr><td>GetDisputeStatus</td><td><code>Zentra_Get_Dispute_Status</code></td><td>varCustomerId, varCaseNumber</td><td>&mdash;</td></tr>
+  <tr><td>GetTransactionsForDispute</td><td><code>Zentra_Get_Transactions</code></td><td>varCustomerId</td><td>&mdash;</td></tr>
+</table>
+
+<!-- Topic 4: Loan -->
+<h4>Topic 4 &mdash; Loan Restructuring</h4>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td><strong>Developer Name</strong></td><td><code>ZentraLoanRestructuring</code></td></tr>
+  <tr><td><strong>Description</strong></td><td>View loan details, simulate 3 EMI restructuring options (extend 1yr, extend 2yr, 3-month moratorium), submit choice with double-OTP confirmation.</td></tr>
+  <tr><td><strong>Scope</strong></td><td>OTP-verified required. Flow: Fetch details &rarr; simulate 3 options &rarr; pick A/B/C &rarr; confirm &rarr; Send Loan Verification OTP &rarr; Verify Loan OTP &rarr; submit &rarr; RM callback 24hrs. NEVER submit without confirm + loan OTP. For status: GetRestructuringStatus. Be polite, reply in customer&rsquo;s language. Show post-task menu.</td></tr>
+  <tr><td><strong>Guardrail</strong></td><td>Verified_User (isVerified == true)</td></tr>
+</table>
+<p><strong>Instructions:</strong></p>
+<ol>
+  <li><strong>loan_require_otp</strong> &mdash; Must be verified. Be warm: &ldquo;I understand managing EMIs can be stressful.&rdquo;</li>
+  <li><strong>loan_fetch_details_first</strong> &mdash; On any loan/EMI request (English/Hindi/Hinglish), FIRST call GetLoanDetails. Display warmly in customer&rsquo;s language.</li>
+  <li><strong>loan_simulate_options</strong> &mdash; If no 90-day cooldown warning, call SimulateRestructuring. Present A/B/C. If cooldown, display message as-is.</li>
+  <li><strong>loan_submit_selection</strong> &mdash; Customer picks A/B/C &rarr; show summary &rarr; ask &ldquo;confirm&rdquo; &rarr; SendLoanVerificationOTP &rarr; VerifyLoanOTP &rarr; SubmitRestructuring. NEVER submit without confirm + OTP.</li>
+  <li><strong>loan_confirm_submission</strong> &mdash; Share confirmation warmly with RM callback within 24hrs. Show menu.</li>
+  <li><strong>loan_cooldown_handling</strong> &mdash; If simulate returns success=false, display the message EXACTLY as returned (contains cooldown info). Never say &ldquo;I cannot calculate.&rdquo;</li>
+  <li><strong>check_restructuring_status</strong> &mdash; Call GetRestructuringStatus. Display formatted output.</li>
+  <li><strong>loan_language_match</strong> &mdash; Reply in customer&rsquo;s language. Use &#8377; for currency.</li>
+</ol>
+<p><strong>Actions:</strong></p>
+<table>
+  <tr><th>Action</th><th>Flow</th><th>Inputs</th><th>Outputs</th></tr>
+  <tr><td>GetLoanDetails</td><td><code>Zentra_Get_Loan_Details</code></td><td>varCustomerId</td><td>varLoanAccountId</td></tr>
+  <tr><td>SimulateRestructuring</td><td><code>Zentra_Simulate_Restructuring</code></td><td>varLoanAccountId</td><td>&mdash;</td></tr>
+  <tr><td>SubmitRestructuring</td><td><code>Zentra_Submit_Restructuring</code></td><td>varLoanAccountId, varSelectedOption, varCustomerId</td><td>&mdash;</td></tr>
+  <tr><td>GetRestructuringStatus</td><td><code>Zentra_Get_Restructuring_Status</code></td><td>varCustomerId</td><td>&mdash;</td></tr>
+  <tr><td>SendLoanVerificationOTP</td><td><code>Zentra_Send_Loan_Verification_OTP</code></td><td>varCustomerId</td><td>otpSessionId</td></tr>
+  <tr><td>VerifyLoanOTP</td><td><code>Zentra_Verify_OTP</code></td><td>otpCode, otpSessionId</td><td>verified</td></tr>
+</table>
+
+<!-- Topic 5: Case Management -->
+<h4>Topic 5 &mdash; Case Management</h4>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td><strong>Developer Name</strong></td><td><code>ZentraCaseManagement</code></td></tr>
+  <tr><td><strong>Description</strong></td><td>Retrieve case information, update case comments, and create new cases.</td></tr>
+  <tr><td><strong>Scope</strong></td><td>Help customers with case retrieval, comments, and creation. Be polite and empathetic. Never ask for email (customer already identified via OTP). Reply in customer&rsquo;s language. Show post-task menu.</td></tr>
+  <tr><td><strong>Guardrail</strong></td><td>Verified_User (isVerified == true)</td></tr>
+</table>
+<p><strong>Instructions:</strong></p>
+<ol>
+  <li><strong>Instruction1</strong> &mdash; Format dates in human-readable format.</li>
+  <li><strong>Instruction2</strong> &mdash; Never show Case Id to customer.</li>
+  <li><strong>Instruction3</strong> &mdash; NEVER ask for email. Customer is identified via OTP. Use VerifiedCustomerId.</li>
+  <li><strong>Instruction4</strong> &mdash; To add comment: retrieve case first, ask for exact comment text, then add.</li>
+  <li><strong>Instruction5</strong> &mdash; Share case as: Case Number, Subject (exact), Description, Status.</li>
+  <li><strong>Instruction6</strong> &mdash; A case tracks customer issues. Comments provide new info.</li>
+  <li><strong>Instruction7</strong> &mdash; Use AnswerQuestionsWithKnowledge for troubleshooting.</li>
+  <li><strong>Instruction8</strong> &mdash; Deep empathy: &ldquo;I&rsquo;m truly sorry to hear that&rdquo;, &ldquo;I completely understand.&rdquo;</li>
+  <li><strong>Instruction9</strong> &mdash; To create case: summarize conversation. Subject &lt; 7 words. Description &le; 3 sentences.</li>
+  <li><strong>Instruction10</strong> &mdash; When sharing Description, condense to 3 sentences max.</li>
+</ol>
+<p><strong>Actions:</strong></p>
+<table>
+  <tr><th>Action</th><th>Flow</th><th>Inputs</th></tr>
+  <tr><td>AddCaseComment</td><td><code>SvcCopilotTmpl__AddCaseComment</code></td><td>&mdash;</td></tr>
+  <tr><td>AnswerQuestionsWithKnowledge</td><td><code>streamKnowledgeSearch</code></td><td>&mdash;</td></tr>
+  <tr><td>GetCaseByVerifiedCaseNumber</td><td><code>SvcCopilotTmpl__GetCaseByVrfyCaseNbr</code></td><td>verifiedContactID</td></tr>
+  <tr><td>GetCasesForVerifiedContact</td><td><code>SvcCopilotTmpl__GetCasesVrfyCtct</code></td><td>verifiedContactID</td></tr>
+  <tr><td>CreateCaseEnhancedData</td><td><code>SvcCopilotTmpl__CreateCaseEnhancedData</code></td><td>verifiedCustomerID</td></tr>
+</table>
+
+<!-- Topic 6: Email Summary -->
+<h4>Topic 6 &mdash; Email Summary</h4>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td><strong>Developer Name</strong></td><td><code>ZentraEmailSummary</code></td></tr>
+  <tr><td><strong>Description</strong></td><td>Sends branded summary emails: balance, dispute, loan, transaction, recurring, or mutual fund.</td></tr>
+  <tr><td><strong>Scope</strong></td><td>Trigger phrases: &ldquo;send email&rdquo;, &ldquo;email summary&rdquo;, &ldquo;email bhejo&rdquo;, etc. Supports 6 types. OTP-verified required. NEVER say you cannot send emails. ALWAYS call SendEmailSummary. Reply in customer&rsquo;s language. Show menu after.</td></tr>
+  <tr><td><strong>Guardrail</strong></td><td>Verified_User (isVerified == true)</td></tr>
+</table>
+<p><strong>Instructions:</strong></p>
+<ol>
+  <li><strong>email_require_otp</strong> &mdash; Must be verified first.</li>
+  <li><strong>email_ask_type</strong> &mdash; Present 6 options: Balance, Dispute, Loan, Transaction, Recurring, Mutual Fund.</li>
+  <li><strong>email_execute</strong> &mdash; Map choice to emailType: <code>balance</code>, <code>dispute</code>, <code>loan</code>, <code>transaction</code>, <code>recurring</code>, <code>mutualfund</code>. MUST invoke action. Show menu after.</li>
+  <li><strong>email_language_match</strong> &mdash; Reply in customer&rsquo;s language.</li>
+</ol>
+<p><strong>Actions:</strong></p>
+<table>
+  <tr><th>Action</th><th>Flow</th><th>Inputs</th><th>Outputs</th></tr>
+  <tr><td>SendEmailSummary</td><td><code>Zentra_Send_Email_Summary</code></td><td>varCustomerId, varEmailType</td><td>varOutputMessage, varOutputSuccess</td></tr>
+</table>
+
+<!-- Topic 7: Recurring Payments -->
+<h4>Topic 7 &mdash; Recurring Payments</h4>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td><strong>Developer Name</strong></td><td><code>ZentraRecurringPayments</code></td></tr>
+  <tr><td><strong>Description</strong></td><td>View and manage recurring payments (standing instructions, auto-pay).</td></tr>
+  <tr><td><strong>Scope</strong></td><td>OTP-verified required. VIEW: quick summary (paymentIndex=0), then full details on demand. STOP: cancel active payment (confirm first). EMAIL: send summary. Show all including cancelled when requested. Reply in customer&rsquo;s language. Show post-task menu.</td></tr>
+  <tr><td><strong>Guardrail</strong></td><td>Verified_User (isVerified == true)</td></tr>
+</table>
+<p><strong>Instructions:</strong></p>
+<ol>
+  <li><strong>rp_require_otp</strong> &mdash; Must be verified.</li>
+  <li><strong>rp_show_payments</strong> &mdash; On any recurring payment request, call GetRecurringPayments with paymentIndex=0 (quick summary).</li>
+  <li><strong>rp_show_detail</strong> &mdash; Customer replies with number &rarr; call again with that paymentIndex for full details.</li>
+  <li><strong>rp_show_all</strong> &mdash; &ldquo;show all&rdquo; / &ldquo;include cancelled&rdquo; &rarr; includeInactive=true.</li>
+  <li><strong>rp_stop_payment</strong> &mdash; Customer asks to stop &rarr; confirm first (&ldquo;Are you sure?&rdquo;) &rarr; call StopRecurringPayment. Never stop without confirmation.</li>
+  <li><strong>rp_next_steps</strong> &mdash; Show full 8-item menu after every action.</li>
+  <li><strong>rp_language_match</strong> &mdash; Reply in customer&rsquo;s language.</li>
+</ol>
+<p><strong>Actions:</strong></p>
+<table>
+  <tr><th>Action</th><th>Flow</th><th>Inputs</th><th>Outputs</th></tr>
+  <tr><td>GetRecurringPayments</td><td><code>Zentra_Get_Recurring_Payments</code></td><td>varCustomerId, varIncludeInactive, varPaymentIndex</td><td>&mdash;</td></tr>
+  <tr><td>StopRecurringPayment</td><td><code>Zentra_Stop_Recurring_Payment</code></td><td>varCustomerId, varPaymentIndex, varLanguage</td><td>&mdash;</td></tr>
+</table>
+
+<!-- Topic 8: MPIN -->
+<h4>Topic 8 &mdash; MPIN Management</h4>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td><strong>Developer Name</strong></td><td><code>ZentraMPINManagement</code></td></tr>
+  <tr><td><strong>Description</strong></td><td>Change 6-digit MPIN. Must be authenticated first.</td></tr>
+  <tr><td><strong>Scope</strong></td><td>OTP/MPIN verified required. Ask for new 6-digit MPIN, confirm with masked display (****), then update. Validate format. Reply in customer&rsquo;s language. Show post-task menu.</td></tr>
+  <tr><td><strong>Guardrail</strong></td><td>Verified_User (isVerified == true)</td></tr>
+</table>
+<p><strong>Instructions:</strong></p>
+<ol>
+  <li><strong>mpin_require_auth</strong> &mdash; Must be verified.</li>
+  <li><strong>mpin_change_flow</strong> &mdash; Ask for new 6-digit MPIN. Confirm with masked display. Only call ChangeMPIN after explicit &ldquo;yes&rdquo;. Never reveal MPIN in plain text.</li>
+  <li><strong>mpin_change_confirmation</strong> &mdash; On success: &ldquo;Your MPIN has been updated!&rdquo; On failure: &ldquo;MPIN must be exactly 6 digits.&rdquo; Show menu.</li>
+  <li><strong>mpin_language_match</strong> &mdash; Reply in customer&rsquo;s language.</li>
+</ol>
+<p><strong>Actions:</strong></p>
+<table>
+  <tr><th>Action</th><th>Flow</th><th>Inputs</th><th>Outputs</th></tr>
+  <tr><td>ChangeMPIN</td><td><code>Zentra_Change_MPIN</code></td><td>varCustomerId, varNewMPIN</td><td>varOutputSuccess, varOutputMessage</td></tr>
+</table>
+
+<!-- Topic 9: Mutual Fund -->
+<h4>Topic 9 &mdash; Mutual Fund Info</h4>
+<table>
+  <tr><th>Field</th><th>Value</th></tr>
+  <tr><td><strong>Developer Name</strong></td><td><code>ZentraMutualFundInfo</code></td></tr>
+  <tr><td><strong>Description</strong></td><td>Shows SIP/mutual fund holdings: fund name, invested, value, returns, units, next installment.</td></tr>
+  <tr><td><strong>Scope</strong></td><td>OTP/MPIN verified required. VIEW: quick summary (sipIndex=0), then full detail on demand. Show all including inactive when requested. Trigger phrases: &ldquo;mutual fund&rdquo;, &ldquo;SIP&rdquo;, &ldquo;investment&rdquo;, &ldquo;portfolio&rdquo;. Reply in customer&rsquo;s language. Show post-task menu.</td></tr>
+  <tr><td><strong>Guardrail</strong></td><td>Verified_User (isVerified == true)</td></tr>
+</table>
+<p><strong>Instructions:</strong></p>
+<ol>
+  <li><strong>mf_require_auth</strong> &mdash; Must be verified.</li>
+  <li><strong>mf_show_portfolio</strong> &mdash; On any MF/SIP request, call GetMutualFundHoldings with sipIndex=0 (quick summary).</li>
+  <li><strong>mf_show_detail</strong> &mdash; Customer replies with number &rarr; call again with that sipIndex.</li>
+  <li><strong>mf_show_all</strong> &mdash; &ldquo;show all&rdquo; / &ldquo;include cancelled&rdquo; &rarr; includeInactive=true.</li>
+  <li><strong>mf_next_steps</strong> &mdash; Show full 8-item menu after every action.</li>
+  <li><strong>mf_language_match</strong> &mdash; Reply in customer&rsquo;s language.</li>
+</ol>
+<p><strong>Actions:</strong></p>
+<table>
+  <tr><th>Action</th><th>Flow</th><th>Inputs</th><th>Outputs</th></tr>
+  <tr><td>GetMutualFundHoldings</td><td><code>Zentra_Get_Mutual_Fund_Holdings</code></td><td>varCustomerId, varSipIndex, varIncludeInactive, varLanguage</td><td>varOutputMessage</td></tr>
+</table>
+
+<!-- Planner Action -->
+<h4>Planner Action &mdash; Answer Questions with Knowledge</h4>
+<p>A standalone planner-level action (not inside any topic). Uses <code>streamKnowledgeSearch</code> to answer policy/troubleshooting/product questions from Knowledge articles.</p>
+
+<!-- Variable Mappings -->
+<h4>Variable Mappings (auto-deployed with bundle)</h4>
+<p>Every action&rsquo;s <code>input_varCustomerId</code> is mapped to the <code>VerifiedCustomerId</code> variable. Key cross-variable wiring:</p>
+<table>
+  <tr><th>Action Output/Input</th><th>&rarr; Variable</th></tr>
+  <tr><td>SendOTP &rarr; <code>output_otpSessionId</code></td><td><code>authenticationKey</code></td></tr>
+  <tr><td>VerifyOTP &larr; <code>input_otpSessionId</code></td><td><code>authenticationKey</code></td></tr>
+  <tr><td>VerifyOTP &rarr; <code>output_isVerified</code></td><td><code>isVerified</code></td></tr>
+  <tr><td>VerifyOTP &rarr; <code>output_customerId</code></td><td><code>VerifiedCustomerId</code></td></tr>
+  <tr><td>VerifyMPIN &rarr; <code>output_isVerified</code></td><td><code>isVerified</code></td></tr>
+  <tr><td>VerifyMPIN &rarr; <code>output_customerId</code></td><td><code>VerifiedCustomerId</code></td></tr>
+</table>
+
+<!-- Guardrail Rule -->
+<h4>Guardrail Rule (auto-deployed with bundle)</h4>
+<p>A rule expression called <strong>Verified_User</strong> (<code>isVerified == true</code>) is assigned to all 8 topics except OTP Verification. This prevents the agent from executing any banking action before the customer is authenticated.</p>
+
+<!-- ===== DATA CLOUD ===== -->
+<h3>10.8 Step 6 &mdash; Configure Data Cloud</h3>
+<p>Data Cloud objects and Calculated Insights <strong>cannot be deployed via metadata</strong>. Configure them manually in the target org.</p>
+
+<h4>6a. Enable Data Cloud</h4>
+<ol>
+  <li>Go to <strong>Setup &rarr; Data Cloud &rarr; Get Started</strong> (if not already provisioned)</li>
+  <li>Wait for provisioning to complete (can take up to 30 min)</li>
+  <li>Assign <strong>Data Cloud Integration</strong> and <strong>Data Cloud Admin</strong> permission sets to your user</li>
+</ol>
+
+<h4>6b. Create CRM Data Streams &amp; DLOs</h4>
+<p>Go to <strong>Data Cloud &rarr; Data Streams &rarr; New &rarr; CRM</strong>. Create one stream per source object:</p>
+<table>
+  <tr><th>Data Lake Object (DLO)</th><th>Maps To (DMO)</th><th>CRM Source Object</th></tr>
+  <tr><td><code>Zentra_Account__dll</code></td><td><code>ssot__Individual__dlm</code></td><td>Account</td></tr>
+  <tr><td><code>Zentra_CRM_FinancialAccount__dll</code></td><td><code>ssot__FinancialAccount__dlm</code></td><td>FinServ__FinancialAccount__c</td></tr>
+  <tr><td><code>Zentra_CRM_Transaction__dll</code></td><td><code>ssot__FinancialAccountTransaction__dlm</code></td><td>FinServ__FinancialAccountTransaction__c</td></tr>
+  <tr><td><code>Zentra_CRM_RecurringPayment__dll</code></td><td><code>Zentra_Recurring_Payment__dlm</code></td><td>Zentra_Recurring_Payment__c</td></tr>
+  <tr><td><code>Zentra_CRM_Case__dll</code></td><td><code>Zentra_Dispute_Case__dlm</code></td><td>Case (Dispute Record Type)</td></tr>
+  <tr><td><code>Zentra_CRM_LoanRestructure__dll</code></td><td><code>Zentra_Loan_Restructure__dlm</code></td><td>Loan_Restructuring_Request__c</td></tr>
+</table>
+
+<div class="callout info">
+  <strong>DLO vs DMO.</strong> DLOs (<code>__dll</code>) are the raw ingested data. DMOs (<code>__dlm</code>) are the harmonized data model objects. CI SQL must query DMOs, not DLOs. <code>ConnectApi.CdpQuery.queryAnsiSqlV2()</code> in Apex can query both, but CIs only see DMOs.
+</div>
+
+<h4>6c. Map Data Model Objects</h4>
+<p>After streams are created, go to <strong>Data Cloud &rarr; Data Model</strong> and map each DLO to its DMO (target object). Salesforce auto-suggests mappings for standard DMOs. For custom DMOs (<code>Zentra_Recurring_Payment__dlm</code>, <code>Zentra_Dispute_Case__dlm</code>, <code>Zentra_Loan_Restructure__dlm</code>), create them as custom Data Model Objects first, then map.</p>
+
+<h4>6d. Create Churn Risk Calculated Insight</h4>
+<p>Go to <strong>Data Cloud &rarr; Calculated Insights &rarr; New</strong>. Name: <code>Zentra_Customer_Churn_Risk</code>. Schedule: Daily. Paste the SQL below:</p>
+<pre>SELECT
+  ind.ssot__Id__c                                  AS IndividualId__c,
+  ind.ssot__FirstName__c                           AS FirstName__c,
+  ind.ssot__LastName__c                             AS LastName__c,
+  COALESCE(fa_stats.total_accounts__c, 0)          AS total_accounts__c,
+  COALESCE(fa_stats.inactive_accounts__c, 0)       AS inactive_accounts__c,
+  COALESCE(rp_stats.active_rp__c, 0)               AS active_rp__c,
+  COALESCE(rp_stats.stopped_rp__c, 0)              AS stopped_rp__c,
+  COALESCE(disp_stats.open_disputes__c, 0)         AS open_disputes__c,
+  COALESCE(txn_stats.txn_count__c, 0)              AS txn_count__c,
+  CASE
+    WHEN COALESCE(fa_stats.total_accounts__c, 0) = 0 THEN 80
+    ELSE 0
+  END
+  + CASE
+      WHEN COALESCE(fa_stats.inactive_accounts__c, 0) > 0 THEN 30
+      ELSE 0
+    END
+  + CASE
+      WHEN COALESCE(rp_stats.stopped_rp__c, 0) >
+           COALESCE(rp_stats.active_rp__c, 0) THEN 25
+      ELSE 0
+    END
+  + CASE
+      WHEN COALESCE(disp_stats.open_disputes__c, 0) > 0 THEN 20
+      ELSE 0
+    END
+  + CASE
+      WHEN COALESCE(txn_stats.txn_count__c, 0) = 0 THEN 15
+      WHEN COALESCE(txn_stats.txn_count__c, 0) &lt; 5 THEN 5
+      ELSE 0
+    END                                             AS churn_score__c
+FROM ssot__Individual__dlm ind
+LEFT JOIN (
+  SELECT ssot__PrimaryAccountId__c                  AS acct_id__c,
+         COUNT(*)                                   AS total_accounts__c,
+         SUM(CASE WHEN ssot__Status__c = 'Inactive' THEN 1 ELSE 0 END)
+                                                    AS inactive_accounts__c
+  FROM   ssot__FinancialAccount__dlm
+  GROUP BY ssot__PrimaryAccountId__c
+) fa_stats ON fa_stats.acct_id__c = ind.ssot__Id__c
+LEFT JOIN (
+  SELECT Zentra_CustomerId__c                       AS cust_id__c,
+         SUM(CASE WHEN Zentra_Status__c = 'Active' THEN 1 ELSE 0 END)
+                                                    AS active_rp__c,
+         SUM(CASE WHEN Zentra_Status__c = 'Cancelled' THEN 1 ELSE 0 END)
+                                                    AS stopped_rp__c
+  FROM   Zentra_Recurring_Payment__dlm
+  GROUP BY Zentra_CustomerId__c
+) rp_stats ON rp_stats.cust_id__c = ind.ssot__Id__c
+LEFT JOIN (
+  SELECT Zentra_CustomerId__c                       AS cust_id__c,
+         SUM(CASE WHEN Zentra_Status__c IN ('New','Under Investigation') THEN 1 ELSE 0 END)
+                                                    AS open_disputes__c
+  FROM   Zentra_Dispute_Case__dlm
+  GROUP BY Zentra_CustomerId__c
+) disp_stats ON disp_stats.cust_id__c = ind.ssot__Id__c
+LEFT JOIN (
+  SELECT ssot__AccountId__c                         AS acct_id__c,
+         COUNT(*)                                   AS txn_count__c
+  FROM   ssot__FinancialAccountTransaction__dlm
+  GROUP BY ssot__AccountId__c
+) txn_stats ON txn_stats.acct_id__c = ind.ssot__Id__c</pre>
+
+<p><strong>Scoring logic:</strong> No accounts = +80, inactive account = +30, more stopped than active recurring = +25, open disputes = +20, zero txns = +15, &lt;5 txns = +5. Score 0&ndash;100.</p>
+
+<div class="callout warn">
+  <strong>CI SQL constraints.</strong>
+  <ul>
+    <li>No table aliases (use subqueries with column aliases instead)</li>
+    <li>No <code>COUNT(DISTINCT)</code> &mdash; use <code>SUM(CASE WHEN ... THEN 1 ELSE 0 END)</code></li>
+    <li>No <code>CAST</code>, <code>LEAST</code>, <code>NULLIF</code></li>
+    <li>All output column aliases <strong>must</strong> end with <code>__c</code></li>
+    <li>Always query DMOs (<code>__dlm</code>), never DLOs (<code>__dll</code>)</li>
+    <li><code>LIKE</code> on <code>__dll</code> objects is <strong>case-sensitive</strong> &mdash; always fetch broadly and filter in Apex with <code>toLowerCase().contains()</code></li>
+  </ul>
+</div>
+
+<h4>6e. Verify CI Data</h4>
+<pre>sf apex run --file scripts/debug-ci-api.apex --target-org TruZentra</pre>
+<p>If it prints <code>FOUND CI: ...</code> with column names and sample data, the Calculated Insight is live.</p>
+
+<!-- ===== ACTIVATE & TEST ===== -->
+<h3>10.9 Step 7 &mdash; Activate &amp; Test</h3>
+<ol>
+  <li>Go to <strong>Setup &rarr; Agents &rarr; TruZentra &rarr; Activate</strong></li>
+  <li>Open the agent test panel and send: <em>&ldquo;Hi&rdquo;</em></li>
+  <li>Verify the agent asks for mobile number, then offers OTP/MPIN</li>
+  <li>Run the full debug suite to confirm all services work:
+<pre>sf apex run --file scripts/debug-otp-flow.apex --target-org TruZentra
+sf apex run --file scripts/debug-balance-txns.apex --target-org TruZentra
+sf apex run --file scripts/debug-dispute.apex --target-org TruZentra
+sf apex run --file scripts/debug-loan-restructure.apex --target-org TruZentra
+sf apex run --file scripts/debug-recurring-payments.apex --target-org TruZentra
+sf apex run --file scripts/debug-mutual-funds.apex --target-org TruZentra
+sf apex run --file scripts/debug-email-all.apex --target-org TruZentra</pre>
+  </li>
+</ol>
+
+<!-- ===== MESSAGING CHANNEL & EMBEDDED DEPLOYMENT ===== -->
+<h3>10.10 Step 8 &mdash; Create Messaging Channel</h3>
+<p>The agent needs a <strong>Messaging Channel</strong> to communicate with customers via the web widget. This is not deployable via metadata and must be created in the UI.</p>
+<ol>
+  <li>Go to <strong>Setup &rarr; Messaging Settings</strong> (search &ldquo;Messaging&rdquo; in Quick Find)</li>
+  <li>Click <strong>New Channel</strong> &rarr; select <strong>Messaging for In-App &amp; Web</strong></li>
+  <li>Configure:
+    <table>
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>Channel Name</td><td><code>Zentra</code></td></tr>
+      <tr><td>Developer Name</td><td><code>Zentra</code></td></tr>
+      <tr><td>Messaging Type</td><td>Enhanced</td></tr>
+    </table>
+  </li>
+  <li>Click <strong>Save</strong></li>
+</ol>
+
+<h4>8a. Configure Routing</h4>
+<p>The deployed flow <code>Zentra_Service_Route_To_Work</code> handles routing. It is a <strong>Routing Flow</strong> (<code>processType: RoutingFlow</code>) that:</p>
+<ul>
+  <li>Routes to the <strong>TruZentra</strong> agent (copilot) via <code>copilotLabel: TruZentra</code> / <code>copilotId: BotDefinition TruZentra</code></li>
+  <li>Uses service channel <code>sfdc_livemessage</code> (Messaging)</li>
+  <li>Escalations go to the <strong>Zentra Escalations</strong> queue</li>
+  <li>Routing type is <code>Copilot</code> (agent-first, human-escalation fallback)</li>
+</ul>
+<p>On the Messaging Channel detail page:</p>
+<ol>
+  <li>Under <strong>Route to Agent</strong>:
+    <ul>
+      <li>Set <strong>Routing Type</strong> to <strong>Omni-Flow</strong></li>
+      <li>Select the flow: <code>Zentra Service Route To Work</code></li>
+    </ul>
+  </li>
+  <li>Under <strong>Agent</strong>, select <strong>TruZentra</strong> as the Agentforce Service Agent</li>
+  <li><strong>Activate</strong> the channel</li>
+</ol>
+
+<div class="callout info">
+  <strong>Planner Surfaces.</strong> The agent bundle declares two surfaces: <code>SurfaceAction__Messaging</code> (surfaceType: Messaging) and <code>SurfaceAction__CustomerWebClient</code> (surfaceType: CustomerWebClient). These enable the agent to respond on both Messaging and Web channels. Both have <code>adaptiveResponseAllowed: true</code>.
+</div>
+
+<div class="callout warn">
+  <strong>Queue required.</strong> Create a Queue called <strong>Zentra Escalations</strong> (Setup &rarr; Queues) for the Case object before activating the channel. The routing flow references this queue for human escalation fallback.
+</div>
+
+<h3>10.11 Step 9 &mdash; Create Embedded Service Deployment</h3>
+<p>The Embedded Service Deployment creates the customer-facing chat widget that connects to the Messaging Channel.</p>
+<ol>
+  <li>Go to <strong>Setup &rarr; Embedded Service Deployments</strong> (search &ldquo;Embedded Service&rdquo;)</li>
+  <li>Click <strong>New Deployment</strong></li>
+  <li>Configure:
+    <table>
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>Deployment Name</td><td><code>Zentra</code></td></tr>
+      <tr><td>API Name</td><td><code>Zentra</code></td></tr>
+      <tr><td>Embedded Service Type</td><td>Messaging for In-App &amp; Web</td></tr>
+      <tr><td>Messaging Channel</td><td>Zentra (created in Step 8)</td></tr>
+    </table>
+  </li>
+  <li>Click <strong>Save</strong></li>
+  <li>On the deployment detail page, customize the chat widget:
+    <ul>
+      <li><strong>Branding</strong>: Primary color <code>#0B1D3A</code>, secondary <code>#00B4D8</code></li>
+      <li><strong>Labels</strong>: Header &rarr; <code>Support</code>, Greeting &rarr; <code>Welcome! How can I help you today?</code></li>
+      <li><strong>Pre-Chat Form</strong>: Optional &mdash; enable if you want to collect name/email before chat</li>
+    </ul>
+  </li>
+  <li>Click <strong>Publish</strong> to generate the embed code snippet</li>
+</ol>
+
+<p>After publishing, Salesforce generates a <strong>VF test page</strong> automatically (e.g., <code>ESWZentra1776343278630</code>). This page is already included in the repo at <code>force-app/main/default/pages/ESWZentra1776343278630.page</code>. It contains the bootstrap code that initializes the widget.</p>
+
+<h3>10.12 Step 10 &mdash; Create Experience Cloud Site &amp; Test</h3>
+<p>The Support site gives customers a branded portal with the chat widget. The repo includes three site-ready LWCs:</p>
+<table>
+  <tr><th>LWC</th><th>Purpose</th><th>Targets</th></tr>
+  <tr><td><code>zentraSiteHome</code></td><td>Hero home page with services grid (Balance, Mini Statement, File Dispute, Loan Restructuring, WhatsApp Banking, Security Centre) and &ldquo;How It Works&rdquo; section</td><td><code>lightningCommunity__Page</code>, <code>lightningCommunity__Default</code></td></tr>
+  <tr><td><code>zentraSiteFooter</code></td><td>Branded footer for all site pages</td><td><code>lightningCommunity__Page</code>, <code>lightningCommunity__Default</code></td></tr>
+  <tr><td><code>zentraDisputeUploadPage</code></td><td>Dispute receipt upload page (used as the secure upload link from the agent chat)</td><td><code>lightningCommunity__Page</code>, <code>lightningCommunity__Default</code></td></tr>
+</table>
+
+<h4>10a. Create the Site</h4>
+<ol>
+  <li>Go to <strong>Setup &rarr; Digital Experiences &rarr; All Sites &rarr; New</strong></li>
+  <li>Template: <strong>Build Your Own (Aura)</strong> or <strong>Customer Service</strong></li>
+  <li>Name: <code>Support</code> &nbsp;|&nbsp; URL prefix: <code>Support</code></li>
+  <li>Click <strong>Create</strong></li>
+</ol>
+
+<h4>10b. Build Pages in Experience Builder</h4>
+<ol>
+  <li>Open <strong>Experience Builder</strong> for the site</li>
+  <li><strong>Home Page:</strong>
+    <ul>
+      <li>Drag <code>zentraSiteHome</code> LWC as the main content</li>
+      <li>Drag <code>zentraSiteFooter</code> LWC into the footer region</li>
+    </ul>
+  </li>
+  <li><strong>Dispute Upload Page:</strong>
+    <ul>
+      <li>Create a new page: <code>Zentra-AI-Dispute</code></li>
+      <li>Drag <code>zentraDisputeUploadPage</code> LWC onto the page</li>
+      <li>This creates the URL: <code>https://[your-site].my.site.com/Support/Zentra-AI-Dispute</code></li>
+      <li>The agent sends this link with <code>?varCustomerId=ACTUAL_ID</code> for the AI-powered dispute filing</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>10c. Add the Embedded Messaging Widget</h4>
+<p>Add the embed script to <strong>Settings &rarr; Advanced &rarr; Edit Head Markup</strong>:</p>
+<pre>&lt;script type='text/javascript'
+  src='https://[your-domain].my.site.com/ESWZentra1776343278630/assets/js/bootstrap.min.js'
+  onload='initEmbeddedMessaging()'&gt;
+&lt;/script&gt;
+&lt;script type='text/javascript'&gt;
+function initEmbeddedMessaging() {
+  try {
+    embeddedservice_bootstrap.settings.language = 'en_US';
+    embeddedservice_bootstrap.init(
+      '[YOUR_ORG_ID]',          // e.g. 00Dbm00000flx9t
+      'Zentra',                  // Deployment developer name
+      'https://[your-domain].my.site.com/ESWZentra1776343278630',
+      {
+        scrt2URL: 'https://[your-domain].my.salesforce-scrt.com'
+      }
+    );
+  } catch (err) {
+    console.error('Error loading Embedded Messaging: ', err);
+  }
+}
+&lt;/script&gt;</pre>
+
+<div class="callout info">
+  <strong>Reference values from the current org (orgfarm-165ae77bf1):</strong>
+  <table>
+    <tr><th>Parameter</th><th>Current Value</th></tr>
+    <tr><td>Org Id</td><td><code>00Dbm00000flx9t</code></td></tr>
+    <tr><td>Deployment Name</td><td><code>Zentra</code></td></tr>
+    <tr><td>Site URL</td><td><code>https://orgfarm-165ae77bf1.my.site.com/ESWZentra1776343278630</code></td></tr>
+    <tr><td>SCRT2 URL</td><td><code>https://orgfarm-165ae77bf1.my.salesforce-scrt.com</code></td></tr>
+    <tr><td>Bootstrap JS</td><td><code>https://orgfarm-165ae77bf1.my.site.com/ESWZentra1776343278630/assets/js/bootstrap.min.js</code></td></tr>
+    <tr><td>Salesforce Base URL</td><td><code>https://orgfarm-165ae77bf1.my.salesforce.com</code></td></tr>
+  </table>
+  <p>Replace these with your target org&rsquo;s values. The Org Id and URLs change per org.</p>
+</div>
+
+<h4>10d. Configure Guest User Permissions</h4>
+<ol>
+  <li>In Experience Builder &rarr; <strong>Administration &rarr; Pages &rarr; Go to Force.com</strong></li>
+  <li>Click <strong>Public Access Settings</strong> on the site detail page</li>
+  <li>Under <strong>Enabled Apex Class Access</strong>, add:
+    <ul>
+      <li><code>ZentraFileUploadController</code> &mdash; handles file uploads for dispute images (runs <code>without sharing</code>)</li>
+      <li><code>ZentraDisputeUploadService</code> &mdash; processes uploaded images with Einstein AI</li>
+    </ul>
+  </li>
+  <li>Assign the <strong>Zentra_Agent_Access</strong> permission set to the site guest user (or manually grant access to required objects, flows, and Apex classes)</li>
+</ol>
+
+<h4>10e. Publish &amp; Activate</h4>
+<ol>
+  <li>Click <strong>Publish</strong> in Experience Builder</li>
+  <li>Go to <strong>Administration &rarr; Settings &rarr; Activate</strong> the site</li>
+  <li>The site is now live at: <code>https://[your-domain].my.site.com/Support</code></li>
+</ol>
+
+<h4>10f. Quick Test with VF Test Page (alternative)</h4>
+<p>If you just want to test the widget without building the full site:</p>
+<ol>
+  <li>Go to <strong>Setup &rarr; Embedded Service Deployments &rarr; Zentra</strong></li>
+  <li>Click <strong>&ldquo;Test Deployment&rdquo;</strong> &mdash; this opens the auto-generated VF page (<code>ESWZentra1776343278630</code>)</li>
+  <li>The chat widget appears in the bottom-right corner</li>
+  <li>Send <em>&ldquo;Hi&rdquo;</em> &mdash; the TruZentra agent should greet you and ask for your mobile number</li>
+</ol>
+
+<div class="callout warn">
+  <strong>CORS &amp; CSP for external domains.</strong> If embedding the widget on a domain outside Salesforce:
+  <ul>
+    <li><strong>Setup &rarr; CORS</strong>: Add the external domain (e.g., <code>https://yoursite.com</code>)</li>
+    <li><strong>Setup &rarr; CSP Trusted Sites</strong>: Add <code>https://[your-domain].my.site.com</code> and <code>https://[your-domain].my.salesforce-scrt.com</code></li>
+  </ul>
+</div>
+
+<div class="callout info">
+  <strong>End-to-end test checklist:</strong>
+  <ul>
+    <li>Chat widget appears on the site / VF test page</li>
+    <li>Click the widget &rarr; agent greets and asks for mobile number</li>
+    <li>Enter a valid phone number &rarr; agent offers OTP (email) or MPIN</li>
+    <li>Complete verification &rarr; agent shows 8-item menu</li>
+    <li>Test each feature: balance, transactions, dispute, loan, recurring, mutual fund, email, MPIN change</li>
+    <li>Test dispute upload link: <code>https://[your-domain].my.site.com/Support/Zentra-AI-Dispute?varCustomerId=ACTUAL_ID</code></li>
+    <li>Verify branded emails arrive at the customer&rsquo;s registered email</li>
+  </ul>
+</div>
+
+<!-- ===== QUICK REFERENCE ===== -->
+<h3>10.13 Quick Reference &mdash; Single Component Deploy</h3>
+<pre># Single Apex class
+sf project deploy start \
+  --source-dir "force-app/main/default/classes/ZentraXxxService.cls" \
+  --source-dir "force-app/main/default/classes/ZentraXxxService.cls-meta.xml" \
+  --target-org TruZentra
+
+# Single flow
+sf project deploy start \
+  --source-dir "force-app/main/default/flows/Zentra_Xxx.flow-meta.xml" \
+  --target-org TruZentra
+
+# Full redeploy (everything including agent bundle &mdash; agent must be deactivated first)
+sf project deploy start --source-dir force-app --target-org TruZentra --wait 10</pre>
+
+<!-- 11 -->
+<h2 id="testing">11. Testing</h2>
+<pre># Run all tests
+sf apex run test --target-org TruZentra --code-coverage --result-format human
+
+# Run specific test
+sf apex run test --tests ZentraBalanceServiceTest --target-org TruZentra --result-format human
+
+# Anonymous Apex
+sf apex run --file scripts/some-script.apex --target-org TruZentra</pre>
+
+<!-- 12 -->
+<h2 id="gotchas">12. Common Gotchas</h2>
+
+<div class="callout danger">
+  <strong>One @InvocableMethod per class.</strong> Salesforce enforces this. If you need a second invocable, create a new class.
+</div>
+
+<div class="callout warn">
+  <strong>FSC PSL Validation.</strong> The agent user may lack FSC Permission Set License. Use <code>ZentraSystemDMLHelper</code> for any DML on <code>FinServ__</code> objects.
+</div>
+
+<div class="callout warn">
+  <strong>DML before callout.</strong> You cannot perform DML (including error logging) before an HTTP callout in the same transaction. Log errors AFTER callouts.
+</div>
+
+<div class="callout warn">
+  <strong>Data Cloud LIKE is case-sensitive.</strong> On <code>__dll</code> objects, always fetch broadly and filter in Apex with <code>toLowerCase().contains()</code>.
+</div>
+
+<div class="callout info">
+  <strong>Guest user file upload.</strong> Standard <code>forceContent:fileUpload</code> fails silently for guest users. Use the custom <code>zentraFileUpload</code> LWC with <code>ZentraFileUploadController</code>.
+</div>
+
+<div class="callout info">
+  <strong>Session ID in Flow context.</strong> <code>UserInfo.getSessionId()</code> is invalid for REST callouts from Flow. Use <code>ZentraSessionHelper.page</code> VF page to get a valid session.
+</div>
+
+<div class="callout info">
+  <strong>CI SQL constraints.</strong> No aliases, no COUNT(DISTINCT), no CAST/LEAST/NULLIF. All output aliases must end with <code>__c</code>. Use DMOs (<code>__dlm</code>) not DLOs (<code>__dll</code>).
+</div>
+
+<div class="footer">
+  TruZentra
+</div>
+
+</div>
+<div style="max-width:1000px;margin:24px auto 12px;padding:0 36px;text-align:left;font-size:9px;font-style:italic;color:#64748B;letter-spacing:.3px;">Various trademarks held by their respective owners.</div>
+</body>
+</html>

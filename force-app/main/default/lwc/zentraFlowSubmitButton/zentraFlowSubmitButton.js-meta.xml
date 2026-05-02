@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Zentra Flow Submit Button</masterLabel>
+    <description>Branded submit button with animated progress bar for flow screens. Replaces the native flow footer.</description>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="buttonLabel" type="String" label="Button Label" default="Upload &amp; Analyze" description="Text shown on the submit button" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

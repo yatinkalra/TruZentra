@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TruZentra &mdash; Technical Design Document</title>
+<style>
+  :root{--brand:#0B1D3A;--accent:#00B4D8;--accent2:#16325C;--light:#F4F6F9;--white:#FFF;--text:#2B2B2B;--muted:#6B7280;--code-bg:#1E293B;--code-fg:#E2E8F0;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.06)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);background:var(--white);line-height:1.7;font-size:15px}
+  .page{max-width:1020px;margin:0 auto;padding:0 36px}
+  .cover{background:linear-gradient(135deg,var(--brand),var(--accent2));color:#fff;padding:80px 0 60px;text-align:center;margin-bottom:40px;position:relative;overflow:hidden}
+  .cover::before{content:'';position:absolute;top:-40%;right:-15%;width:500px;height:500px;background:radial-gradient(circle,rgba(0,180,216,.12),transparent 70%);border-radius:50%}
+  .cover::after{content:'';position:absolute;bottom:-30%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(144,224,239,.08),transparent 70%);border-radius:50%}
+  .cover *{position:relative;z-index:1}
+  .cover h1{font-size:3.5rem;font-weight:900;letter-spacing:-2px;margin-bottom:6px}
+  .cover h1 span{color:var(--accent)}
+  .cover .doc-type{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);padding:5px 16px;border-radius:8px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+  .cover .sub{font-size:1.2rem;font-weight:300;opacity:.85;margin-top:6px}
+  h2{font-size:1.45rem;font-weight:700;color:var(--brand);border-bottom:3px solid var(--accent);padding-bottom:6px;margin:40px 0 16px}
+  h3{font-size:1.1rem;font-weight:700;color:var(--accent2);margin:24px 0 8px}
+  h4{font-size:.95rem;font-weight:700;color:var(--brand);margin:16px 0 6px}
+  p,li{font-size:.93rem}
+  ul,ol{padding-left:24px}li{margin-bottom:4px}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.88rem}
+  th{background:var(--brand);color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+  td{padding:8px 14px;border-bottom:1px solid #E5E7EB;vertical-align:top}
+  tr:nth-child(even){background:var(--light)}
+  code{background:var(--light);padding:2px 6px;border-radius:4px;font-size:.85rem;font-family:'Cascadia Code','Fira Code',monospace}
+  pre{background:var(--code-bg);color:var(--code-fg);padding:16px 20px;border-radius:var(--radius);overflow-x:auto;font-size:.82rem;line-height:1.6;margin:12px 0}
+  .callout{background:#EFF6FF;border-left:4px solid var(--accent);border-radius:var(--radius);padding:16px 20px;margin:16px 0;font-size:.9rem}
+  .toc{background:var(--light);border-radius:var(--radius);padding:24px 32px;margin-bottom:32px}
+  .toc h3{margin-top:0;font-size:1.1rem}.toc ol{columns:2;column-gap:32px}.toc li{font-size:.9rem;margin-bottom:2px}
+  .toc a{color:var(--accent);text-decoration:none}.toc a:hover{text-decoration:underline}
+  .arch-box{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:16px 0}
+  .arch-card{background:var(--light);border-radius:var(--radius);padding:16px;border-left:4px solid var(--accent);box-shadow:var(--shadow)}
+  .arch-card h4{margin:0 0 4px;font-size:.9rem}.arch-card p{font-size:.82rem;color:var(--muted);margin:0}
+  .footer{text-align:center;padding:28px 0;border-top:1px solid #E5E7EB;color:var(--muted);font-size:.78rem;margin-top:40px}
+  @media print{.cover{padding:32px 0}h2{page-break-after:avoid}.page{padding:0 12px}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="doc-type">Technical Design</div>
+  <h1>Tru<span>Zentra</span></h1>
+  <div class="sub">Technical Design Document</div>
+</div>
+
+<div class="page">
+
+<!-- TOC -->
+<div class="toc">
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#arch">Architecture Overview</a></li>
+    <li><a href="#data">Data Model</a></li>
+    <li><a href="#auth">Authentication &amp; Security</a></li>
+    <li><a href="#agent">AI Agent &amp; Topics</a></li>
+    <li><a href="#services">Apex Services</a></li>
+    <li><a href="#flows">Flow Inventory</a></li>
+    <li><a href="#lwc">Lightning Web Components</a></li>
+    <li><a href="#email">Email Engine</a></li>
+    <li><a href="#datacloud">Data Cloud &amp; Calculated Insights</a></li>
+    <li><a href="#dashboards">Dashboards</a></li>
+    <li><a href="#error">Error Handling &amp; Logging</a></li>
+    <li><a href="#multilingual">Multilingual Support</a></li>
+    <li><a href="#handoff">Human-AI Handoff</a></li>
+    <li><a href="#deploy">Deployment &amp; CI/CD</a></li>
+  </ol>
+</div>
+
+<!-- 1. ARCHITECTURE -->
+<h2 id="arch">1. Architecture Overview</h2>
+<p>TruZentra is a multi-layer application built on Salesforce Financial Services Cloud (FSC) with Agentforce as the conversational AI engine.</p>
+
+<div class="arch-box">
+  <div class="arch-card"><h4>Presentation Layer</h4><p>Agentforce Chat UI, LWC Dashboards, Branded Emails, Experience Cloud Site</p></div>
+  <div class="arch-card"><h4>AI Agent Layer</h4><p>GenAI Planner Bundle, 10 Topics, 22+ Actions, Prompt Templates</p></div>
+  <div class="arch-card"><h4>Orchestration Layer</h4><p>22 Autolaunched Flows connecting Agent to Apex Services</p></div>
+  <div class="arch-card"><h4>Service Layer</h4><p>41+ Invocable Apex Classes with full unit test coverage</p></div>
+  <div class="arch-card"><h4>Data Layer</h4><p>FSC Standard Objects, Custom Objects, Custom Metadata Types</p></div>
+  <div class="arch-card"><h4>Data Cloud Layer</h4><p>Data Lake Objects, Data Model Objects, Calculated Insights</p></div>
+</div>
+
+<h3>Request Flow</h3>
+<pre>Customer Message
+  &rarr; Agentforce Planner (GenAI Planner Bundle)
+    &rarr; Topic Selection (e.g., LoanRestructuring)
+      &rarr; Action Invocation (Flow: Zentra_Simulate_Restructuring)
+        &rarr; Apex Service (ZentraLoanSimulateService)
+          &rarr; SOQL / DML on FSC Objects
+            &rarr; Response formatted &rarr; Agent displays to customer</pre>
+
+<!-- 2. DATA MODEL -->
+<h2 id="data">2. Data Model</h2>
+
+<h3>2.1 FSC Standard Objects (Extended)</h3>
+<table>
+  <tr><th>Object</th><th>Purpose</th><th>Custom Fields Added</th></tr>
+  <tr><td><code>Account</code></td><td>Customer record</td><td>MPIN__c, MPIN_Attempts__c, MPIN_Locked_Until__c</td></tr>
+  <tr><td><code>FinServ__FinancialAccount__c</code></td><td>Savings, Credit Card, Loan, Investment accounts</td><td>Current_EMI__c, Is_Restructured__c, Last_Restructure_Date__c, Account_Number_Masked__c, Credit_Limit__c</td></tr>
+  <tr><td><code>FinServ__FinancialAccountTransaction__c</code></td><td>Transaction records</td><td>Merchant_Name__c, Transaction_Type__c, Is_Disputed__c, Category__c</td></tr>
+  <tr><td><code>FinServ__FinancialHolding__c</code></td><td>SIP / Mutual Fund holdings</td><td>SIP_Amount__c, Frequency__c, SIP_Day__c, Status__c, Start_Date__c, Total_Invested__c, Current_Value__c, XIRR_Return__c, Installments_Completed__c, Next_Installment_Date__c</td></tr>
+  <tr><td><code>FinServ__Securities__c</code></td><td>Mutual Fund scheme master</td><td>(Standard FSC fields)</td></tr>
+  <tr><td><code>FinServ__Card__c</code></td><td>Credit/Debit card details</td><td>(Standard FSC fields)</td></tr>
+  <tr><td><code>Case</code></td><td>Disputes (Dispute Record Type)</td><td>Dispute_Amount__c, Dispute_Stage__c, Provisional_Credit_Issued__c, Provisional_Credit_Amount__c, Estimated_Resolution_Date__c</td></tr>
+</table>
+
+<h3>2.2 Custom Objects</h3>
+<table>
+  <tr><th>Object</th><th>Purpose</th><th>Key Fields</th></tr>
+  <tr><td><code>Zentra_OTP_Session__c</code></td><td>OTP session management</td><td>Customer__c, OTP_Code__c, Phone_Number__c, Status__c, Expires_At__c, Attempt_Count__c, Session_Token__c, Channel__c</td></tr>
+  <tr><td><code>Loan_Restructuring_Request__c</code></td><td>Loan restructuring records</td><td>Customer__c, Loan_Financial_Account__c, Selected_Option__c, Original_EMI__c, New_EMI__c, New_Tenure_Months__c, Monthly_Savings__c, Status__c</td></tr>
+  <tr><td><code>Zentra_Recurring_Payment__c</code></td><td>Standing instructions</td><td>Customer__c, Source_Account__c, Payee_Name__c, Amount__c, Frequency__c, Status__c, Category__c, Next_Payment_Date__c</td></tr>
+  <tr><td><code>Zentra_Error_Log__c</code></td><td>Centralised error tracking</td><td>Class_Name__c, Method_Name__c, Error_Message__c, Stack_Trace__c, Related_Record__c</td></tr>
+  <tr><td><code>Zentra_Email_Log__c</code></td><td>Email audit trail</td><td>Customer__c, Email_Type__c, Recipient__c, Status__c, Subject__c</td></tr>
+</table>
+
+<h3>2.3 Custom Metadata Types</h3>
+<table>
+  <tr><th>CMDT</th><th>Purpose</th><th>Records</th></tr>
+  <tr><td><code>Zentra_Email_Config__mdt</code></td><td>Email template configuration (subject, heading, intro, brand colours, enable/disable)</td><td>Master, OTP, Balance_Summary, Transaction_Summary, Dispute_Confirmation, Dispute_Summary, Loan_Confirmation, Loan_Summary, Loan_Restructuring_OTP, Recurring_Payment_Summary, Recurring_Payment_Cancelled, Mutual_Fund_Summary, New_Account_Welcome, MPIN_Login</td></tr>
+  <tr><td><code>Zentra_AI_Config__mdt</code></td><td>AI configuration parameters</td><td>Default</td></tr>
+</table>
+
+<!-- 3. AUTHENTICATION -->
+<h2 id="auth">3. Authentication &amp; Security</h2>
+
+<h3>3.1 OTP Flow</h3>
+<ol>
+  <li>Customer provides mobile number</li>
+  <li><code>ZentraAccountLookupService</code> matches Account using phone variants (with/without +91 country code)</li>
+  <li><code>ZentraOTPService</code> generates 6-digit OTP, creates <code>Zentra_OTP_Session__c</code>, sends branded email</li>
+  <li>Customer submits OTP &rarr; <code>ZentraOTPVerifyService</code> validates, generates session token, returns <code>VerifiedCustomerId</code></li>
+</ol>
+
+<h3>3.2 MPIN Flow</h3>
+<ol>
+  <li>Customer provides mobile + 4-digit MPIN</li>
+  <li><code>ZentraMPINService</code> validates against <code>Account.MPIN__c</code></li>
+  <li>3-attempt lockout with 30-minute cooldown</li>
+  <li>On success: returns <code>VerifiedCustomerId</code>, sends MPIN login notification email</li>
+</ol>
+
+<h3>3.3 Security Controls</h3>
+<ul>
+  <li><strong>OTP Expiry:</strong> 5 minutes</li>
+  <li><strong>Max Attempts:</strong> 3 per session (OTP and MPIN)</li>
+  <li><strong>Lockout Duration:</strong> 30 minutes</li>
+  <li><strong>Session Tokens:</strong> UUID-based, single-use</li>
+  <li><strong>Loan OTP:</strong> Separate OTP flow for high-value actions (loan restructuring submission)</li>
+  <li><strong>Data Scoping:</strong> All queries filter by <code>VerifiedCustomerId</code> &mdash; enforced at agent variable level</li>
+</ul>
+
+<!-- 4. AI AGENT -->
+<h2 id="agent">4. AI Agent &amp; Topics</h2>
+
+<h3>4.1 GenAI Planner Bundle: TruZentra</h3>
+<p>The agent uses a single Planner Bundle with attribute mappings that auto-wire <code>VerifiedCustomerId</code> into every action. This ensures no action can execute without verified identity.</p>
+
+<h3>4.2 Agent Topics (10)</h3>
+<table>
+  <tr><th>Topic</th><th>Actions</th><th>Description</th></tr>
+  <tr><td>OTP Verification</td><td>Send OTP, Verify OTP, Verify MPIN</td><td>Dual-factor authentication gate</td></tr>
+  <tr><td>Zentra Balance</td><td>Check Balance, View Transactions</td><td>All-account balance and mini-statement</td></tr>
+  <tr><td>Dispute Management</td><td>Get Transactions, Raise Dispute, Get Dispute Status, Capture Document</td><td>One-message dispute filing with provisional credit and receipt OCR</td></tr>
+  <tr><td>Loan Restructuring</td><td>Get Loan Details, Simulate Restructuring, Submit Restructuring, Send Loan OTP, Get Restructuring Status</td><td>End-to-end loan restructuring with 90-day cooldown</td></tr>
+  <tr><td>Recurring Payments</td><td>Get Recurring Payments, Stop Recurring Payment</td><td>Standing instruction management</td></tr>
+  <tr><td>Mutual Fund Info</td><td>Get Mutual Fund Holdings</td><td>SIP portfolio view with fund-level details</td></tr>
+  <tr><td>Email Summary</td><td>Send Email Summary</td><td>6 types of branded email summaries</td></tr>
+  <tr><td>MPIN Management</td><td>Change MPIN</td><td>MPIN change with OTP verification</td></tr>
+  <tr><td>Case Management</td><td>Create Case, Get Cases, Get Case by Number</td><td>General case management</td></tr>
+  <tr><td>New Account</td><td>Request New Account</td><td>Prospect to customer pipeline</td></tr>
+</table>
+
+<h3>4.3 Agent Instructions</h3>
+<ul>
+  <li><strong>Verification-first:</strong> Every action requires <code>VerifiedCustomerId</code>. Agent redirects to OTP if not set.</li>
+  <li><strong>Language matching:</strong> Every topic instruction includes "reply in customer's language"</li>
+  <li><strong>Post-task menu:</strong> After every completed action, agent displays 8-option menu</li>
+  <li><strong>Culturally warm:</strong> Uses "ji", "please", "dhanyavaad" in all interactions</li>
+  <li><strong>90-day cooldown:</strong> Loan details check for cooldown warning &mdash; agent skips simulation if present</li>
+</ul>
+
+<!-- 5. APEX SERVICES -->
+<h2 id="services">5. Apex Services</h2>
+
+<h3>5.1 Service Inventory</h3>
+<table>
+  <tr><th>Service Class</th><th>Invocable Method</th><th>Description</th></tr>
+  <tr><td>ZentraAccountLookupService</td><td>Find Account By Phone</td><td>Flexible phone matching (with/without +91)</td></tr>
+  <tr><td>ZentraOTPService</td><td>Send OTP</td><td>Generate and email 6-digit OTP</td></tr>
+  <tr><td>ZentraOTPVerifyService</td><td>Verify OTP</td><td>Validate OTP, manage attempts, generate session token</td></tr>
+  <tr><td>ZentraBalanceService</td><td>Get Balance</td><td>All-account balance retrieval</td></tr>
+  <tr><td>ZentraTransactionService</td><td>Get Transactions</td><td>Transaction mini-statement</td></tr>
+  <tr><td>ZentraDisputeService</td><td>Raise Dispute</td><td>Fuzzy-match transaction, create Case, issue provisional credit</td></tr>
+  <tr><td>ZentraDisputeStatusService</td><td>Get Dispute Status</td><td>Latest dispute case status</td></tr>
+  <tr><td>ZentraDisputeUploadService</td><td>Process Upload</td><td>AI-powered receipt OCR and document analysis</td></tr>
+  <tr><td>ZentraDocumentCaptureService</td><td>Capture Document</td><td>Document capture and processing</td></tr>
+  <tr><td>ZentraLoanDetailsService</td><td>Get Loan Details</td><td>Loan details with restructuring history and cooldown check</td></tr>
+  <tr><td>ZentraLoanSimulateService</td><td>Simulate Restructuring</td><td>3-option EMI simulation with cooldown enforcement</td></tr>
+  <tr><td>ZentraLoanSubmitService</td><td>Submit Restructuring</td><td>Create request, update loan, schedule RM callback, send confirmation</td></tr>
+  <tr><td>ZentraRecurringPaymentService</td><td>Get Recurring Payments</td><td>Active standing instructions</td></tr>
+  <tr><td>ZentraStopRecurringPaymentService</td><td>Stop Payment</td><td>Cancel standing instruction with confirmation email</td></tr>
+  <tr><td>ZentraMutualFundService</td><td>Get Holdings</td><td>SIP portfolio with fund-level details</td></tr>
+  <tr><td>ZentraEmailService</td><td>(Utility)</td><td>Branded email engine with CMDT configuration</td></tr>
+  <tr><td>ZentraEmailSummaryService</td><td>Send Email Summary</td><td>6 email types routed to ZentraEmailService</td></tr>
+  <tr><td>ZentraNewAccountService</td><td>Request New Account</td><td>Create prospect case with RM callback</td></tr>
+  <tr><td>ZentraSetupCustomer</td><td>run()</td><td>Test data generation (Account, Contact, FA, Transactions, RP, SIPs)</td></tr>
+  <tr><td>ZentraErrorLogger</td><td>(Utility)</td><td>Centralised error logging to Zentra_Error_Log__c</td></tr>
+  <tr><td>ZentraRMDashboardController</td><td>(AuraEnabled)</td><td>TruZentraOps dashboard data provider</td></tr>
+  <tr><td>ZentraDataCloudController</td><td>(AuraEnabled)</td><td>Data Cloud 360 dashboard data provider</td></tr>
+  <tr><td>ZentraSystemDMLHelper</td><td>(Utility)</td><td>System-context DML to bypass FSC validation rules</td></tr>
+</table>
+
+<h3>5.2 Loan Restructuring Options</h3>
+<table>
+  <tr><th>Option</th><th>Description</th><th>Calculation</th></tr>
+  <tr><td>A</td><td>Extend tenure by 1 year (+12 months)</td><td>Recalculate EMI with extended tenure, same principal and rate</td></tr>
+  <tr><td>B</td><td>Extend tenure by 2 years (+24 months)</td><td>Recalculate EMI with extended tenure, same principal and rate</td></tr>
+  <tr><td>C</td><td>3-month moratorium (payment holiday)</td><td>Zero EMI for 3 months, interest accrues, recalculate after</td></tr>
+</table>
+
+<!-- 6. FLOWS -->
+<h2 id="flows">6. Flow Inventory (22 Flows)</h2>
+<table>
+  <tr><th>#</th><th>Flow API Name</th><th>Type</th><th>Purpose</th></tr>
+  <tr><td>1</td><td>Zentra_Send_OTP</td><td>Autolaunched</td><td>Account lookup + OTP generation and delivery</td></tr>
+  <tr><td>2</td><td>Zentra_Verify_OTP</td><td>Autolaunched</td><td>OTP code verification</td></tr>
+  <tr><td>3</td><td>Zentra_Verify_MPIN</td><td>Autolaunched</td><td>MPIN validation with lockout</td></tr>
+  <tr><td>4</td><td>Zentra_Change_MPIN</td><td>Autolaunched</td><td>MPIN change with OTP gate</td></tr>
+  <tr><td>5</td><td>Zentra_Check_Balance</td><td>Autolaunched</td><td>All-account balance check</td></tr>
+  <tr><td>6</td><td>Zentra_Get_Transactions</td><td>Autolaunched</td><td>Transaction mini-statement</td></tr>
+  <tr><td>7</td><td>Zentra_Raise_Dispute</td><td>Autolaunched</td><td>Dispute filing</td></tr>
+  <tr><td>8</td><td>Zentra_Get_Dispute_Status</td><td>Autolaunched</td><td>Dispute status check</td></tr>
+  <tr><td>9</td><td>Zentra_Dispute_Upload</td><td>Screen Flow</td><td>Receipt upload with AI OCR</td></tr>
+  <tr><td>10</td><td>Zentra_Capture_Document</td><td>Autolaunched</td><td>Document capture and AI analysis</td></tr>
+  <tr><td>11</td><td>Zentra_Get_Loan_Details</td><td>Autolaunched</td><td>Loan details retrieval</td></tr>
+  <tr><td>12</td><td>Zentra_Simulate_Restructuring</td><td>Autolaunched</td><td>Loan restructuring simulation</td></tr>
+  <tr><td>13</td><td>Zentra_Submit_Restructuring</td><td>Autolaunched</td><td>Loan restructuring submission</td></tr>
+  <tr><td>14</td><td>Zentra_Send_Loan_Verification_OTP</td><td>Autolaunched</td><td>Separate OTP for loan submission</td></tr>
+  <tr><td>15</td><td>Zentra_Get_Restructuring_Status</td><td>Autolaunched</td><td>Restructuring request status</td></tr>
+  <tr><td>16</td><td>Zentra_Get_Recurring_Payments</td><td>Autolaunched</td><td>Standing instructions list</td></tr>
+  <tr><td>17</td><td>Zentra_Stop_Recurring_Payment</td><td>Autolaunched</td><td>Cancel standing instruction</td></tr>
+  <tr><td>18</td><td>Zentra_Get_Mutual_Fund_Holdings</td><td>Autolaunched</td><td>SIP/MF portfolio retrieval</td></tr>
+  <tr><td>19</td><td>Zentra_Send_Email_Summary</td><td>Autolaunched</td><td>Route to email service</td></tr>
+  <tr><td>20</td><td>Zentra_Resend_Confirmation</td><td>Autolaunched</td><td>Resend confirmation emails</td></tr>
+  <tr><td>21</td><td>Zentra_Request_New_Account</td><td>Autolaunched</td><td>New account opening request</td></tr>
+  <tr><td>22</td><td>Zentra_Service_Route_To_Work</td><td>Autolaunched</td><td>Service routing for human handoff</td></tr>
+</table>
+
+<!-- 7. LWC -->
+<h2 id="lwc">7. Lightning Web Components (10)</h2>
+<table>
+  <tr><th>Component</th><th>Purpose</th></tr>
+  <tr><td>zentraRMDashboard</td><td>TruZentraOps Operations Console &mdash; Customer 360 with search, tabs, and data tables</td></tr>
+  <tr><td>zentraDataCloudDashboard</td><td>Data Cloud 360 Dashboard &mdash; Unified customer view from Data Cloud DMOs</td></tr>
+  <tr><td>zentraApproveAccount</td><td>Account approval component for New Account Opening cases</td></tr>
+  <tr><td>zentraApproveAccountAction</td><td>Quick Action wrapper for account approval</td></tr>
+  <tr><td>zentraDisputeResult</td><td>Dispute filing result display in screen flows</td></tr>
+  <tr><td>zentraDisputeUploadPage</td><td>Experience Cloud dispute upload page</td></tr>
+  <tr><td>zentraFileUpload</td><td>Custom file upload component (handles guest user context)</td></tr>
+  <tr><td>zentraFlowSubmitButton</td><td>Custom submit button for flow screens</td></tr>
+  <tr><td>zentraSiteHome</td><td>Experience Cloud home page</td></tr>
+  <tr><td>zentraSiteFooter</td><td>Experience Cloud footer</td></tr>
+</table>
+
+<!-- 8. EMAIL -->
+<h2 id="email">8. Email Engine</h2>
+<p>All emails are sent through <code>ZentraEmailService</code> which uses a CMDT-driven architecture:</p>
+<ul>
+  <li><strong>Master Record:</strong> Global branding (brand colour, accent, bank name)</li>
+  <li><strong>Per-Type Records:</strong> Override subject, heading, intro text, enable/disable toggle</li>
+  <li><strong>Branded HTML:</strong> Inline-styled responsive HTML with custom branding</li>
+  <li><strong>Org-Wide Email:</strong> Uses configured Org-Wide Email Address for sender identity</li>
+</ul>
+
+<h3>Email Types (14 Templates)</h3>
+<table>
+  <tr><th>CMDT Record</th><th>Trigger</th></tr>
+  <tr><td>OTP</td><td>OTP verification request</td></tr>
+  <tr><td>MPIN_Login</td><td>Successful MPIN login notification</td></tr>
+  <tr><td>Balance_Summary</td><td>Email summary request</td></tr>
+  <tr><td>Transaction_Summary</td><td>Email summary request</td></tr>
+  <tr><td>Dispute_Confirmation</td><td>Dispute successfully filed</td></tr>
+  <tr><td>Dispute_Summary</td><td>Email summary request</td></tr>
+  <tr><td>Loan_Confirmation</td><td>Loan restructuring submitted</td></tr>
+  <tr><td>Loan_Summary</td><td>Email summary request</td></tr>
+  <tr><td>Loan_Restructuring_OTP</td><td>OTP for loan submission</td></tr>
+  <tr><td>Recurring_Payment_Summary</td><td>Email summary request</td></tr>
+  <tr><td>Recurring_Payment_Cancelled</td><td>Standing instruction stopped</td></tr>
+  <tr><td>Mutual_Fund_Summary</td><td>Email summary request</td></tr>
+  <tr><td>New_Account_Welcome</td><td>New account approved</td></tr>
+  <tr><td>Master</td><td>Global branding defaults</td></tr>
+</table>
+
+<!-- 9. DATA CLOUD -->
+<h2 id="datacloud">9. Data Cloud &amp; Calculated Insights</h2>
+
+<h3>9.1 Data Lake Objects (DLOs)</h3>
+<table>
+  <tr><th>DLO</th><th>Maps To (DMO)</th><th>Source</th></tr>
+  <tr><td>Zentra_Account__dll</td><td>ssot__Individual__dlm</td><td>Account (CRM)</td></tr>
+  <tr><td>Zentra_CRM_FinancialAccount__dll</td><td>ssot__FinancialAccount__dlm</td><td>FinServ__FinancialAccount__c</td></tr>
+  <tr><td>Zentra_CRM_Transaction__dll</td><td>ssot__FinancialAccountTransaction__dlm</td><td>FinServ__FinancialAccountTransaction__c</td></tr>
+  <tr><td>Zentra_CRM_RecurringPayment__dll</td><td>Zentra_Recurring_Payment__dlm</td><td>Zentra_Recurring_Payment__c</td></tr>
+  <tr><td>Zentra_CRM_Case__dll</td><td>Zentra_Dispute_Case__dlm</td><td>Case (Dispute RT)</td></tr>
+  <tr><td>Zentra_CRM_LoanRestructure__dll</td><td>Zentra_Loan_Restructure__dlm</td><td>Loan_Restructuring_Request__c</td></tr>
+</table>
+
+<h3>9.2 Churn Risk Calculated Insight</h3>
+<p><code>Zentra_Customer_Churn_Risk</code> is a Calculated Insight that computes a real-time churn risk score (0&ndash;100) for every customer by analysing:</p>
+<ul>
+  <li>Account activity (active vs. inactive accounts)</li>
+  <li>Recurring payment health (stopped vs. active)</li>
+  <li>Open dispute count</li>
+  <li>Transaction frequency</li>
+</ul>
+<pre>Scoring Logic:
+  No accounts at all         &rarr; +80
+  Any inactive account       &rarr; +30
+  More stopped than active RP &rarr; +25
+  Any open dispute           &rarr; +20
+  Zero transactions          &rarr; +15
+  &lt; 5 transactions           &rarr; +5</pre>
+
+<!-- 10. DASHBOARDS -->
+<h2 id="dashboards">10. Dashboards</h2>
+
+<h3>10.1 TruZentraOps (zentraRMDashboard)</h3>
+<p>Customer 360 Operations Console for Relationship Managers:</p>
+<ul>
+  <li>Customer search by name, phone, or email</li>
+  <li>Profile sidebar with quick stats (total balance, liability, account count)</li>
+  <li>Tabbed interface: Financial Accounts, Transactions, Recurring Payments, Loans, Disputes, SIPs, Error Logs</li>
+  <li>Data tables with show-more/collapse and formatted currency</li>
+</ul>
+
+<h3>10.2 Data Cloud 360 (zentraDataCloudDashboard)</h3>
+<p>Unified customer view powered by Data Cloud:</p>
+<ul>
+  <li>Queries DLO objects for cross-platform data</li>
+  <li>Churn risk score display from Calculated Insights</li>
+  <li>Profile, accounts, transactions, recurring payments, disputes, loan requests</li>
+</ul>
+
+<!-- 11. ERROR HANDLING -->
+<h2 id="error">11. Error Handling &amp; Logging</h2>
+<p><code>ZentraErrorLogger</code> provides centralised error tracking:</p>
+<ul>
+  <li>Every Apex service wraps operations in try-catch and logs to <code>Zentra_Error_Log__c</code></li>
+  <li>Captures: Class Name, Method Name, Error Message, Stack Trace, Related Record Id</li>
+  <li>Visible on the TruZentraOps dashboard under "Error Logs" tab</li>
+  <li><code>ZentraErrorLoggerAction</code> exposes logging as a Flow-invocable action</li>
+</ul>
+
+<!-- 12. MULTILINGUAL -->
+<h2 id="multilingual">12. Multilingual Support</h2>
+<ul>
+  <li><strong>Languages:</strong> English, Hindi (Devanagari), Hinglish</li>
+  <li><strong>Detection:</strong> Agent auto-detects customer's language from input</li>
+  <li><strong>Response:</strong> Every topic instruction mandates matching the customer's language</li>
+  <li><strong>Cultural Nuance:</strong> Honorifics (ji), warm greetings, Indian currency format (&#8377;)</li>
+  <li><strong>Intent Recognition:</strong> Hindi/Hinglish intent keywords mapped in every topic (e.g., "EMI kam karo", "kisht badlo")</li>
+</ul>
+
+<!-- 13. HANDOFF -->
+<h2 id="handoff">13. Human-AI Handoff</h2>
+<ul>
+  <li><strong>Escalation Triggers:</strong> Customer requests live agent, or AI cannot resolve</li>
+  <li><strong>Context Preservation:</strong> Full conversation history and verified customer ID passed to agent</li>
+  <li><strong>Routing:</strong> <code>Zentra_Service_Route_To_Work</code> flow handles Omni-Channel routing</li>
+  <li><strong>Agent Console:</strong> TruZentraOps dashboard available to receiving agent for instant 360 view</li>
+</ul>
+
+<!-- 14. DEPLOYMENT -->
+<h2 id="deploy">14. Deployment &amp; CI/CD</h2>
+<ul>
+  <li><strong>Source Format:</strong> Salesforce DX (sfdx-project.json)</li>
+  <li><strong>Package Directory:</strong> <code>force-app/main/default</code></li>
+  <li><strong>Deploy Command:</strong> <code>sf project deploy start --source-dir Zentra-Works --target-org [alias]</code></li>
+  <li><strong>CI/CD:</strong> GitHub Actions workflows for branch cleanup, CICD pipelines</li>
+  <li><strong>Test Data:</strong> <code>ZentraSetupCustomer.run(firstName, lastName, email, phone)</code> generates full customer profile</li>
+  <li><strong>Target Org Alias:</strong> AF</li>
+</ul>
+
+<div class="footer">
+  Tru<span>Zentra</span>
+</div>
+
+</div>
+<div style="max-width:1000px;margin:24px auto 12px;padding:0 36px;text-align:left;font-size:9px;font-style:italic;color:#64748B;letter-spacing:.3px;">Various trademarks held by their respective owners.</div>
+</body>
+</html>

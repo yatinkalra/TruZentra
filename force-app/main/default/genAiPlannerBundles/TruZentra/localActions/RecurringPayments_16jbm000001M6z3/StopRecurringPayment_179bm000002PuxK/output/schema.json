@@ -1,0 +1,13 @@
+{
+  "properties" : {
+    "varOutputMessage" : {
+      "title" : "Output Message",
+      "description" : "Formatted cancellation confirmation message for the customer.",
+      "lightning:type" : "lightning__textType",
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

@@ -1,0 +1,39 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varOutputSuccess" : {
+      "title" : "Success",
+      "description" : "Whether the OTP was generated and sent successfully.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "varOutputMessage" : {
+      "title" : "Message",
+      "description" : "A user-facing message about the OTP send result.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "varOutputOTPSessionId" : {
+      "title" : "OTP Session Id",
+      "description" : "The Id of the OTP Session record. This MUST be passed to the Verify OTP action as input.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "varOutputAccountNotFound" : {
+      "title" : "Account Not Found",
+      "description" : "True if no account was found for the given phone number. When true, the agent should offer to open a new account for the prospect.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

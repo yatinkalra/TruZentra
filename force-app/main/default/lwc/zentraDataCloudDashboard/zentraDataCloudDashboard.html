@@ -1,0 +1,374 @@
+<template>
+    <!-- ═══ TOP BAR ═══ -->
+    <div class="topbar">
+        <div class="topbar-left">
+            <div class="logo-mark">DC</div>
+            <span class="topbar-title">Zentra Data Cloud 360</span>
+        </div>
+        <div class="topbar-search">
+            <lightning-input
+                type="search"
+                variant="label-hidden"
+                placeholder="Search customer by name, phone, email..."
+                value={searchTerm}
+                onchange={handleSearchChange}
+                class="search-input"
+            ></lightning-input>
+            <template lwc:if={selectedAccountName}>
+                <lightning-pill label={selectedAccountName} onremove={handleClearSelection} class="search-pill"></lightning-pill>
+            </template>
+            <template lwc:if={showSearchResults}>
+                <div class="search-dropdown" role="listbox">
+                    <template for:each={searchResults} for:item="acc">
+                        <div key={acc.Id} class="s-item" data-id={acc.Id} data-name={acc.Name} onclick={handleAccountSelect} role="option">
+                            <div class="s-avatar">{acc.Name}</div>
+                            <div class="s-info">
+                                <span class="s-name">{acc.Name}</span>
+                                <span class="s-detail">{acc.Phone} {acc.PersonEmail}</span>
+                            </div>
+                        </div>
+                    </template>
+                    <template lwc:if={noSearchResults}>
+                        <div class="s-item s-empty">No accounts found in Data Cloud</div>
+                    </template>
+                </div>
+            </template>
+        </div>
+        <div class="topbar-right">
+            <template lwc:if={hasData}>
+                <button class="icon-btn" onclick={handleRefresh} title="Refresh data">
+                    <lightning-icon icon-name="utility:refresh" size="xx-small"></lightning-icon>
+                </button>
+                <a href={accountUrl} target="_blank" class="icon-btn" title="Open in CRM">
+                    <lightning-icon icon-name="utility:new_window" size="xx-small"></lightning-icon>
+                </a>
+            </template>
+        </div>
+    </div>
+
+    <!-- ═══ EMPTY STATE ═══ -->
+    <template lwc:if={showEmptyState}>
+        <div class="empty-hero">
+            <div class="empty-circle">
+                <lightning-icon icon-name="utility:search" size="large"></lightning-icon>
+            </div>
+            <h2>Customer 360 Intelligence</h2>
+            <p>Search for a customer above to explore their complete Data Cloud profile — accounts, transactions, payments, loans, and disputes.</p>
+        </div>
+    </template>
+
+    <!-- ═══ LOADING ═══ -->
+    <template lwc:if={isLoading}>
+        <div class="loading-hero">
+            <lightning-spinner alternative-text="Loading..." size="large"></lightning-spinner>
+            <p>Querying Data Cloud DMOs...</p>
+        </div>
+    </template>
+
+    <!-- ═══ MAIN LAYOUT: SIDEBAR + CONTENT ═══ -->
+    <template lwc:if={hasData}>
+        <div class="hub-layout">
+
+            <!-- ── LEFT SIDEBAR: Customer Profile ── -->
+            <aside class="sidebar">
+                <div class="profile-card">
+                    <div class="avatar-circle">{accountInitials}</div>
+                    <h2 class="profile-name">{dashboardData.account.Name}</h2>
+                    <span class="pill pill-blue">Data Cloud Profile</span>
+                </div>
+                <div class="profile-details">
+                    <div class="detail-row">
+                        <lightning-icon icon-name="utility:email" size="xx-small"></lightning-icon>
+                        <span>{contactEmail}</span>
+                    </div>
+                    <div class="detail-row">
+                        <lightning-icon icon-name="utility:call" size="xx-small"></lightning-icon>
+                        <span>{contactPhone}</span>
+                    </div>
+                    <div class="detail-row">
+                        <lightning-icon icon-name="utility:date_input" size="xx-small"></lightning-icon>
+                        <span>Member since {memberSince}</span>
+                    </div>
+                </div>
+                <div class="sidebar-divider"></div>
+                <div class="sidebar-stats">
+                    <div class="sstat">
+                        <span class="sstat-label">Total Balance</span>
+                        <span class="sstat-value sstat-green">{totalBalance}</span>
+                    </div>
+                    <div class="sstat">
+                        <span class="sstat-label">Total Liability</span>
+                        <span class="sstat-value sstat-red">{totalLiability}</span>
+                    </div>
+                    <div class="sidebar-divider"></div>
+                    <div class="sstat-row">
+                        <div class="sstat-mini">
+                            <span class="sstat-mini-val">{totalFinancialAccounts}</span>
+                            <span class="sstat-mini-lbl">Accounts</span>
+                        </div>
+                        <div class="sstat-mini">
+                            <span class="sstat-mini-val">{activeRecurringCount}</span>
+                            <span class="sstat-mini-lbl">Recurring</span>
+                        </div>
+                        <div class="sstat-mini">
+                            <span class="sstat-mini-val">{openDisputeCount}</span>
+                            <span class="sstat-mini-lbl">Disputes</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ── RIGHT CONTENT: All Sections ── -->
+            <main class="content">
+
+                <!-- Section: Calculated Insights -->
+                <template lwc:if={hasInsights}>
+                    <section class="section insight-section">
+                        <div class="section-head">
+                            <lightning-icon icon-name="standard:insights" size="small"></lightning-icon>
+                            <h3>Calculated Insights</h3>
+                            <span class="pill pill-blue">Data Cloud</span>
+                        </div>
+                        <div class="insight-grid">
+                            <template for:each={insightCards} for:item="ins">
+                                <div key={ins.key} class={ins.cardClass}>
+                                    <div class="insight-header">
+                                        <lightning-icon icon-name={ins.icon} size="xx-small"></lightning-icon>
+                                        <span class="insight-title">{ins.title}</span>
+                                    </div>
+                                    <div class={ins.valueClass}>{ins.value}</div>
+                                    <div class="insight-sub">{ins.subtitle}</div>
+                                    <div class="insight-ref">Source: Zentra_Customer_Churn_Risk__cio</div>
+                                </div>
+                            </template>
+                        </div>
+                        <div class="insight-criteria">
+                            <lightning-icon icon-name="utility:info_alt" size="xx-small"></lightning-icon>
+                            <span>Based on: Financial Accounts (active vs inactive), Recurring Payments (active vs stopped), Transaction Volume, and Open Disputes</span>
+                        </div>
+                    </section>
+                </template>
+
+                <!-- Section: Financial Accounts -->
+                <section class="section">
+                    <div class="section-head">
+                        <lightning-icon icon-name="standard:record" size="small"></lightning-icon>
+                        <h3>Financial Accounts</h3>
+                        <span class="count-badge">{totalFinancialAccounts}</span>
+                    </div>
+                    <template lwc:if={hasFinancialAccounts}>
+                        <div class="fac-grid">
+                            <template for:each={visibleFinancialCards} for:item="fa">
+                                <div key={fa.Id} class={fa.cardClass}>
+                                    <div class="fac-top">
+                                        <lightning-icon icon-name={fa.icon} size="x-small"></lightning-icon>
+                                        <span class="fac-type">{fa.FinancialAccountType}</span>
+                                        <span class={fa.statusPill}>{fa.Status}</span>
+                                    </div>
+                                    <div class="fac-bal">{fa.displayBalance}</div>
+                                    <div class="fac-mask">{fa.AccountNumberMasked}</div>
+                                    <template lwc:if={fa.isLoan}>
+                                        <div class="fac-meta">
+                                            <span>EMI {fa.emiDisplay}</span>
+                                            <span>{fa.rateDisplay}</span>
+                                            <span>{fa.tenureDisplay}</span>
+                                        </div>
+                                    </template>
+                                    <template lwc:if={fa.isCreditCard}>
+                                        <div class="fac-meta">
+                                            <span>Used {fa.creditUsed}</span>
+                                            <span>Limit {fa.creditLimit}</span>
+                                        </div>
+                                    </template>
+                                    <template lwc:if={fa.isSavings}>
+                                        <div class="fac-meta">
+                                            <span>Branch: {fa.branchDisplay}</span>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                        <template lwc:if={showMoreFa}>
+                            <button class="show-more-btn" data-section="fa" onclick={handleToggle}>Show {moreCountFa} more accounts</button>
+                        </template>
+                        <template lwc:if={showLessFa}>
+                            <button class="show-more-btn" data-section="fa" onclick={handleToggle}>Show less</button>
+                        </template>
+                    </template>
+                    <template lwc:else>
+                        <div class="section-nil">No financial accounts in Data Cloud.</div>
+                    </template>
+                </section>
+
+                <!-- Section: Transaction Timeline -->
+                <section class="section">
+                    <div class="section-head">
+                        <lightning-icon icon-name="standard:transaction" size="small"></lightning-icon>
+                        <h3>Recent Transactions</h3>
+                        <span class="count-badge">{dashboardData.recentTransactions.length}</span>
+                    </div>
+                    <template lwc:if={hasTransactions}>
+                        <div class="txn-list">
+                            <template for:each={visibleTransactions} for:item="tx">
+                                <div key={tx.Id} class="txn-row">
+                                    <div class="txn-date">{tx.dateDisplay}</div>
+                                    <div class="txn-dot"></div>
+                                    <div class="txn-body">
+                                        <span class="txn-desc">{tx.descDisplay}</span>
+                                        <span class="txn-cat">{tx.categoryPill}</span>
+                                    </div>
+                                    <div class={tx.amountClass}>{tx.sign}{tx.amountDisplay}</div>
+                                </div>
+                            </template>
+                        </div>
+                        <template lwc:if={showMoreTxn}>
+                            <button class="show-more-btn" data-section="txn" onclick={handleToggle}>Show {moreCountTxn} more transactions</button>
+                        </template>
+                        <template lwc:if={showLessTxn}>
+                            <button class="show-more-btn" data-section="txn" onclick={handleToggle}>Show less</button>
+                        </template>
+                    </template>
+                    <template lwc:else>
+                        <div class="section-nil">No transactions in Data Cloud.</div>
+                    </template>
+                </section>
+
+                <!-- Section: Recurring Payments -->
+                <section class="section">
+                    <div class="section-head">
+                        <lightning-icon icon-name="standard:loop" size="small"></lightning-icon>
+                        <h3>Recurring Payments</h3>
+                        <span class="count-badge">{dashboardData.recurringPayments.length}</span>
+                    </div>
+                    <template lwc:if={hasRecurringPayments}>
+                        <div class="card-grid">
+                            <template for:each={visibleRecurring} for:item="rp">
+                                <div key={rp.Id} class="info-card">
+                                    <div class="ic-top">
+                                        <span class="ic-title">{rp.PayeeName}</span>
+                                        <span class={rp.statusPill}>{rp.Status}</span>
+                                    </div>
+                                    <div class="ic-amount">{rp.amountDisplay}</div>
+                                    <div class="ic-meta">
+                                        <span>{rp.Frequency}</span>
+                                        <span>Next: {rp.nextDisplay}</span>
+                                    </div>
+                                    <template lwc:if={rp.PaymentPurpose}>
+                                        <div class="ic-note">{rp.PaymentPurpose}</div>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                        <template lwc:if={showMoreRp}>
+                            <button class="show-more-btn" data-section="rp" onclick={handleToggle}>Show {moreCountRp} more payments</button>
+                        </template>
+                        <template lwc:if={showLessRp}>
+                            <button class="show-more-btn" data-section="rp" onclick={handleToggle}>Show less</button>
+                        </template>
+                    </template>
+                    <template lwc:else>
+                        <div class="section-nil">No recurring payments in Data Cloud.</div>
+                    </template>
+                </section>
+
+                <!-- Section: Loan Restructuring -->
+                <section class="section">
+                    <div class="section-head">
+                        <lightning-icon icon-name="standard:form" size="small"></lightning-icon>
+                        <h3>Loan Restructuring</h3>
+                        <span class="count-badge">{dashboardData.loanRestructuringRequests.length}</span>
+                    </div>
+                    <template lwc:if={hasLoanRequests}>
+                        <div class="card-grid">
+                            <template for:each={visibleLoans} for:item="lr">
+                                <div key={lr.Id} class="info-card">
+                                    <div class="ic-top">
+                                        <span class="ic-title">{lr.Name}</span>
+                                        <span class={lr.statusPill}>{lr.Status}</span>
+                                    </div>
+                                    <div class="ic-trio">
+                                        <div class="ic-trio-item">
+                                            <span class="trio-label">Original EMI</span>
+                                            <span class="trio-value">{lr.originalDisplay}</span>
+                                        </div>
+                                        <div class="ic-trio-item">
+                                            <span class="trio-label">New EMI</span>
+                                            <span class="trio-value trio-green">{lr.newDisplay}</span>
+                                        </div>
+                                        <div class="ic-trio-item">
+                                            <span class="trio-label">Savings/mo</span>
+                                            <span class="trio-value trio-green">{lr.savingsDisplay}</span>
+                                        </div>
+                                    </div>
+                                    <div class="ic-meta">
+                                        <span>Option: {lr.SelectedOption}</span>
+                                        <span>Filed: {lr.dateDisplay}</span>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <template lwc:if={showMoreLoan}>
+                            <button class="show-more-btn" data-section="loan" onclick={handleToggle}>Show {moreCountLoan} more requests</button>
+                        </template>
+                        <template lwc:if={showLessLoan}>
+                            <button class="show-more-btn" data-section="loan" onclick={handleToggle}>Show less</button>
+                        </template>
+                    </template>
+                    <template lwc:else>
+                        <div class="section-nil">No loan restructuring requests in Data Cloud.</div>
+                    </template>
+                </section>
+
+                <!-- Section: Disputes -->
+                <section class="section">
+                    <div class="section-head">
+                        <lightning-icon icon-name="standard:case" size="small"></lightning-icon>
+                        <h3>Disputes</h3>
+                        <span class="count-badge">{dashboardData.disputeCases.length}</span>
+                    </div>
+                    <template lwc:if={hasDisputes}>
+                        <div class="card-grid">
+                            <template for:each={visibleDisputes} for:item="dc">
+                                <div key={dc.Id} class="info-card">
+                                    <div class="ic-top">
+                                        <span class="ic-title">#{dc.CaseNumber}</span>
+                                        <span class={dc.stagePill}>{dc.DisputeStage}</span>
+                                    </div>
+                                    <div class="ic-subject">{dc.Subject}</div>
+                                    <div class="ic-trio">
+                                        <div class="ic-trio-item">
+                                            <span class="trio-label">Disputed</span>
+                                            <span class="trio-value">{dc.amountDisplay}</span>
+                                        </div>
+                                        <div class="ic-trio-item">
+                                            <span class="trio-label">Prov. Credit</span>
+                                            <span class="trio-value">{dc.creditDisplay}</span>
+                                        </div>
+                                        <div class="ic-trio-item">
+                                            <span class="trio-label">Resolution</span>
+                                            <span class="trio-value">{dc.resDisplay}</span>
+                                        </div>
+                                    </div>
+                                    <div class="ic-meta">
+                                        <span>Status: {dc.Status}</span>
+                                        <span>Filed: {dc.dateDisplay}</span>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <template lwc:if={showMoreDispute}>
+                            <button class="show-more-btn" data-section="dispute" onclick={handleToggle}>Show {moreCountDispute} more disputes</button>
+                        </template>
+                        <template lwc:if={showLessDispute}>
+                            <button class="show-more-btn" data-section="dispute" onclick={handleToggle}>Show less</button>
+                        </template>
+                    </template>
+                    <template lwc:else>
+                        <div class="section-nil">No dispute cases in Data Cloud.</div>
+                    </template>
+                </section>
+
+            </main>
+        </div>
+    </template>
+</template>

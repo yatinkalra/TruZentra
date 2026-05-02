@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Mutual Fund Summary</label>
+    <protected>false</protected>
+    <values>
+        <field>Accent_Color__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Bank_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Brand_Color__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Heading__c</field>
+        <value xsi:type="xsd:string">Your Mutual Fund / SIP Portfolio</value>
+    </values>
+    <values>
+        <field>Intro_Text__c</field>
+        <value xsi:type="xsd:string">Here is a summary of your active SIP investments as of {0}:</value>
+    </values>
+    <values>
+        <field>Is_Enabled__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Subject_Template__c</field>
+        <value xsi:type="xsd:string">{0} — Your Mutual Fund / SIP Portfolio Summary</value>
+    </values>
+</CustomMetadata>

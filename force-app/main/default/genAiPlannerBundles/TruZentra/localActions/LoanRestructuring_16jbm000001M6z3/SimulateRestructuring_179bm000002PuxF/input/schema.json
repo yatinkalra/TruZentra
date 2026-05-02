@@ -1,0 +1,15 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varLoanAccountId" : {
+      "title" : "Loan Account Id",
+      "description" : "The FinServ__FinancialAccount__c loan record Id to simulate restructuring for. Obtained from Get Loan Details action.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

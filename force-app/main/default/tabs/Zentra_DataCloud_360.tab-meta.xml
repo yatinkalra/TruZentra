@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Zentra Data Cloud 360 — Customer 360 view powered by Data Cloud DMOs.</description>
+    <flexiPage>Zentra_DataCloud_360</flexiPage>
+    <label>Data Cloud 360</label>
+    <motif>Custom90: Telescope</motif>
+</CustomTab>

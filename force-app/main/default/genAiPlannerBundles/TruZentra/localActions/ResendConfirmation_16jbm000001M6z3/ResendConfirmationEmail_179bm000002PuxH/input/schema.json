@@ -1,0 +1,22 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varCustomerId" : {
+      "title" : "Customer Id",
+      "description" : "The Account Id of the authenticated customer. Auto-mapped from verified customer.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varEmailType" : {
+      "title" : "Email Type",
+      "description" : "Type of summary email to send: balance, dispute, loan, or transaction.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

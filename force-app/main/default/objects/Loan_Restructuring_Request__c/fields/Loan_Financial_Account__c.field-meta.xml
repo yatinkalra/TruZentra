@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Loan_Financial_Account__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <description>FK to the FinServ__FinancialAccount__c loan record being restructured. Developer: BlueForce Team.</description>
+    <label>Loan Financial Account</label>
+    <referenceTo>FinServ__FinancialAccount__c</referenceTo>
+    <relationshipLabel>Restructuring Requests</relationshipLabel>
+    <relationshipName>Loan_Restructuring_Requests</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

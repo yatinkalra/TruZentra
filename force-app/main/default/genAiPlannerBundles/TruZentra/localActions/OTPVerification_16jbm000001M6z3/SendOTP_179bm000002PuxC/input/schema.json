@@ -1,0 +1,22 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varPhoneNumber" : {
+      "title" : "Phone Number",
+      "description" : "Optional. The customer's registered mobile number. If not provided, the system auto-detects it from the WhatsApp messaging session.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : false
+    },
+    "varChannel" : {
+      "title" : "Channel",
+      "description" : "The channel to send OTP through. Default is WhatsApp. Can be WhatsApp or SMS.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

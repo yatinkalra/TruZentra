@@ -1,0 +1,22 @@
+{
+  "required" : [ "varPhoneNumber", "varMPIN" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varPhoneNumber" : {
+      "title" : "Phone Number",
+      "description" : "The customer's registered mobile number used to look up the account.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : true
+    },
+    "varMPIN" : {
+      "title" : "MPIN",
+      "description" : "The 6-digit MPIN entered by the customer for verification.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

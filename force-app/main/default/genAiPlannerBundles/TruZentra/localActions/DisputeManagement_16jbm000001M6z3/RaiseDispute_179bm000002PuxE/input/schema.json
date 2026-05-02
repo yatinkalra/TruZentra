@@ -1,0 +1,43 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varCustomerId" : {
+      "title" : "Customer Id",
+      "description" : "The Account Id of the authenticated customer. Auto-mapped from verified customer.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varTransactionId" : {
+      "title" : "Transaction Id",
+      "description" : "The specific transaction record Id to dispute. Use when the customer selected from the transaction list.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varAmount" : {
+      "title" : "Transaction Amount",
+      "description" : "The transaction amount for fuzzy matching. Use when the customer provides the amount manually instead of selecting from list.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "varMerchantHint" : {
+      "title" : "Merchant Name",
+      "description" : "Merchant name hint for fuzzy matching. Use when the customer provides merchant details manually.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "varReason" : {
+      "title" : "Dispute Reason",
+      "description" : "The reason for the dispute. MUST be one of these exact values: 'Duplicate Transactions', 'Transaction not recognized', 'Suspected Fraud', 'Others'. Present these as options to the customer and map their choice to the exact value.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

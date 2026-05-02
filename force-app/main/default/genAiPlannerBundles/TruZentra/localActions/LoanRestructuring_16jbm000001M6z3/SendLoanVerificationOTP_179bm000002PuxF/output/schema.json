@@ -1,0 +1,31 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varOutputSuccess" : {
+      "title" : "Success",
+      "description" : "Whether the loan verification OTP was sent successfully.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "varOutputMessage" : {
+      "title" : "Message",
+      "description" : "A user-facing message about the OTP send result.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "varOutputOTPSessionId" : {
+      "title" : "OTP Session Id",
+      "description" : "The Id of the OTP Session record. This MUST be passed to the Verify Loan OTP action as input.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

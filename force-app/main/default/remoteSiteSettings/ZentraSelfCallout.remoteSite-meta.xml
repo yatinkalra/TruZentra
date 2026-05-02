@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Self-referencing callout for ZentraDisputeUploadService to invoke Einstein Prompt Templates REST API.</description>
+    <disableProtocolSecurity>false</disableProtocolSecurity>
+    <isActive>true</isActive>
+    <url>https://orgfarm-165ae77bf1.my.salesforce.com</url>
+</RemoteSiteSetting>

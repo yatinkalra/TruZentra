@@ -1,0 +1,398 @@
+<template>
+    <!-- ═══ HEADER ═══ -->
+    <div class="header-bar">
+        <lightning-icon icon-name="standard:dashboard" size="medium"></lightning-icon>
+        <div class="header-text">
+            <h1 class="slds-text-heading_large">TruZentraOps</h1>
+            <p class="slds-text-body_small header-sub">Operations Console</p>
+        </div>
+    </div>
+
+    <!-- ═══ SEARCH ═══ -->
+    <div class="search-section">
+        <div class="search-wrapper">
+            <lightning-input
+                type="search"
+                label="Search Customer Account"
+                placeholder="Search by name, phone, or email..."
+                value={searchTerm}
+                onchange={handleSearchChange}
+                class="search-input"
+            ></lightning-input>
+            <template lwc:if={selectedAccountName}>
+                <div class="selected-pill">
+                    <lightning-pill label={selectedAccountName} onremove={handleClearSelection}></lightning-pill>
+                </div>
+            </template>
+            <template lwc:if={showSearchResults}>
+                <div class="search-dropdown" role="listbox">
+                    <template for:each={searchResults} for:item="acc">
+                        <div key={acc.Id} class="search-item" data-id={acc.Id} data-name={acc.Name} onclick={handleAccountSelect} role="option">
+                            <lightning-icon icon-name="standard:account" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                            <div class="search-item-text">
+                                <span class="search-item-name">{acc.Name}</span>
+                                <span class="search-item-detail">{acc.Phone} {acc.PersonEmail}</span>
+                            </div>
+                        </div>
+                    </template>
+                    <template lwc:if={noSearchResults}>
+                        <div class="search-item search-no-results">No accounts found</div>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <!-- ═══ EMPTY STATE ═══ -->
+    <template lwc:if={showEmptyState}>
+        <div class="empty-state">
+            <lightning-icon icon-name="utility:search" size="large" class="empty-icon"></lightning-icon>
+            <h2 class="slds-text-heading_medium slds-m-top_medium">Search for a Customer</h2>
+            <p class="slds-text-body_regular slds-m-top_small empty-sub">Enter an account name above to view the complete customer dashboard.</p>
+        </div>
+    </template>
+
+    <!-- ═══ LOADING ═══ -->
+    <template lwc:if={isLoading}>
+        <div class="loading-container">
+            <lightning-spinner alternative-text="Loading dashboard data..." size="large"></lightning-spinner>
+            <p class="slds-m-top_medium">Loading customer data...</p>
+        </div>
+    </template>
+
+    <!-- ═══ DASHBOARD ═══ -->
+    <template lwc:if={hasData}>
+
+        <!-- ── Account Banner ── -->
+        <div class="account-banner">
+            <div class="banner-left">
+                <lightning-icon icon-name="standard:person_account" size="large" class="banner-avatar"></lightning-icon>
+                <div>
+                    <h2 class="banner-name">{dashboardData.account.Name}</h2>
+                    <p class="banner-detail">
+                        <template lwc:if={contactEmail}><lightning-icon icon-name="utility:email" size="xx-small" class="banner-icon"></lightning-icon> {contactEmail} &nbsp;&nbsp;</template>
+                        <template lwc:if={contactPhone}><lightning-icon icon-name="utility:call" size="xx-small" class="banner-icon"></lightning-icon> {contactPhone}</template>
+                    </p>
+                </div>
+            </div>
+            <div class="banner-right">
+                <template lwc:if={showDeactivateAllBtn}>
+                    <button class="deactivate-all-btn" onclick={handleDeactivateAll} title="Deactivate all Savings accounts and Cards">
+                        <lightning-icon icon-name="utility:ban" size="xx-small" class="deactivate-icon"></lightning-icon>
+                        Deactivate All
+                    </button>
+                </template>
+                <template lwc:if={showActivateAllBtn}>
+                    <button class="activate-all-btn" onclick={handleActivateAll} title="Reactivate all Savings accounts and Cards">
+                        <lightning-icon icon-name="utility:check" size="xx-small" class="activate-icon"></lightning-icon>
+                        Activate All
+                    </button>
+                </template>
+                <button class="refresh-btn" onclick={handleRefresh} title="Refresh all data">
+                    <lightning-icon icon-name="utility:refresh" size="xx-small" class="refresh-icon"></lightning-icon>
+                    Refresh
+                </button>
+                <a href={accountUrl} target="_blank" class="banner-link">View in Salesforce</a>
+            </div>
+        </div>
+
+        <!-- ── Summary Stats ── -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-value">{totalFinancialAccounts}</div>
+                <div class="stat-label">Financial Accounts</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{activeRecurringPayments}</div>
+                <div class="stat-label">Active Recurring</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{openDisputes}</div>
+                <div class="stat-label">Open Disputes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{totalLoanRequests}</div>
+                <div class="stat-label">Loan Requests</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{totalCards}</div>
+                <div class="stat-label">Cards</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{recentTransactionCount}</div>
+                <div class="stat-label">Recent Txns</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{activeSIPs}</div>
+                <div class="stat-label">Active SIPs</div>
+            </div>
+        </div>
+
+        <!-- ── Tabs ── -->
+        <lightning-tabset class="dashboard-tabs">
+
+            <!-- TAB 1: Financial Accounts -->
+            <lightning-tab label={financialAccountsTabLabel} icon-name="standard:record">
+                <template lwc:if={hasFinancialAccounts}>
+                    <div class="fa-grid">
+                        <template for:each={financialAccountCards} for:item="fa">
+                            <div key={fa.Id} class={fa.cardClass}>
+                                <div class="fa-card-header">
+                                    <span class="fa-type">{fa.typeLabel}</span>
+                                    <span class={fa.statusClass}>{fa.FinServ__Status__c}</span>
+                                </div>
+                                <div class="fa-card-body">
+                                    <div class="fa-balance">{fa.displayBalance}</div>
+                                    <div class="fa-account-num">{fa.Account_Number_Masked__c}</div>
+                                </div>
+                                <template lwc:if={fa.isLoan}>
+                                    <div class="fa-card-footer">
+                                        <span>EMI: {fa.emiDisplay}</span>
+                                        <span>Rate: {fa.rateDisplay}</span>
+                                        <span>Tenure: {fa.tenureDisplay}</span>
+                                    </div>
+                                </template>
+                                <template lwc:if={fa.isCreditCard}>
+                                    <div class="fa-card-footer">
+                                        <span>Limit: {fa.creditLimitDisplay}</span>
+                                        <span>Available: {fa.availableCreditDisplay}</span>
+                                    </div>
+                                </template>
+                                <template lwc:if={fa.isSavings}>
+                                    <div class="fa-card-footer">
+                                        <span>Branch: {fa.branchDisplay}</span>
+                                    </div>
+                                </template>
+                                <div class="fa-card-actions">
+                                    <template lwc:if={fa.canFreeze}>
+                                        <button class="freeze-btn" data-id={fa.Id} onclick={handleFreezeAccount}>Freeze</button>
+                                    </template>
+                                    <template lwc:if={fa.canReactivate}>
+                                        <button class="reactivate-btn" data-id={fa.Id} onclick={handleReactivateAccount}>Reactivate</button>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <div class="section-empty">No financial accounts found.</div>
+                </template>
+
+                <!-- Cards sub-section -->
+                <template lwc:if={hasCards}>
+                    <h3 class="sub-heading slds-m-top_large">Credit / Debit Cards</h3>
+                    <div class="fa-grid">
+                        <template for:each={cardItems} for:item="card">
+                            <div key={card.Id} class="card-tile">
+                                <lightning-icon icon-name="utility:budget" size="small" class="card-icon"></lightning-icon>
+                                <div class="card-info">
+                                    <div class="card-name">{card.Name}</div>
+                                    <div class="card-detail">
+                                        <span>{card.typeLabel}</span>
+                                        <span class={card.statusClass}>{card.statusLabel}</span>
+                                    </div>
+                                    <div class="card-detail">Expires: {card.expiryDisplay}</div>
+                                    <div class="card-detail">Account: {card.accountName}</div>
+                                </div>
+                                <div class="card-actions">
+                                    <template lwc:if={card.isCardActive}>
+                                        <lightning-button label="Freeze" variant="destructive" data-id={card.Id} onclick={handleFreezeCard} icon-name="utility:lock"></lightning-button>
+                                    </template>
+                                    <template lwc:if={card.isCardFrozen}>
+                                        <lightning-button label="Reactivate" variant="success" data-id={card.Id} onclick={handleReactivateCard} icon-name="utility:unlock"></lightning-button>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </lightning-tab>
+
+            <!-- TAB 2: Transactions -->
+            <lightning-tab label={transactionsTabLabel} icon-name="standard:transaction">
+                <template lwc:if={hasTransactions}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={dashboardData.recentTransactions}
+                        columns={transactionColumns}
+                        hide-checkbox-column
+                        show-row-number-column
+                        onrowaction={handleTransactionRowAction}
+                    ></lightning-datatable>
+                </template>
+                <template lwc:else>
+                    <div class="section-empty">No recent transactions found.</div>
+                </template>
+            </lightning-tab>
+
+            <!-- TAB 3: Recurring Payments -->
+            <lightning-tab label={recurringTabLabel} icon-name="standard:loop">
+                <template lwc:if={hasRecurringPayments}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={dashboardData.recurringPayments}
+                        columns={recurringPaymentColumns}
+                        hide-checkbox-column
+                        onrowaction={handleRecurringRowAction}
+                    ></lightning-datatable>
+                </template>
+                <template lwc:else>
+                    <div class="section-empty">No recurring payments found.</div>
+                </template>
+            </lightning-tab>
+
+            <!-- TAB 4: Loan Restructuring -->
+            <lightning-tab label={loanTabLabel} icon-name="standard:form">
+                <template lwc:if={hasLoanRequests}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={dashboardData.loanRestructuringRequests}
+                        columns={loanColumns}
+                        hide-checkbox-column
+                    ></lightning-datatable>
+                </template>
+                <template lwc:else>
+                    <div class="section-empty">No loan restructuring requests found.</div>
+                </template>
+            </lightning-tab>
+
+            <!-- TAB 5: SIPs / Mutual Funds -->
+            <lightning-tab label={sipTabLabel} icon-name="standard:investment_account">
+                <template lwc:if={hasSIPs}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={dashboardData.sipRecords}
+                        columns={sipColumns}
+                        hide-checkbox-column
+                    ></lightning-datatable>
+                </template>
+                <template lwc:else>
+                    <div class="section-empty">No SIP / Mutual Fund records found.</div>
+                </template>
+            </lightning-tab>
+
+            <!-- TAB 6: Disputes / Cases -->
+            <lightning-tab label={disputeTabLabel} icon-name="standard:case">
+                <template lwc:if={hasDisputes}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={dashboardData.disputeCases}
+                        columns={disputeColumns}
+                        hide-checkbox-column
+                    ></lightning-datatable>
+                </template>
+                <template lwc:else>
+                    <div class="section-empty">No dispute cases found.</div>
+                </template>
+            </lightning-tab>
+
+            <!-- TAB 6: Audit Trail -->
+            <lightning-tab label="Audit Trail" icon-name="standard:log_a_call">
+                <h3 class="sub-heading">OTP Sessions (Last 10)</h3>
+                <template lwc:if={hasOTPSessions}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={dashboardData.recentOTPSessions}
+                        columns={otpColumns}
+                        hide-checkbox-column
+                    ></lightning-datatable>
+                </template>
+                <template lwc:else>
+                    <div class="section-empty">No OTP sessions found.</div>
+                </template>
+
+                <h3 class="sub-heading slds-m-top_large">Email Logs (Last 15)</h3>
+                <template lwc:if={hasEmailLogs}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={dashboardData.recentEmailLogs}
+                        columns={emailLogColumns}
+                        hide-checkbox-column
+                    ></lightning-datatable>
+                </template>
+                <template lwc:else>
+                    <div class="section-empty">No email logs found.</div>
+                </template>
+
+                <h3 class="sub-heading slds-m-top_large">Error Logs (Last 10)</h3>
+                <template lwc:if={hasErrorLogs}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={dashboardData.recentErrorLogs}
+                        columns={errorLogColumns}
+                        hide-checkbox-column
+                    ></lightning-datatable>
+                </template>
+                <template lwc:else>
+                    <div class="section-empty">No error logs found.</div>
+                </template>
+            </lightning-tab>
+
+        </lightning-tabset>
+
+        <!-- ═══ DISPUTE MODAL ═══ -->
+        <template lwc:if={showDisputeModal}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header dispute-modal-header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={handleDisputeModalClose}>
+                            <lightning-icon icon-name="utility:close" size="small" variant="inverse"></lightning-icon>
+                        </button>
+                        <h2 class="slds-text-heading_medium slds-hyphenate" style="color:#fff">File Dispute</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_large">
+                        <div class="dispute-txn-summary">
+                            <h3 class="sub-heading">Transaction Details</h3>
+                            <div class="dispute-txn-grid">
+                                <div class="dispute-txn-item">
+                                    <span class="dispute-txn-label">Description</span>
+                                    <span class="dispute-txn-value">{disputeTransaction.FinServ__Description__c}</span>
+                                </div>
+                                <div class="dispute-txn-item">
+                                    <span class="dispute-txn-label">Merchant</span>
+                                    <span class="dispute-txn-value">{disputeTransaction.Merchant_Name__c}</span>
+                                </div>
+                                <div class="dispute-txn-item">
+                                    <span class="dispute-txn-label">Amount</span>
+                                    <span class="dispute-txn-value dispute-amount">{disputeTxnAmount}</span>
+                                </div>
+                                <div class="dispute-txn-item">
+                                    <span class="dispute-txn-label">Date</span>
+                                    <span class="dispute-txn-value">{disputeTransaction.FinServ__TransactionDate__c}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="provisional-credit-info slds-m-top_medium">
+                            <lightning-icon icon-name="utility:moneydollar" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                            <span><strong>Provisional Credit:</strong> {disputeTxnAmount} will be credited to the customer's account immediately upon filing.</span>
+                        </div>
+                        <div class="slds-m-top_large">
+                            <lightning-combobox
+                                label="Dispute Type"
+                                value={selectedDisputeType}
+                                options={disputeTypeOptions}
+                                onchange={handleDisputeTypeChange}
+                                placeholder="Select dispute type..."
+                                required
+                            ></lightning-combobox>
+                        </div>
+                        <div class="slds-m-top_medium">
+                            <lightning-textarea
+                                label="Additional Details (optional)"
+                                value={disputeDescription}
+                                onchange={handleDisputeDescChange}
+                                max-length="1000"
+                            ></lightning-textarea>
+                        </div>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="Cancel" onclick={handleDisputeModalClose} class="slds-m-right_small"></lightning-button>
+                        <lightning-button label="File Dispute" variant="destructive" onclick={handleDisputeSubmit} disabled={isDisputeSubmitDisabled} icon-name="utility:warning"></lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </template>
+</template>

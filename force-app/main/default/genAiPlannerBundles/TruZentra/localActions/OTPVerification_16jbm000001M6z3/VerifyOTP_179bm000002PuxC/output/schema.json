@@ -1,0 +1,63 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varOutputVerified" : {
+      "title" : "Verified",
+      "description" : "Whether the OTP code was verified successfully.",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "varOutputMessage" : {
+      "title" : "Message",
+      "description" : "A user-facing message about the verification result.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "varOutputSessionToken" : {
+      "title" : "Session Token",
+      "description" : "A session token generated on successful verification.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false
+    },
+    "varOutputOTPSessionId" : {
+      "title" : "OTP Session Id",
+      "description" : "The OTP Session record Id.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : false
+    },
+    "varOutputRemainingAttempts" : {
+      "title" : "Remaining Attempts",
+      "description" : "Number of remaining OTP verification attempts before lockout.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "varOutputCustomerId" : {
+      "title" : "Customer Id",
+      "description" : "The Account Id of the verified customer. This MUST be passed to subsequent actions like Check Balance, View Transactions, and Raise Dispute.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "varOutputCustomerName" : {
+      "title" : "Customer Name",
+      "description" : "The first name of the verified customer. Use this to greet the customer warmly by name after OTP verification.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

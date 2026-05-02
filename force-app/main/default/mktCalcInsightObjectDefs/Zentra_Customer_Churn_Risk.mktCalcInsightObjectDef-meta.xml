@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MktCalcInsightObjectDef xmlns="http://soap.sforce.com/2006/04/metadata">
+    <creationType>Custom</creationType>
+    <expression>SELECT
+  ssot__Individual__dlm.ssot__Id__c AS customer_id__c,
+  ssot__Individual__dlm.ssot__FirstName__c AS first_name__c,
+  ssot__Individual__dlm.ssot__LastName__c AS last_name__c,
+  COUNT(ssot__FinancialAccount__dlm.ssot__Id__c) AS total_accounts__c,
+  SUM(CASE WHEN ssot__FinancialAccount__dlm.ssot__FinancialAccountStatus__c = &apos;Active&apos; THEN 1 ELSE 0 END) AS active_accounts__c,
+  SUM(CASE WHEN Zentra_Recurring_Payment__dlm.Status_c__c = &apos;Stopped&apos; THEN 1 ELSE 0 END) AS stopped_payments__c,
+  SUM(CASE WHEN Zentra_Recurring_Payment__dlm.Status_c__c = &apos;Active&apos; THEN 1 ELSE 0 END) AS active_payments__c,
+  SUM(CASE WHEN Zentra_Dispute_Case__dlm.Dispute_Stage_c__c NOT IN (&apos;Resolved&apos;,&apos;Rejected&apos;) THEN 1 ELSE 0 END) AS open_disputes__c,
+  COUNT(ssot__FinancialAccountTransaction__dlm.ssot__Id__c) AS txn_count__c,
+  CASE
+    WHEN COUNT(ssot__FinancialAccount__dlm.ssot__Id__c) = 0 THEN 80
+    ELSE
+      CASE WHEN SUM(CASE WHEN ssot__FinancialAccount__dlm.ssot__FinancialAccountStatus__c != &apos;Active&apos; THEN 1 ELSE 0 END) &gt; 0 THEN 30 ELSE 0 END
+      + CASE WHEN SUM(CASE WHEN Zentra_Recurring_Payment__dlm.Status_c__c = &apos;Stopped&apos; THEN 1 ELSE 0 END) &gt; SUM(CASE WHEN Zentra_Recurring_Payment__dlm.Status_c__c = &apos;Active&apos; THEN 1 ELSE 0 END) THEN 25 ELSE 0 END
+      + CASE WHEN SUM(CASE WHEN Zentra_Dispute_Case__dlm.Dispute_Stage_c__c NOT IN (&apos;Resolved&apos;,&apos;Rejected&apos;) THEN 1 ELSE 0 END) &gt; 0 THEN 20 ELSE 0 END
+      + CASE WHEN COUNT(ssot__FinancialAccountTransaction__dlm.ssot__Id__c) = 0 THEN 15 WHEN COUNT(ssot__FinancialAccountTransaction__dlm.ssot__Id__c) &lt; 5 THEN 5 ELSE 0 END
+  END AS churn_risk_score__c
+FROM ssot__Individual__dlm
+LEFT JOIN ssot__FinancialAccount__dlm ON ssot__FinancialAccount__dlm.ssot__OwnerId__c = ssot__Individual__dlm.ssot__Id__c
+LEFT JOIN ssot__FinancialAccountTransaction__dlm ON ssot__FinancialAccountTransaction__dlm.ssot__FinancialAccountID__c = ssot__FinancialAccount__dlm.ssot__Id__c
+LEFT JOIN Zentra_Recurring_Payment__dlm ON Zentra_Recurring_Payment__dlm.Customer_c__c = ssot__Individual__dlm.ssot__Id__c
+LEFT JOIN Zentra_Dispute_Case__dlm ON Zentra_Dispute_Case__dlm.AccountId__c = ssot__Individual__dlm.ssot__Id__c
+GROUP BY ssot__Individual__dlm.ssot__Id__c, ssot__Individual__dlm.ssot__FirstName__c, ssot__Individual__dlm.ssot__LastName__c</expression>
+    <masterLabel>Zentra Customer Churn Risk</masterLabel>
+</MktCalcInsightObjectDef>

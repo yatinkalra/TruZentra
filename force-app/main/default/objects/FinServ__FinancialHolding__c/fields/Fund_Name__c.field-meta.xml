@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fund_Name__c</fullName>
+    <description>Display name of the mutual fund scheme (denormalized from Security for quick reference).</description>
+    <inlineHelpText>Name of the mutual fund scheme, e.g. "HDFC Mid-Cap Opportunities Fund".</inlineHelpText>
+    <label>Fund Name</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,36 @@
+{
+  "required" : [ ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varCustomerId" : {
+      "title" : "Customer Id",
+      "description" : "The Account Id of the authenticated customer. Auto-mapped from verified customer.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varIncludeInactive" : {
+      "title" : "Include Inactive",
+      "description" : "If true, includes Paused, Completed, and Cancelled standing instructions. Defaults to false (Active only).",
+      "lightning:type" : "lightning__booleanType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varPaymentIndex" : {
+      "title" : "Payment Index",
+      "description" : "1-based index of a specific payment to show full details for. Leave 0 or blank to show the quick summary of all payments.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varLanguage" : {
+      "title" : "Language",
+      "description" : "Language code for formatting: hi for Hindi, en for English. Defaults to en.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

@@ -1,0 +1,58 @@
+<template>
+    <template lwc:if={showButton}>
+        <lightning-card>
+            <div class="slds-p-around_medium slds-text-align_center">
+                <lightning-button
+                    variant="brand"
+                    label="Approve & Create Account"
+                    icon-name="utility:check"
+                    onclick={handleOpenModal}
+                ></lightning-button>
+            </div>
+        </lightning-card>
+    </template>
+
+    <template lwc:if={isModalOpen}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={handleCloseModal}>
+                        <lightning-icon icon-name="utility:close" size="small" variant="inverse"></lightning-icon>
+                    </button>
+                    <h2 class="slds-text-heading_medium">Approve & Create Account</h2>
+                </div>
+                <div class="slds-modal__content slds-p-around_large">
+                    <template lwc:if={caseInfo}>
+                        <div class="slds-m-bottom_medium">
+                            <p><strong>Name:</strong> {caseInfo.SuppliedName}</p>
+                            <p><strong>Phone:</strong> {caseInfo.SuppliedPhone}</p>
+                            <p><strong>Email:</strong> {caseInfo.SuppliedEmail}</p>
+                        </div>
+                    </template>
+                    <div class="slds-box slds-box_x-small slds-theme_shade slds-m-bottom_medium">
+                        <lightning-input
+                            type="checkbox"
+                            label="Include test data (Financial Accounts, Transactions, Cards, Recurring Payments)"
+                            checked={includeTestData}
+                            onchange={handleTestDataToggle}
+                        ></lightning-input>
+                        <p class="slds-text-body_small slds-m-top_x-small slds-text-color_weak">
+                            When checked, the system will create Savings, Credit Card, and Loan accounts along with sample transactions, cards, and recurring payments using ZentraSetupCustomer.
+                        </p>
+                    </div>
+                </div>
+                <div class="slds-modal__footer">
+                    <lightning-button label="Cancel" onclick={handleCloseModal} class="slds-m-right_x-small"></lightning-button>
+                    <lightning-button
+                        variant="brand"
+                        label={submitLabel}
+                        icon-name="utility:check"
+                        onclick={handleApprove}
+                        disabled={isProcessing}
+                    ></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

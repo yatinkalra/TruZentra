@@ -1,0 +1,76 @@
+/* ===================================================
+   Zentra Site Header
+   Brand: #1a237e (Deep Indigo)  Accent: #4caf50 (Green)
+   =================================================== */
+
+:host {
+    display: block;
+    --brand: #1a237e;
+    --brand-light: #283593;
+}
+
+.site-header {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+    padding: 0 24px;
+    box-shadow: 0 2px 12px rgba(26,35,126,0.25);
+}
+
+.header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.bank-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+}
+
+.bank-tagline {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.header-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+@media (max-width: 640px) {
+    .header-badge {
+        display: none;
+    }
+}

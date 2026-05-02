@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalClientApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>ENTER_YOUR_EMAIL_ADDRESS</contactEmail>
+    <distributionState>Local</distributionState>
+    <isProtected>false</isProtected>
+    <label>Zentra AI Service</label>
+    <orgScopedExternalApp>00Dbm00000flx9t:Zentra_AI_Service</orgScopedExternalApp>
+</ExternalClientApplication>

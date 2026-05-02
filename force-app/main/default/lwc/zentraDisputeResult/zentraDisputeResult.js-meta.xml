@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Zentra Dispute Result</masterLabel>
+    <description>Beautiful dispute result card with case details, AI analysis, and close-tab button for flow screens.</description>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="caseNumber" type="String" label="Case Number" description="The dispute case number" />
+            <property name="disputeAmount" type="String" label="Dispute Amount" description="The disputed amount" />
+            <property name="estimatedResolution" type="String" label="Estimated Resolution" description="Estimated resolution date" />
+            <property name="aiAnalysis" type="String" label="AI Analysis" description="AI analysis summary text" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

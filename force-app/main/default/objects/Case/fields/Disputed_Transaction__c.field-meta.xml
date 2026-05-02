@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disputed_Transaction__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Reference to the financial account transaction being disputed.</description>
+    <label>Disputed Transaction</label>
+    <referenceTo>FinServ__FinancialAccountTransaction__c</referenceTo>
+    <relationshipLabel>Dispute Cases</relationshipLabel>
+    <relationshipName>Dispute_Cases</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

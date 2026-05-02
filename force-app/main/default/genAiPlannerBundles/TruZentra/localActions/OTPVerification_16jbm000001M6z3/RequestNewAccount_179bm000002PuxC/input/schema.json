@@ -1,0 +1,29 @@
+{
+  "required" : [ "varPhoneNumber" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varPhoneNumber" : {
+      "title" : "Phone Number",
+      "description" : "The prospect's phone number that was not found in the system. This is the number they provided earlier.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : false
+    },
+    "varCustomerName" : {
+      "title" : "Customer Name",
+      "description" : "Name provided by the prospect.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : true
+    },
+    "varCustomerEmail" : {
+      "title" : "Customer Email",
+      "description" : "Email address provided by the prospect. A welcome confirmation email with RM callback details will be sent to this address.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

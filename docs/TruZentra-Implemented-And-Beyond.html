@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TruZentra &mdash; Implemented &amp; Beyond</title>
+<style>
+  :root{--brand:#0B1D3A;--accent:#00B4D8;--accent2:#16325C;--light:#F4F6F9;--white:#FFF;--text:#2B2B2B;--muted:#6B7280;--green:#10B981;--blue:#3B82F6;--purple:#8B5CF6}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);background:var(--white);line-height:1.7}
+  .page{max-width:960px;margin:0 auto;padding:0 32px}
+  .cover{background:linear-gradient(135deg,var(--brand),var(--accent2));color:#fff;padding:80px 0 60px;text-align:center;margin-bottom:40px;position:relative;overflow:hidden}
+  .cover::before{content:'';position:absolute;top:-40%;right:-15%;width:500px;height:500px;background:radial-gradient(circle,rgba(0,180,216,.12),transparent 70%);border-radius:50%}
+  .cover::after{content:'';position:absolute;bottom:-30%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(144,224,239,.08),transparent 70%);border-radius:50%}
+  .cover *{position:relative;z-index:1}
+  .cover h1{font-size:3.5rem;font-weight:900;letter-spacing:-2px;margin-bottom:6px}
+  .cover h1 span{color:var(--accent)}
+  .cover .doc-type{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);padding:5px 16px;border-radius:8px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+  .cover .sub{font-size:1.2rem;font-weight:300;opacity:.85;margin-top:6px}
+  h2{font-size:1.5rem;font-weight:700;color:var(--brand);border-bottom:3px solid var(--accent);padding-bottom:6px;margin:40px 0 16px}
+  h3{font-size:1.1rem;font-weight:700;color:var(--accent2);margin:20px 0 8px}
+  p{font-size:.93rem}
+  .status-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:16px 0}
+  .status-card{border-radius:10px;padding:20px;border-left:5px solid;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+  .status-card.done{background:#ECFDF5;border-color:var(--green)}
+  .status-card.beyond{background:#F5F3FF;border-color:var(--purple)}
+  .status-card h4{font-size:.95rem;font-weight:700;margin-bottom:4px}
+  .status-card.done h4{color:#065F46}
+  .status-card.beyond h4{color:#5B21B6}
+  .status-card p{font-size:.83rem;color:var(--muted);margin:0}
+  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+  .badge.live{background:#D1FAE5;color:#065F46}
+  .badge.future{background:#EDE9FE;color:#5B21B6}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.88rem}
+  th{background:var(--brand);color:#fff;padding:10px 14px;text-align:left;font-weight:600}
+  td{padding:8px 14px;border-bottom:1px solid #E5E7EB;vertical-align:top}
+  tr:nth-child(even){background:var(--light)}
+  .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:20px 0}
+  .summary-item{background:var(--light);border-radius:10px;padding:20px;text-align:center}
+  .summary-item .num{font-size:2rem;font-weight:800;color:var(--green)}.summary-item.beyond-stat .num{color:var(--purple)}
+  .summary-item .label{font-size:.8rem;color:var(--muted);margin-top:4px}
+  .footer{text-align:center;padding:28px 0;border-top:1px solid #E5E7EB;color:var(--muted);font-size:.78rem;margin-top:40px}
+  @media print{.cover{padding:32px 0}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="doc-type">Implementation Status</div>
+  <h1>Tru<span>Zentra</span></h1>
+  <div class="sub">Implemented &amp; Beyond</div>
+</div>
+
+<div class="page">
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div class="summary-item"><div class="num">41+</div><div class="label">Services Implemented</div></div>
+  <div class="summary-item"><div class="num">22</div><div class="label">Flows Live</div></div>
+  <div class="summary-item"><div class="num">10</div><div class="label">LWCs Deployed</div></div>
+  <div class="summary-item beyond-stat"><div class="num">5</div><div class="label">Beyond Roadmap</div></div>
+</div>
+
+<!-- ════════════ IMPLEMENTED ════════════ -->
+<h2>Implemented &mdash; Live in Production</h2>
+
+<h3>AI Agent &amp; Conversational Banking</h3>
+<div class="status-grid">
+  <div class="status-card done"><span class="badge live">Live</span><h4>Agentforce AI Agent</h4><p>GenAI Planner Bundle with 10 topics, 22+ actions, and full attribute mapping for verified customer identity.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>Multilingual Support</h4><p>English, Hindi, and Hinglish with automatic language detection. Cultural honorifics and Indian currency formatting.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>Human-AI Handoff</h4><p>Seamless escalation to live agents with full conversation context preserved. Omni-Channel routing via Flow.</p></div>
+</div>
+
+<h3>Authentication &amp; Security</h3>
+<div class="status-grid">
+  <div class="status-card done"><span class="badge live">Live</span><h4>OTP Verification (RBI-Compliant)</h4><p>6-digit OTP via branded email. 5-min expiry, 3-attempt lockout, session tokens. Flexible phone matching with/without +91.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>MPIN Authentication</h4><p>4-digit PIN for quick access. Lockout protection, login notification email, change MPIN with OTP gate.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>Loan Verification OTP</h4><p>Separate OTP flow for high-value loan restructuring submissions. Double verification for financial safety.</p></div>
+</div>
+
+<h3>Banking Capabilities</h3>
+<div class="status-grid">
+  <div class="status-card done"><span class="badge live">Live</span><h4>Balance &amp; Transactions</h4><p>Real-time balance across Savings, Credit Card, and Loan accounts. Categorised mini-statement with merchant details.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>Dispute Management</h4><p>One-message filing with fuzzy transaction matching. Auto provisional credit, receipt OCR, status tracking.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>Loan Restructuring</h4><p>3-option simulation (extend 12/24 months, 3-month moratorium). EMI recalculation, 90-day cooldown, RM callback, confirmation email.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>Recurring Payments</h4><p>View and stop standing instructions (rent, utilities, insurance, EMIs). Cancellation with confirmation email.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>Mutual Fund / SIP</h4><p>Portfolio view with fund-level details, current value, gain/loss, XIRR returns, SIP status tracking.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>New Account Opening</h4><p>Prospect onboarding with case creation, RM callback scheduling, and welcome email on approval.</p></div>
+</div>
+
+<h3>Email Engine</h3>
+<div class="status-grid">
+  <div class="status-card done"><span class="badge live">Live</span><h4>CMDT-Driven Email Service</h4><p>14 branded email templates. Custom Metadata controls subject, heading, intro, colours. Master record for global branding. Enable/disable toggle per type.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>6 On-Demand Email Summaries</h4><p>Balance, Transaction, Dispute, Loan, Recurring, Mutual Fund summaries — all triggered by customer request through the agent.</p></div>
+</div>
+
+<h3>Operations &amp; Intelligence</h3>
+<div class="status-grid">
+  <div class="status-card done"><span class="badge live">Live</span><h4>TruZentraOps Dashboard</h4><p>Customer 360 Operations Console. Search, profile sidebar, 7 tabbed sections (Accounts, Transactions, Recurring, Loans, Disputes, SIPs, Errors).</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>Data Cloud 360 Dashboard</h4><p>Unified customer view from Data Cloud DLOs/DMOs. Cross-platform data aggregation with case-insensitive search.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>Churn Risk Calculated Insights</h4><p>Real-time churn score (0&ndash;100) using account activity, payment health, disputes, and transaction frequency.</p></div>
+  <div class="status-card done"><span class="badge live">Live</span><h4>Centralised Error Logging</h4><p>All Apex services log to Zentra_Error_Log__c. Visible in TruZentraOps for real-time monitoring.</p></div>
+</div>
+
+<h3>Infrastructure</h3>
+<table>
+  <tr><th>Component</th><th>Count</th><th>Status</th></tr>
+  <tr><td>Apex Service Classes</td><td>41+</td><td><span class="badge live">Live</span></td></tr>
+  <tr><td>Autolaunched / Screen Flows</td><td>22</td><td><span class="badge live">Live</span></td></tr>
+  <tr><td>Lightning Web Components</td><td>10</td><td><span class="badge live">Live</span></td></tr>
+  <tr><td>Custom Objects</td><td>5</td><td><span class="badge live">Live</span></td></tr>
+  <tr><td>Custom Metadata Types</td><td>2 (15 records)</td><td><span class="badge live">Live</span></td></tr>
+  <tr><td>Permission Sets</td><td>1</td><td><span class="badge live">Live</span></td></tr>
+  <tr><td>Prompt Templates</td><td>Deployed</td><td><span class="badge live">Live</span></td></tr>
+  <tr><td>Data Cloud Streams</td><td>6 DLOs mapped</td><td><span class="badge live">Live</span></td></tr>
+  <tr><td>Calculated Insights</td><td>1</td><td><span class="badge live">Live</span></td></tr>
+</table>
+
+<!-- ════════════ BEYOND ════════════ -->
+<h2>Beyond &mdash; Future Roadmap</h2>
+<p>These are exclusive, high-impact enhancements that extend TruZentra beyond its current capabilities:</p>
+
+<div class="status-grid">
+  <div class="status-card beyond"><span class="badge future">Roadmap</span><h4>Predictive Offer Engine</h4><p>Use churn risk score + transaction patterns to proactively recommend products (FD for high savers, insurance for new parents, credit upgrade for consistent spenders). AI-generated personalised offers pushed through the agent.</p></div>
+  <div class="status-card beyond"><span class="badge future">Roadmap</span><h4>Voice Banking via Agentforce</h4><p>Extend conversational agent to voice channel — IVR replacement with natural language understanding. Same topics and actions, voice-to-text interface.</p></div>
+  <div class="status-card beyond"><span class="badge future">Roadmap</span><h4>Real-Time Fraud Alerting</h4><p>Data Cloud streaming events + Platform Events to detect anomalous transactions in real-time. Auto-block suspicious activity and notify customer through the agent with one-tap dispute filing.</p></div>
+  <div class="status-card beyond"><span class="badge future">Roadmap</span><h4>Financial Health Score</h4><p>Go beyond churn to a comprehensive financial health score — savings rate, debt-to-income ratio, emergency fund adequacy. Personalised financial wellness tips delivered through the agent.</p></div>
+  <div class="status-card beyond"><span class="badge future">Roadmap</span><h4>Cross-Sell Propensity Model</h4><p>Machine learning model in Data Cloud to predict product propensity. Feed scores into TruZentraOps dashboard for RM-guided conversations during service interactions.</p></div>
+</div>
+
+<div class="footer">
+  Tru<span>Zentra</span>
+</div>
+
+</div>
+<div style="max-width:1000px;margin:24px auto 12px;padding:0 36px;text-align:left;font-size:9px;font-style:italic;color:#64748B;letter-spacing:.3px;">Various trademarks held by their respective owners.</div>
+</body>
+</html>

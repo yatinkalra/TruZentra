@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>JHeyTX2K4n4tNwL1/ipJdqApvp8Jz1qSFBevQURxWMA=_3</activeVersionIdentifier>
+    <developerName>ZentraProcessImage</developerName>
+    <masterLabel>ZentraProcessImage</masterLabel>
+    <templateVersions>
+        <content>You are an AI assistant helping to automate insurance claims after a natural disaster. Analyze the attached image and extract relevant information for creating a structured claim in Salesforce. Focus on visible property damage (e.g., water damage, structural collapse, destroyed furniture, debris, etc.) that may result from events like floods, storms, or landslides.
+
+Possible values:
+Damage_Type: Flood, Storm, Landslide, or Unknown
+Detected_Areas: E.g., &quot;Living Room&quot;, &quot;Kitchen&quot;, &quot;Garage&quot;
+Damaged_Items: E.g., &quot;Couch&quot;, &quot;TV&quot;, &quot;Walls&quot;, &quot;Car&quot;
+Severity_Level: Minor, Moderate, or Severe
+Suggested_Claim_Category: E.g., Home Property Damage, Vehicle Damage
+Estimated_Repair_Urgency: Low, Medium, or High
+Notes: Fact-based relevant observations from the image
+
+Return only the following structured JSON object:
+{
+ &quot;Damage_Type&quot;: &quot;&quot;,  
+ &quot;Detected_Areas&quot;: [],
+ &quot;Damaged_Items&quot;: [],
+ &quot;Severity_Level&quot;: &quot;&quot;,  
+ &quot;Suggested_Claim_Category&quot;: &quot;&quot;,  
+ &quot;Estimated_Repair_Urgency&quot;: &quot;&quot;,
+ &quot;Notes&quot;: &quot;&quot;
+}
+
+⚠️ If no damage is clearly visible, return:
+{
+ &quot;Damage_Type&quot;: &quot;Unknown&quot;,
+ &quot;Detected_Areas&quot;: [],
+ &quot;Damaged_Items&quot;: [],
+ &quot;Severity_Level&quot;: &quot;Minor&quot;,
+ &quot;Suggested_Claim_Category&quot;: &quot;Unknown&quot;,
+ &quot;Estimated_Repair_Urgency&quot;: &quot;Low&quot;,
+ &quot;Notes&quot;: &quot;Insufficient visual evidence to extract claim-relevant information.&quot;
+}
+
+</content>
+        <inputs>
+            <apiName>imageUpload</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>imageUpload</masterLabel>
+            <referenceName>Input:imageUpload</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT5Mini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>JHeyTX2K4n4tNwL1/ipJdqApvp8Jz1qSFBevQURxWMA=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>This Message Is From an External Sender
+This message came from outside your organization.
+Report Suspicious
+You are a banking AI assistant for TruZentra Bank. Analyze the attached image and determine if it is a valid financial transaction document such as a payment receipt, invoice, bank statement, UPI payment screenshot, credit/debit card transaction slip, merchant bill, or any document showing a monetary transaction.
+ 
+If the image IS a valid transaction document, extract the following:
+- Transaction Amount (numeric value only, no currency symbols)
+- Merchant or Payee Name (as shown on the document)
+- Transaction Date in YYYY-MM-DD format (if visible)
+- Transaction Reference or ID (if visible)
+- Transaction Type: one of UPI, Card, NEFT, IMPS, Cash, Wallet, or Unknown
+- A brief one-line summary of the transaction
+ 
+If the image is NOT a valid transaction or invoice (e.g. a selfie, landscape photo, meme, random screenshot, or any non-financial document), mark it as invalid.
+ 
+Return ONLY a JSON object in one of the two formats below. Do NOT include any explanation or text outside the JSON.
+ 
+For VALID transaction documents:
+{
+ &quot;is_transaction&quot;: true,
+ &quot;amount&quot;: 0.00,
+ &quot;merchant&quot;: &quot;&quot;,
+ &quot;transaction_date&quot;: &quot;&quot;,
+ &quot;reference_id&quot;: &quot;&quot;,
+ &quot;transaction_type&quot;: &quot;&quot;,
+ &quot;summary&quot;: &quot;&quot;
+}
+ 
+For INVALID images (not a financial transaction document):
+{
+ &quot;is_transaction&quot;: false,
+ &quot;amount&quot;: null,
+ &quot;merchant&quot;: null,
+ &quot;transaction_date&quot;: null,
+ &quot;reference_id&quot;: null,
+ &quot;transaction_type&quot;: null,
+ &quot;summary&quot;: &quot;This image does not appear to be a financial transaction document.&quot;
+}
+ 
+IMPORTANT RULES:
+- amount MUST be a plain number (e.g. 1500.00) with no currency symbols or commas
+- Be accurate: only mark is_transaction as true if you can clearly identify transaction details
+- If amount or merchant is partially visible, extract what you can and note it in summary
+</content>
+        <inputs>
+            <apiName>imageUpload</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>imageUpload</masterLabel>
+            <referenceName>Input:imageUpload</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT5Mini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>JHeyTX2K4n4tNwL1/ipJdqApvp8Jz1qSFBevQURxWMA=_2</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a banking AI assistant for TruZentra Bank. Analyze the attached image and determine if it is a valid financial transaction document such as a payment receipt, invoice, bank statement, UPI payment screenshot, credit/debit card transaction slip, merchant bill, or any document showing a monetary transaction.
+ 
+If the image IS a valid transaction document, extract the following:
+- Transaction Amount (numeric value only, no currency symbols)
+- Merchant or Payee Name (as shown on the document)
+- Transaction Date in YYYY-MM-DD format (if visible)
+- Transaction Reference or ID (if visible)
+- Transaction Type: one of UPI, Card, NEFT, IMPS, Cash, Wallet, or Unknown
+- A brief one-line summary of the transaction
+ 
+If the image is NOT a valid transaction or invoice (e.g. a selfie, landscape photo, meme, random screenshot, or any non-financial document), mark it as invalid.
+ 
+Return ONLY a JSON object in one of the two formats below. Do NOT include any explanation or text outside the JSON.
+ 
+For VALID transaction documents:
+{
+ &quot;is_transaction&quot;: true,
+ &quot;amount&quot;: 0.00,
+ &quot;merchant&quot;: &quot;&quot;,
+ &quot;transaction_date&quot;: &quot;&quot;,
+ &quot;reference_id&quot;: &quot;&quot;,
+ &quot;transaction_type&quot;: &quot;&quot;,
+ &quot;summary&quot;: &quot;&quot;
+}
+ 
+For INVALID images (not a financial transaction document):
+{
+ &quot;is_transaction&quot;: false,
+ &quot;amount&quot;: null,
+ &quot;merchant&quot;: null,
+ &quot;transaction_date&quot;: null,
+ &quot;reference_id&quot;: null,
+ &quot;transaction_type&quot;: null,
+ &quot;summary&quot;: &quot;This image does not appear to be a financial transaction document.&quot;
+}
+ 
+IMPORTANT RULES:
+- amount MUST be a plain number (e.g. 1500.00) with no currency symbols or commas
+- Be accurate: only mark is_transaction as true if you can clearly identify transaction details
+- If amount or merchant is partially visible, extract what you can and note it in summary
+</content>
+        <inputs>
+            <apiName>imageUpload</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>imageUpload</masterLabel>
+            <referenceName>Input:imageUpload</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultGPT5Mini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>JHeyTX2K4n4tNwL1/ipJdqApvp8Jz1qSFBevQURxWMA=_3</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

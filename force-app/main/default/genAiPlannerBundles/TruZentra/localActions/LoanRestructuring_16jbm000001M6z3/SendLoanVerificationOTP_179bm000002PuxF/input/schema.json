@@ -1,0 +1,15 @@
+{
+  "required" : [ "varCustomerId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varCustomerId" : {
+      "title" : "Customer Id",
+      "description" : "The Account Id of the already-verified customer. Required. The system looks up the account and sends a loan verification OTP to their registered email.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

@@ -1,0 +1,22 @@
+{
+  "required" : [ "varCustomerId", "varNewMPIN" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varCustomerId" : {
+      "title" : "Customer Id",
+      "description" : "The Account Id of the verified customer whose MPIN is being changed.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "varNewMPIN" : {
+      "title" : "New MPIN",
+      "description" : "The new 6-digit MPIN the customer wants to set.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

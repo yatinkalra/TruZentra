@@ -1,0 +1,22 @@
+{
+  "required" : [ "varOTPCode", "varOTPSessionId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "varOTPCode" : {
+      "title" : "OTP Code",
+      "description" : "The 6-digit OTP code entered by the customer for loan verification.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : true,
+      "copilotAction:isUserInput" : true
+    },
+    "varOTPSessionId" : {
+      "title" : "OTP Session Id",
+      "description" : "The OTP Session Id received from the Send Loan Verification OTP action.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType",
+  "lightning:textIndexed" : true
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SIP_Day__c</fullName>
+    <description>Day of the month when the SIP installment is debited (1-28).</description>
+    <inlineHelpText>Day of the month for SIP deduction (e.g. 5 = 5th of every month).</inlineHelpText>
+    <label>SIP Day</label>
+    <precision>2</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Zentra File Upload</masterLabel>
+    <description>Custom file upload component for guest users. Creates ContentVersion via Apex in system context.</description>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="label" type="String" label="Upload Label" default="Upload Receipt / Screenshot" description="Label shown on the upload area" />
+            <property name="recordId" type="String" label="Record Id" description="Account Id to link the uploaded file to" role="inputOnly" />
+            <property name="contentDocumentId" type="String" label="Content Document Id" description="The ContentDocumentId of the uploaded file" role="outputOnly" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

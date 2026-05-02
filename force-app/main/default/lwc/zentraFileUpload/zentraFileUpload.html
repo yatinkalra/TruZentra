@@ -1,0 +1,44 @@
+<template>
+    <div class="slds-box slds-theme_default slds-p-around_medium">
+        <template if:false={uploadedFileName}>
+            <div class="slds-text-align_center">
+                <label for="fileInput" class="slds-file-selector__body slds-p-around_large"
+                    style="border: 2px dashed #d8dde6; border-radius: 8px; cursor: pointer; display: block;">
+                    <lightning-icon icon-name="utility:upload" size="large" class="slds-m-bottom_small"></lightning-icon>
+                    <p class="slds-text-heading_small slds-m-top_small">{label}</p>
+                    <p class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">
+                        Supported: JPG, PNG, GIF, BMP, WebP, PDF, HEIC
+                    </p>
+                    <p class="slds-text-body_small slds-text-color_weak">Max size: 4.5 MB</p>
+                </label>
+                <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.gif,.bmp,.webp,.pdf,.heic,.heif"
+                    onchange={handleFileChange} class="slds-hide" />
+            </div>
+        </template>
+
+        <template if:true={uploadedFileName}>
+            <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-p-around_small"
+                style="background: #f3f3f3; border-radius: 8px;">
+                <div class="slds-grid slds-grid_vertical-align-center">
+                    <lightning-icon icon-name="doctype:image" size="small" class="slds-m-right_small"></lightning-icon>
+                    <span class="slds-text-body_regular">{uploadedFileName}</span>
+                </div>
+                <lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Remove"
+                    onclick={handleRemove}></lightning-button-icon>
+            </div>
+        </template>
+
+        <template if:true={isUploading}>
+            <div class="slds-m-top_small slds-text-align_center">
+                <lightning-spinner alternative-text="Uploading..." size="small"></lightning-spinner>
+                <p class="slds-text-body_small slds-m-top_small">Uploading file...</p>
+            </div>
+        </template>
+
+        <template if:true={errorMessage}>
+            <div class="slds-notify slds-notify_alert slds-alert_error slds-m-top_small" role="alert">
+                <p>{errorMessage}</p>
+            </div>
+        </template>
+    </div>
+</template>
